@@ -1,0 +1,3048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — RUN IT REMOTE | Cold Calling & Lead Generation</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<!-- Three.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<!-- Lenis Smooth Scroll -->
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
+<style>
+:root {
+  --cyan: #00C2D4;
+  --cyan-light: #00E5F9;
+  --cyan-dark: #00A3B3;
+  --cyan-glow: rgba(0, 194, 212, 0.5);
+  --black: #0A0A0A;
+  --black-light: #121212;
+  --black-lighter: #1a1a1a;
+  --white: #FFFFFF;
+  --gray: #888888;
+  --gray-light: #CCCCCC;
+  --gray-dark: #444444;
+  --red: #ff4757;
+  --green: #2ed573;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 3px; }
+::selection { background: var(--cyan); color: var(--black); }
+
+/* =================== LOADER =================== */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: var(--black);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.loader-logo {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: var(--white);
+}
+
+.loader-logo span { color: var(--cyan); }
+
+.loader-bar-container {
+  width: min(180px, 50vw);
+  height: 2px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loader-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--cyan), var(--cyan-light));
+}
+
+.loader-percent {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--gray);
+}
+
+/* =================== NAVBAR =================== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0.75rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s;
+  height: 60px;
+}
+
+nav.scrolled {
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  height: 55px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  z-index: 1001;
+}
+
+.nav-logo-text {
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  color: var(--white);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--gray-light);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--cyan);
+  transition: width 0.3s;
+}
+
+.nav-links a:hover { color: var(--cyan); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--cyan); }
+.nav-links a.active::after { width: 100%; }
+
+.nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-time {
+  font-size: 0.65rem;
+  color: var(--gray);
+  text-align: right;
+  line-height: 1.3;
+}
+
+.nav-time span {
+  display: block;
+  color: var(--cyan);
+  font-weight: 600;
+}
+
+.btn-primary {
+  padding: 0.6rem 1.25rem;
+  background: var(--cyan);
+  color: var(--black);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary:hover::before { left: 100%; }
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--cyan-glow);
+}
+
+.btn-secondary {
+  padding: 0.7rem 1.5rem;
+  background: transparent;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: rgba(0, 194, 212, 0.1);
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  display: none;
+  width: 40px;
+  height: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1002;
+  background: transparent;
+  border: none;
+  padding: 8px;
+}
+
+.mobile-menu-btn span {
+  width: 22px;
+  height: 2px;
+  background: var(--white);
+  transition: all 0.3s;
+  display: block;
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 10, 10, 0.98);
+  backdrop-filter: blur(20px);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s;
+}
+
+.mobile-menu.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.mobile-menu.open a {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.4s ease;
+}
+
+.mobile-menu a:nth-child(1) { transition-delay: 0.1s; }
+.mobile-menu a:nth-child(2) { transition-delay: 0.15s; }
+.mobile-menu a:nth-child(3) { transition-delay: 0.2s; }
+.mobile-menu a:nth-child(4) { transition-delay: 0.25s; }
+.mobile-menu a:nth-child(5) { transition-delay: 0.3s; }
+.mobile-menu a:nth-child(6) { transition-delay: 0.35s; }
+
+.mobile-menu a:hover { color: var(--cyan); }
+
+/* =================== CONTACT HERO =================== */
+#contact-hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 100px 5% 80px;
+}
+@media (min-width:2560px) {
+    #contact-hero {
+        min-height:70vh;
+    }
+}
+
+#contact-hero-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.contact-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.contact-hero-bg::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 60%;
+  height: 140%;
+  background: radial-gradient(ellipse, rgba(0, 194, 212, 0.08) 0%, transparent 60%);
+  animation: heroPulse 8s ease-in-out infinite;
+}
+
+@keyframes heroPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+.contact-hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 70% 70% at 70% 50%, black, transparent);
+  z-index: 2;
+}
+
+.contact-hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* Hero Left - Phone Mockup */
+.contact-hero-left {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+}
+
+.phone-mockup {
+  position: relative;
+  width: 280px;
+  height: 580px;
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+  border-radius: 45px;
+  padding: 12px;
+  box-shadow: 
+    0 50px 100px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255,255,255,0.1),
+    inset 0 0 0 1px rgba(255,255,255,0.05);
+  animation: phoneFloat 6s ease-in-out infinite;
+  position: relative;
+  top: 120px;
+}
+
+@keyframes phoneFloat {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+.phone-mockup::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 25px;
+  background: #1a1a1a;
+  border-radius: 0 0 15px 15px;
+  z-index: 10;
+}
+
+.phone-mockup::after {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 6px;
+  background: #333;
+  border-radius: 3px;
+  z-index: 11;
+}
+
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  background: var(--black);
+  border-radius: 35px;
+  overflow: hidden;
+  position: relative;
+}
+
+.phone-screen-content {
+  padding: 50px 20px 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.phone-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.phone-time {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 5px;
+}
+
+.phone-date {
+  font-size: 0.8rem;
+  color: var(--gray);
+}
+
+.phone-call-animation {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.caller-avatar {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, var(--cyan), var(--cyan-dark));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--black);
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.caller-avatar::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 2px solid var(--cyan);
+  border-radius: 50%;
+  animation: callerPulse 2s ease-in-out infinite;
+}
+
+.caller-avatar::after {
+  content: '';
+  position: absolute;
+  inset: -16px;
+  border: 1px solid rgba(0, 194, 212, 0.3);
+  border-radius: 50%;
+  animation: callerPulse 2s ease-in-out infinite 0.5s;
+}
+
+@keyframes callerPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.5; }
+}
+
+.caller-info {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.caller-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.caller-label {
+  font-size: 0.75rem;
+  color: var(--cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.call-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(46, 213, 115, 0.2);
+  border-radius: 20px;
+  margin-bottom: 30px;
+}
+
+.call-status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: statusBlink 1s ease-in-out infinite;
+}
+
+@keyframes statusBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.call-status span {
+  font-size: 0.75rem;
+  color: var(--green);
+  font-weight: 600;
+}
+
+.call-duration {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--white);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 30px;
+}
+
+.phone-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.phone-action-btn {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.phone-action-btn.mute {
+  background: rgba(255,255,255,0.1);
+}
+
+.phone-action-btn.speaker {
+  background: rgba(255,255,255,0.1);
+}
+
+.phone-action-btn.end {
+  background: var(--red);
+  width: 65px;
+  height: 65px;
+}
+
+.phone-action-btn:hover {
+  transform: scale(1.1);
+}
+
+.phone-action-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--white);
+  stroke-width: 2;
+  fill: none;
+}
+
+.phone-action-btn.end svg {
+  transform: rotate(135deg);
+}
+
+/* Floating Elements Around Phone */
+.phone-float {
+  position: absolute;
+  background: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  z-index: 20;
+}
+
+.phone-float-1 {
+  top: 5%;
+  right: -20%;
+  animation: floatEl1 5s ease-in-out infinite;
+}
+
+.phone-float-2 {
+  bottom: 20%;
+  left: -25%;
+  animation: floatEl2 6s ease-in-out infinite;
+}
+
+.phone-float-3 {
+  top: 40%;
+  left: -30%;
+  animation: floatEl3 7s ease-in-out infinite;
+}
+
+@keyframes floatEl1 {
+  0%, 100% { transform: translateY(0) rotate(2deg); }
+  50% { transform: translateY(-15px) rotate(-2deg); }
+}
+
+@keyframes floatEl2 {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-20px) rotate(3deg); }
+}
+
+@keyframes floatEl3 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.float-stat-value {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--cyan);
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+
+.float-stat-label {
+  font-size: 0.65rem;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Hero Right - Form */
+.contact-hero-right {
+  max-width: 550px;
+}
+
+.contact-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-breadcrumb a {
+  color: var(--gray);
+  text-decoration: none;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.contact-breadcrumb a:hover { color: var(--cyan); }
+.contact-breadcrumb span { color: var(--gray-dark); font-size: 0.7rem; }
+.contact-breadcrumb .current { color: var(--cyan); font-weight: 600; }
+
+.contact-hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.contact-hero-label-line {
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyan), var(--cyan-light));
+}
+
+.contact-hero-label span {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+.contact-hero-title {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.contact-hero-title .highlight {
+  background: linear-gradient(135deg, var(--cyan) 0%, var(--cyan-light) 50%, #fff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.contact-hero-desc {
+  font-size: 1rem;
+  color: var(--gray);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+/* Contact Form */
+.contact-form {
+  background: var(--black-lighter);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 2rem;
+  right: 2rem;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cyan), var(--cyan-light), var(--cyan));
+  border-radius: 0 0 3px 3px;
+}
+
+.form-header {
+  margin-bottom: 2rem;
+}
+
+.form-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+}
+
+.form-subtitle {
+  font-size: 0.85rem;
+  color: var(--gray);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--gray-light);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-group label .required {
+  color: var(--red);
+}
+
+.form-input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--cyan);
+  background: rgba(0, 194, 212, 0.05);
+  box-shadow: 0 0 0 3px rgba(0, 194, 212, 0.1);
+}
+
+.form-input::placeholder { color: var(--gray); }
+
+.form-input.error {
+  border-color: var(--red);
+  background: rgba(255, 71, 87, 0.05);
+}
+
+.form-input.success {
+  border-color: var(--green);
+}
+
+.form-error {
+  display: none;
+  font-size: 0.7rem;
+  color: var(--red);
+  margin-top: 0.4rem;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.form-error.show {
+  display: flex;
+}
+
+.form-error svg {
+  width: 12px;
+  height: 12px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+select.form-input {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2300C2D4' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+
+select.form-input option {
+  background: var(--black);
+  color: var(--white);
+  padding: 10px;
+}
+
+textarea.form-input {
+  resize: none;
+  min-height: 120px;
+}
+
+/* Character Counter */
+.char-counter {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 1rem;
+  font-size: 0.65rem;
+  color: var(--gray);
+}
+
+.char-counter.warning { color: #ffa502; }
+.char-counter.danger { color: var(--red); }
+
+.form-submit {
+  width: 100%;
+  padding: 1.1rem 2rem;
+  background: linear-gradient(135deg, var(--cyan), var(--cyan-dark));
+  color: var(--black);
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.form-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px var(--cyan-glow);
+}
+
+.form-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.form-submit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s;
+}
+
+.form-submit:hover::before { left: 100%; }
+
+.form-submit svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  fill: none;
+}
+
+.submit-spinner {
+  display: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(10, 10, 10, 0.3);
+  border-top-color: var(--black);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.form-submit.loading .submit-spinner { display: block; }
+.form-submit.loading .submit-text { display: none; }
+.form-submit.loading svg { display: none; }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.form-privacy {
+  margin-top: 1rem;
+  font-size: 0.7rem;
+  color: var(--gray);
+  text-align: center;
+}
+
+.form-privacy a {
+  color: var(--cyan);
+  text-decoration: none;
+}
+
+.form-privacy a:hover {
+  text-decoration: underline;
+}
+
+/* =================== CONTACT INFO SECTION =================== */
+#contact-info {
+  padding: clamp(80px, 15vw, 150px) clamp(1rem, 5vw, 5rem);
+  background: var(--black-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-info-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 194, 212, 0.06) 0%, transparent 60%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.contact-info-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-info-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 4rem;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 1rem;
+}
+
+.section-label::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--cyan);
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.section-title .highlight { color: var(--cyan); }
+
+.contact-info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.contact-info-card {
+  background: var(--black);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s;
+}
+
+.contact-info-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.contact-info-card:hover::before { opacity: 1; }
+
+.contact-info-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 194, 212, 0.3);
+  box-shadow: 0 20px 50px rgba(0, 194, 212, 0.1);
+}
+
+.contact-info-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, rgba(0, 194, 212, 0.15), rgba(0, 194, 212, 0.05));
+  border: 1px solid rgba(0, 194, 212, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  transition: all 0.4s;
+}
+
+.contact-info-card:hover .contact-info-icon {
+  background: linear-gradient(135deg, var(--cyan), var(--cyan-dark));
+  transform: scale(1.1) rotate(10deg);
+}
+
+.contact-info-card:hover .contact-info-icon svg { stroke: var(--black); }
+
+.contact-info-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: var(--cyan);
+  stroke-width: 1.5;
+  fill: none;
+  transition: stroke 0.3s;
+}
+
+.contact-info-card h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--white);
+}
+
+.contact-info-card p,
+.contact-info-card a {
+  font-size: 0.9rem;
+  color: var(--gray);
+  text-decoration: none;
+  line-height: 1.6;
+  transition: color 0.3s;
+}
+
+.contact-info-card a:hover { color: var(--cyan); }
+
+/* =================== MAP SECTION =================== */
+#map-section {
+  padding: clamp(80px, 15vw, 150px) clamp(1rem, 5vw, 5rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.map-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.map-content .section-label {
+  justify-content: flex-start;
+}
+
+.map-content h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.map-content h2 .highlight { color: var(--cyan); }
+
+.map-content > p {
+  font-size: 1rem;
+  color: var(--gray);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.office-locations {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.office-location {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: rgba(0, 194, 212, 0.05);
+  border: 1px solid rgba(0, 194, 212, 0.1);
+  border-radius: 16px;
+  transition: all 0.3s;
+}
+
+.office-location:hover {
+  background: rgba(0, 194, 212, 0.1);
+  transform: translateX(10px);
+}
+
+.office-location-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--cyan);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.office-location-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--black);
+  stroke-width: 2;
+  fill: none;
+}
+
+.office-location-info h5 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.office-location-info p {
+  font-size: 0.85rem;
+  color: var(--gray);
+  line-height: 1.5;
+}
+
+.office-location-info span {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  color: var(--cyan);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Map Visual */
+.map-visual {
+  position: relative;
+  height: 450px;
+  background: var(--black-lighter);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.map-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 30% 40%, rgba(0, 194, 212, 0.15) 0%, transparent 30%),
+    radial-gradient(circle at 70% 60%, rgba(0, 194, 212, 0.1) 0%, transparent 25%);
+}
+
+.map-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 194, 212, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 194, 212, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.map-pin {
+  position: absolute;
+  z-index: 10;
+}
+
+.map-pin-dot {
+  width: 16px;
+  height: 16px;
+  background: var(--cyan);
+  border-radius: 50%;
+  position: relative;
+  animation: pinPulse 2s ease-in-out infinite;
+}
+
+.map-pin-dot::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 2px solid var(--cyan);
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: pinRing 2s ease-in-out infinite;
+}
+
+@keyframes pinPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+@keyframes pinRing {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.5); opacity: 0; }
+}
+
+.map-pin-label {
+  position: absolute;
+  left: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(10, 10, 10, 0.95);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  white-space: nowrap;
+}
+
+.map-pin-label h6 {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.map-pin-label span {
+  font-size: 0.6rem;
+  color: var(--gray);
+}
+
+.map-pin-1 { top: 35%; left: 25%; }
+.map-pin-2 { top: 55%; right: 30%; }
+.map-pin-3 { bottom: 25%; left: 45%; }
+
+/* =================== FAQ CONTACT =================== */
+#contact-faq {
+  padding: clamp(80px, 15vw, 150px) clamp(1rem, 5vw, 5rem);
+  background: var(--black-light);
+  position: relative;
+}
+
+.faq-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.faq-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.faq-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faq-item {
+  background: var(--black);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.faq-item:hover {
+  border-color: rgba(0, 194, 212, 0.2);
+}
+
+.faq-item.active {
+  border-color: rgba(0, 194, 212, 0.4);
+  box-shadow: 0 10px 40px rgba(0, 194, 212, 0.1);
+}
+
+.faq-question {
+  width: 100%;
+  padding: 1.5rem 2rem;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  text-align: left;
+}
+
+.faq-question h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  padding-right: 1rem;
+}
+
+.faq-icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(0, 194, 212, 0.1);
+  border: 1px solid rgba(0, 194, 212, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+
+.faq-item.active .faq-icon {
+  background: var(--cyan);
+  border-color: var(--cyan);
+  transform: rotate(180deg);
+}
+
+.faq-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--cyan);
+  stroke-width: 2;
+  fill: none;
+  transition: stroke 0.3s;
+}
+
+.faq-item.active .faq-icon svg { stroke: var(--black); }
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 500px;
+}
+
+.faq-answer-content {
+  padding: 0 2rem 1.5rem;
+  color: var(--gray);
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+/* =================== SOCIAL CTA =================== */
+#social-cta {
+  padding: clamp(60px, 10vw, 100px) clamp(1rem, 5vw, 5rem);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255,255,255,0.03);
+}
+
+.social-cta-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.social-cta-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.social-cta-title .highlight { color: var(--cyan); }
+
+.social-cta-desc {
+  font-size: 1rem;
+  color: var(--gray);
+  margin-bottom: 2rem;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.social-link-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.social-link-btn:hover {
+  background: rgba(0, 194, 212, 0.1);
+  border-color: rgba(0, 194, 212, 0.3);
+  transform: translateY(-3px);
+}
+
+.social-link-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--cyan);
+  stroke-width: 1.5;
+  fill: none;
+}
+
+.social-link-btn span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+/* =================== FOOTER =================== */
+footer {
+  padding: clamp(40px, 8vw, 60px) clamp(1rem, 4vw, 3rem) clamp(25px, 4vw, 35px);
+  background: var(--black);
+  border-top: 1px solid rgba(255,255,255,0.03);
+}
+
+.footer-container { max-width: 1200px; margin: 0 auto; }
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: 3rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer-brand p {
+  font-size: 0.85rem;
+  color: var(--gray);
+  line-height: 1.7;
+  margin: 1rem 0;
+}
+
+.footer-social {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.footer-social-link {
+  width: 36px;
+  height: 36px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray);
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.footer-social-link:hover {
+  background: var(--cyan);
+  border-color: var(--cyan);
+  color: var(--black);
+  transform: translateY(-2px);
+}
+
+.footer-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-links a {
+  font-size: 0.8rem;
+  color: var(--gray);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover { color: var(--cyan); }
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+  min-height: 32px;
+}
+
+.footer-contact-item svg {
+  flex-shrink: 0;
+  color: var(--cyan);
+  width: 20px;
+  height: 20px;
+  overflow: visible;
+  min-width: 20px;
+  min-height: 20px;
+}
+
+.footer-contact-item span,
+.footer-contact-item a {
+  font-size: 0.8rem;
+  color: var(--gray);
+  text-decoration: none;
+  line-height: 1.5;
+}
+
+.footer-contact-item a:hover { color: var(--cyan); }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-bottom p { font-size: 0.7rem; color: var(--gray); }
+
+.footer-bottom-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-bottom-links a {
+  font-size: 0.7rem;
+  color: var(--gray);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-bottom-links a:hover { color: var(--cyan); }
+
+/* =================== SUCCESS MODAL =================== */
+#success-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+#success-modal.open { display: flex; }
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(10px);
+}
+
+.modal-content {
+  position: relative;
+  z-index: 1;
+  background: var(--black-lighter);
+  border: 1px solid rgba(0, 194, 212, 0.25);
+  border-radius: 24px;
+  padding: 3rem;
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  animation: modalIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 2rem;
+  right: 2rem;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cyan), var(--cyan-light));
+  border-radius: 0 0 3px 3px;
+}
+
+.modal-icon {
+  width: 80px;
+  height: 80px;
+  background: rgba(46, 213, 115, 0.1);
+  border: 2px solid var(--green);
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: modalPulse 2s ease-in-out infinite;
+}
+
+@keyframes modalPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(46, 213, 115, 0.4); }
+  50% { box-shadow: 0 0 0 15px transparent; }
+}
+
+.modal-icon svg {
+  width: 40px;
+  height: 40px;
+  stroke: var(--green);
+  stroke-width: 2.5;
+  fill: none;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.modal-text {
+  color: var(--gray);
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.modal-buttons .btn-primary,
+.modal-buttons .btn-secondary {
+  min-width: 140px;
+  justify-content: center;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* =================== RESPONSIVE =================== */
+
+@media (min-width: 2560px) {
+  html { font-size: 18px; }
+  nav { padding: 1rem 5rem; height: 70px; }
+}
+
+@media (max-width: 1400px) {
+  nav { padding: 0.75rem 2rem; }
+  .contact-hero-content { gap: 2rem; }
+  .phone-float-1 { right: -10%; }
+  .phone-float-2 { left: -15%; }
+  .phone-float-3 { left: -20%; }
+}
+
+@media (max-width: 1200px) {
+  nav { padding: 0.6rem 1.5rem; height: 55px; }
+  nav.scrolled { height: 50px; }
+  .nav-links { gap: 1.5rem; }
+  .nav-time { display: none; }
+  
+  .contact-hero-content { grid-template-columns: 1fr; }
+  .contact-hero-left { 
+    order: 2;
+    height: 450px;
+    margin-top: 2rem;
+  }
+  .contact-hero-right { order: 1; max-width: 100%; }
+  
+  .phone-mockup { width: 240px; height: 500px; }
+  .phone-float { display: none; }
+  
+  .contact-info-grid { grid-template-columns: repeat(2, 1fr); }
+  .map-container { grid-template-columns: 1fr; }
+  .map-visual { height: 350px; margin-top: 2rem; }
+  
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 1024px) {
+  .nav-links { display: none; }
+  .mobile-menu-btn { display: flex; }
+  
+  nav { padding: 0.5rem 1.25rem; height: 52px; }
+  nav.scrolled { height: 48px; }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 0.5rem 1rem; height: 50px; }
+  nav.scrolled { height: 46px; }
+  
+  .nav-logo-text { font-size: 0.75rem; }
+  .btn-primary { padding: 0.5rem 1rem; font-size: 0.65rem; }
+  
+  #contact-hero { padding: 80px 1.25rem 60px; }
+  
+  .contact-hero-left { height: 400px; }
+  .phone-mockup { width: 220px; height: 460px; }
+  .caller-avatar { width: 80px; height: 80px; font-size: 2rem; }
+  .phone-time { font-size: 2rem; }
+  
+  .contact-form { padding: 1.5rem; }
+  .form-row { grid-template-columns: 1fr; }
+  
+  .contact-info-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  
+  .social-links { flex-direction: column; align-items: center; }
+  .social-link-btn { width: 100%; max-width: 280px; justify-content: center; }
+  
+  .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  nav { padding: 0.4rem 0.75rem; height: 48px; }
+  nav.scrolled { height: 44px; }
+  
+  .nav-logo-text { font-size: 0.65rem; }
+  
+  .mobile-menu-btn { width: 35px; height: 35px; padding: 6px; }
+  .mobile-menu-btn span { width: 18px; }
+  
+  .mobile-menu a { font-size: 1rem; }
+  
+  .btn-primary { padding: 0.45rem 0.85rem; font-size: 0.6rem; }
+  
+  .contact-hero-left { display: none; }
+  
+  .contact-form { padding: 1.25rem; }
+  .form-title { font-size: 1.1rem; }
+  
+  .modal-content { padding: 2rem 1.5rem; }
+  .modal-buttons { flex-direction: column; }
+  .modal-buttons .btn-primary,
+  .modal-buttons .btn-secondary { width: 100%; }
+}
+
+@media (max-width: 360px) {
+  .contact-hero-title { font-size: 1.8rem; }
+  .section-title { font-size: 1.6rem; }
+  .nav-logo-text img { width: 130px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader">
+  <div class="loader-logo">RUN IT <span>REMOTE</span></div>
+  <div class="loader-bar-container">
+    <div class="loader-bar" id="loader-bar"></div>
+  </div>
+  <div class="loader-percent" id="loader-percent">0%</div>
+</div>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="about.html" onclick="closeMobileMenu()">About</a>
+  <a href="industry.html" onclick="closeMobileMenu()">Industries</a>
+  <a href="index.html#process" onclick="closeMobileMenu()">Process</a>
+  <a href="contact.html" onclick="closeMobileMenu()">Contacts</a>
+  <a href="#cta" class="btn-primary" onclick="closeMobileMenu()" style="margin-top: 1rem;">Get Started</a>
+</div>
+
+<!-- Navbar -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-text"><img src="./logo-run-it-remote.png" width="200" alt="Run It Remote"></span>
+  </a>
+  
+    <ul class="nav-links">
+     <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="industry.html">Industries</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="contact.html">Contacts</a></li>
+  </ul>
+  
+  <div class="nav-cta">
+    <div class="nav-time">
+      <span>LOCAL TIME</span>
+      <span id="nav-time">SUN 10:00 PM</span>
+    </div>
+    <a href="tel:4049055636" class="btn-primary">Call Now</a>
+  </div>
+  
+  <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- =================== CONTACT HERO =================== -->
+<section id="contact-hero">
+  <!-- <canvas id="contact-hero-canvas"></canvas> -->
+  <div class="contact-hero-bg"></div>
+  <div class="contact-hero-grid"></div>
+  
+  <div class="contact-hero-content">
+    <!-- Phone Mockup -->
+    <div class="contact-hero-left">
+      <div class="phone-float phone-float-1">
+        <div class="float-stat-value">500+</div>
+        <div class="float-stat-label">Daily Calls</div>
+      </div>
+      
+      <!-- <div class="phone-float phone-float-2">
+        <div class="float-stat-value">98%</div>
+        <div class="float-stat-label">Satisfaction</div>
+      </div>
+      
+      <div class="phone-float phone-float-3">
+        <div class="float-stat-value">24/7</div>
+        <div class="float-stat-label">Support</div>
+      </div> -->
+      
+      <div class="phone-mockup">
+        <div class="phone-screen">
+          <div class="phone-screen-content">
+            <div class="phone-header">
+              <div class="phone-time" id="phone-time">10:00</div>
+              <div class="phone-date" id="phone-date">Sunday, January 5</div>
+            </div>
+            
+            <div class="phone-call-animation">
+              <div class="caller-avatar">RIR</div>
+              
+              <div class="caller-info">
+                <div class="caller-name">Run It Remote</div>
+                <div class="caller-label">Incoming Call</div>
+              </div>
+              
+              <div class="call-status">
+                <div class="call-status-dot"></div>
+                <span>Connected</span>
+              </div>
+              
+              <div class="call-duration" id="call-duration">00:00</div>
+              
+              <div class="phone-actions">
+                <button class="phone-action-btn mute">
+                  <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                </button>
+                <button class="phone-action-btn end">
+                  <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </button>
+                <button class="phone-action-btn speaker">
+                  <svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Contact Form -->
+    <div class="contact-hero-right">
+      <!-- <div class="contact-breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span class="current">Contact</span>
+      </div> -->
+      
+      <div class="contact-hero-label">
+        <div class="contact-hero-label-line"></div>
+        <span>Get In Touch</span>
+      </div>
+      
+      <h1 class="contact-hero-title">
+        Let's Start A <span class="highlight">Conversation.</span>
+      </h1>
+      
+      <p class="contact-hero-desc">Ready to supercharge your sales pipeline? Fill out the form below and our team will reach out within 24 hours.</p>
+      
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="form-header">
+          <h3 class="form-title">Send Us A Message</h3>
+          <p class="form-subtitle">All fields marked with * are required</p>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name <span class="required">*</span></label>
+            <input type="text" id="firstName" name="firstName" class="form-input" placeholder="John" required>
+            <div class="form-error" id="firstName-error">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span>First name is required</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name <span class="required">*</span></label>
+            <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Doe" required>
+            <div class="form-error" id="lastName-error">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span>Last name is required</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email Address <span class="required">*</span></label>
+          <input type="email" id="email" name="email" class="form-input" placeholder="john@company.com" required>
+          <div class="form-error" id="email-error">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>Valid email is required</span>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone Number <span class="required">*</span></label>
+            <input type="tel" id="phone" name="phone" class="form-input" placeholder="(404) 905-5636" required>
+            <div class="form-error" id="phone-error">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span>Valid phone number is required</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="company">Company Name</label>
+            <input type="text" id="company" name="company" class="form-input" placeholder="Your Company">
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="service">Service Interested In <span class="required">*</span></label>
+            <select id="service" name="service" class="form-input" required>
+              <option value="">Select a service</option>
+              <option value="cold-calling">Cold Calling</option>
+              <option value="lead-generation">Lead Generation</option>
+              <option value="appointment-setting">Appointment Setting</option>
+              <option value="all-services">All Services</option>
+            </select>
+            <div class="form-error" id="service-error">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span>Please select a service</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="industry">Your Industry <span class="required">*</span></label>
+            <select id="industry" name="industry" class="form-input" required>
+              <option value="">Select your industry</option>
+              <option value="real-estate">Real Estate</option>
+              <option value="home-services">Home Services</option>
+              <option value="solar-energy">Solar & Energy</option>
+              <option value="other">Other</option>
+            </select>
+            <div class="form-error" id="industry-error">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span>Please select your industry</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group" style="position: relative;">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" class="form-input" placeholder="Tell us about your goals and how we can help..." maxlength="500"></textarea>
+          <span class="char-counter" id="char-counter">0 / 500</span>
+        </div>
+        
+        <button type="submit" class="form-submit" id="submit-btn">
+          <span class="submit-text">Send Message</span>
+          <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          <div class="submit-spinner"></div>
+        </button>
+        
+        <p class="form-privacy">By submitting this form, you agree to our <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- =================== CONTACT INFO =================== -->
+<section id="contact-info">
+  <div class="contact-info-glow"></div>
+  
+  <div class="contact-info-container">
+    <div class="contact-info-header">
+      <div class="section-label" style="justify-content: center;">Contact Information</div>
+      <h2 class="section-title">Multiple Ways To <span class="highlight">Reach Us.</span></h2>
+    </div>
+    
+    <div class="contact-info-grid">
+      <div class="contact-info-card">
+        <div class="contact-info-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </div>
+        <h4>Phone</h4>
+        <a href="tel:4049055636">+1 (404) 905-5636</a>
+      </div>
+      
+      <div class="contact-info-card">
+        <div class="contact-info-icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <polyline points="22,7 12,13 2,7"/>
+          </svg>
+        </div>
+        <h4>Email</h4>
+        <a href="mailto:support@runitremote.com">support@runitremote.com</a>
+      </div>
+      
+      <div class="contact-info-card">
+        <div class="contact-info-icon">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <h4>Business Hours</h4>
+        <p>Mon - Fri: 8am - 8pm EST<br>Sat - Sun: 10am - 4pm EST</p>
+      </div>
+      
+      <div class="contact-info-card">
+        <div class="contact-info-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <h4>Headquarters</h4>
+        <p>Atlanta, Georgia<br>United States</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== MAP SECTION =================== -->
+<section id="map-section">
+  <div class="map-container">
+    <div class="map-content">
+      <div class="section-label">Our Locations</div>
+      <h2>Global Team. <span class="highlight">Local Expertise.</span></h2>
+      <p>With team members across multiple time zones, we provide round-the-clock coverage for your campaigns. Our distributed model ensures we're always available when your prospects are.</p>
+      
+      <div class="office-locations">
+        <div class="office-location">
+          <div class="office-location-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="office-location-info">
+            <h5>Atlanta, USA</h5>
+            <p>Headquarters & Operations</p>
+            <span>Primary Hub</span>
+          </div>
+        </div>
+        
+        <div class="office-location">
+          <div class="office-location-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="office-location-info">
+            <h5>Manila, Philippines</h5>
+            <p>Call Center Operations</p>
+            <span>Operations Hub</span>
+          </div>
+        </div>
+        
+        <div class="office-location">
+          <div class="office-location-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="office-location-info">
+            <h5>London, UK</h5>
+            <p>European Support</p>
+            <span>EU Support</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="map-visual">
+      <div class="map-grid"></div>
+      
+      <div class="map-pin map-pin-1">
+        <div class="map-pin-dot"></div>
+        <div class="map-pin-label">
+          <h6>Atlanta</h6>
+          <span>HQ</span>
+        </div>
+      </div>
+      
+      <div class="map-pin map-pin-2">
+        <div class="map-pin-dot"></div>
+        <div class="map-pin-label">
+          <h6>Manila</h6>
+          <span>Operations</span>
+        </div>
+      </div>
+      
+      <div class="map-pin map-pin-3">
+        <div class="map-pin-dot"></div>
+        <div class="map-pin-label">
+          <h6>London</h6>
+          <span>EU Support</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FAQ =================== -->
+<section id="contact-faq">
+  <div class="faq-container">
+    <div class="faq-header">
+      <div class="section-label" style="justify-content: center;">FAQ</div>
+      <h2 class="section-title">Common <span class="highlight">Questions.</span></h2>
+    </div>
+    
+    <div class="faq-grid">
+      <div class="faq-item active">
+        <button class="faq-question">
+          <h4>How quickly will you respond to my inquiry?</h4>
+          <div class="faq-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            We pride ourselves on rapid response times. During business hours, you can expect a response within 2-4 hours. For after-hours inquiries, we'll reach out first thing the next business day. Urgent matters? Call us directly at (404) 905-5636.
+          </div>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question">
+          <h4>What information should I have ready before contacting you?</h4>
+          <div class="faq-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            To help us serve you better, have the following ready: your business type/industry, current lead generation methods, target audience, monthly lead volume goals, and any specific challenges you're facing. This helps us provide tailored solutions right from the start.
+          </div>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question">
+          <h4>Do you offer free consultations?</h4>
+          <div class="faq-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Absolutely! We offer a free 30-minute strategy consultation to understand your needs, discuss potential solutions, and answer any questions. There's no obligation — it's simply our way of getting to know your business and showing how we can help.
+          </div>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question">
+          <h4>What's the best way to reach you for urgent matters?</h4>
+          <div class="faq-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            For urgent matters, please call us directly at (404) 905-5636. Our phone lines are staffed Monday through Friday from 8am to 8pm EST, with emergency support available on weekends. For existing clients, you also have access to your dedicated account manager's direct line.
+          </div>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question">
+          <h4>Can I schedule a specific time for a call?</h4>
+          <div class="faq-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Yes! When you fill out our contact form, simply mention your preferred time and timezone in the message field. Alternatively, after your initial inquiry, we'll send you a link to our calendar where you can book a time slot that works best for your schedule.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== SOCIAL CTA =================== -->
+<section id="social-cta">
+  <div class="social-cta-container">
+    <h2 class="social-cta-title">Connect With Us On <span class="highlight">Social Media.</span></h2>
+    <p class="social-cta-desc">Follow us for industry insights, tips, and updates on how we're helping businesses grow.</p>
+    
+    <div class="social-links">
+      <a href="#" class="social-link-btn">
+        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        <span>Facebook</span>
+      </a>
+      
+      <a href="#" class="social-link-btn">
+        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        <span>LinkedIn</span>
+      </a>
+      
+      <a href="#" class="social-link-btn">
+        <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+        <span>Twitter</span>
+      </a>
+      
+      <a href="#" class="social-link-btn">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        <span>Instagram</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="margin-bottom: 0.5rem;">
+          <span class="nav-logo-text"><img src="./logo-run-it-remote.png" width="150" alt="Run It Remote"></span>
+        </a>
+        <p>Cold calling specialists delivering qualified leads across Real Estate, Home Services, and Solar.</p>
+        <div class="footer-social">
+          <a href="#" class="footer-social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" class="footer-social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Company</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="industry.html">Industries</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Services</h4>
+        <ul class="footer-links">
+          <li><a href="industry.html#industries-served">All Services</a></li>
+          <li><a href="index.html#process">Our Process</a></li>
+          <li><a href="index.html#why-us">Why Choose Us</a></li>
+          <li><a href="about.html#team">Meet the Team</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Contact</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.79 19.79 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <a href="tel:4049055636">+1 (404) 905-5636</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <polyline points="22,7 12,13 2,7"/>
+          </svg>
+          <a href="mailto:support@runitremote.com">support@runitremote.com</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <span>Mon–Fri 8am–8pm EST</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Run It Remote LLC</p>
+      <div class="footer-bottom-links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-services.html">Terms & Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Success Modal -->
+<div id="success-modal">
+  <div class="modal-backdrop" onclick="closeModal()"></div>
+  <div class="modal-content">
+    <div class="modal-icon">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h3 class="modal-title">Message Sent Successfully!</h3>
+    <p class="modal-text">Thank you for reaching out. Our team will review your inquiry and get back to you within 24 hours.</p>
+    <div class="modal-buttons">
+      <a href="tel:4049055636" class="btn-primary">Call Us Now</a>
+      <button onclick="closeModal()" class="btn-secondary">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// =================== LOADER ===================
+let progress = 0;
+const loadInterval = setInterval(() => {
+  progress += Math.random() * 25;
+  if (progress >= 100) {
+    progress = 100;
+    clearInterval(loadInterval);
+    setTimeout(() => {
+      gsap.to('#loader', {
+        opacity: 0,
+        duration: 0.5,
+        onComplete: () => {
+          document.getElementById('loader').style.display = 'none';
+          initLenis();
+          initAnimations();
+          startCallDuration();
+        }
+      });
+    }, 300);
+  }
+  document.getElementById('loader-bar').style.width = progress + '%';
+  document.getElementById('loader-percent').textContent = Math.round(progress) + '%';
+}, 80);
+
+// =================== LENIS SMOOTH SCROLL ===================
+function initLenis() {
+  const lenis = new Lenis({ 
+    duration: 1.2, 
+    easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+    smooth: true, 
+    smoothTouch: false 
+  });
+  
+  function raf(time) { 
+    lenis.raf(time); 
+    requestAnimationFrame(raf); 
+  }
+  requestAnimationFrame(raf);
+  
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(time => lenis.raf(time * 1000));
+  gsap.ticker.lagSmoothing(0);
+}
+
+// =================== TIME UPDATES ===================
+function updateTime() {
+  const n = new Date();
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const d = ['SUN','MON','TUE','WED','THU','FRI','SAT'][n.getDay()];
+  const h = n.getHours(), m = String(n.getMinutes()).padStart(2,'0');
+  
+  document.getElementById('nav-time').textContent = `${d} ${h%12||12}:${m} ${h>=12?'PM':'AM'}`;
+  
+  // Phone time
+  const phoneTime = document.getElementById('phone-time');
+  const phoneDate = document.getElementById('phone-date');
+  if (phoneTime) {
+    phoneTime.textContent = `${h%12||12}:${m}`;
+  }
+  if (phoneDate) {
+    phoneDate.textContent = `${days[n.getDay()]}, ${months[n.getMonth()]} ${n.getDate()}`;
+  }
+}
+updateTime(); 
+setInterval(updateTime, 1000);
+
+// =================== CALL DURATION TIMER ===================
+let callSeconds = 0;
+function startCallDuration() {
+  setInterval(() => {
+    callSeconds++;
+    const mins = Math.floor(callSeconds / 60);
+    const secs = callSeconds % 60;
+    const duration = document.getElementById('call-duration');
+    if (duration) {
+      duration.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+  }, 1000);
+}
+
+// =================== NAVBAR ===================
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// =================== MOBILE MENU ===================
+const mobileBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+
+mobileBtn.addEventListener('click', () => {
+  mobileBtn.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+
+function closeMobileMenu() {
+  mobileBtn.classList.remove('active');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// =================== THREE.JS - HERO CANVAS ===================
+function initHeroThreeJS() {
+  const canvas = document.getElementById('contact-hero-canvas');
+  if (!canvas) return;
+  
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  
+  // Create connection lines
+  const linesGroup = new THREE.Group();
+  const linesMaterial = new THREE.LineBasicMaterial({ 
+    color: 0x00C2D4, 
+    transparent: true, 
+    opacity: 0.15 
+  });
+  
+  for (let i = 0; i < 30; i++) {
+    const points = [];
+    const startX = (Math.random() - 0.5) * 20;
+    const startY = (Math.random() - 0.5) * 15;
+    const startZ = (Math.random() - 0.5) * 10;
+    
+    points.push(new THREE.Vector3(startX, startY, startZ));
+    points.push(new THREE.Vector3(startX + (Math.random() - 0.5) * 5, startY + (Math.random() - 0.5) * 5, startZ + (Math.random() - 0.5) * 3));
+    
+    const geometry = new THREE.BufferGeometry().setFromPoints(points);
+    const line = new THREE.Line(geometry, linesMaterial);
+    linesGroup.add(line);
+  }
+  scene.add(linesGroup);
+  
+  // Particles
+  const particlesGeo = new THREE.BufferGeometry();
+  const particlesCount = 300;
+  const positions = new Float32Array(particlesCount * 3);
+  
+  for (let i = 0; i < particlesCount * 3; i++) {
+    positions[i] = (Math.random() - 0.5) * 25;
+  }
+  
+  particlesGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  
+  const particlesMat = new THREE.PointsMaterial({
+    size: 0.04,
+    color: 0x00C2D4,
+    transparent: true,
+    opacity: 0.6
+  });
+  
+  const particles = new THREE.Points(particlesGeo, particlesMat);
+  scene.add(particles);
+  
+  // Signal rings
+  const ringGroup = new THREE.Group();
+  for (let i = 0; i < 3; i++) {
+    const ringGeo = new THREE.RingGeometry(2 + i * 1.5, 2.1 + i * 1.5, 64);
+    const ringMat = new THREE.MeshBasicMaterial({ 
+      color: 0x00C2D4, 
+      transparent: true, 
+      opacity: 0.1 - i * 0.02,
+      side: THREE.DoubleSide
+    });
+    const ring = new THREE.Mesh(ringGeo, ringMat);
+    ring.position.set(-3, 0, -5);
+    ringGroup.add(ring);
+  }
+  scene.add(ringGroup);
+  
+  camera.position.z = 10;
+  
+  let time = 0;
+  
+  function animate() {
+    requestAnimationFrame(animate);
+    
+    time += 0.005;
+    
+    particles.rotation.y += 0.0003;
+    particles.rotation.x += 0.0001;
+    
+    linesGroup.rotation.y += 0.0005;
+    
+    ringGroup.children.forEach((ring, i) => {
+      ring.scale.x = 1 + Math.sin(time * 2 + i * 0.5) * 0.1;
+      ring.scale.y = 1 + Math.sin(time * 2 + i * 0.5) * 0.1;
+      ring.material.opacity = (0.1 - i * 0.02) * (0.5 + Math.sin(time * 2 + i * 0.5) * 0.5);
+    });
+    
+    renderer.render(scene, camera);
+  }
+  
+  animate();
+  
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+}
+
+// =================== FORM VALIDATION ===================
+const contactForm = document.getElementById('contact-form');
+const submitBtn = document.getElementById('submit-btn');
+
+// Character counter for message
+const messageInput = document.getElementById('message');
+const charCounter = document.getElementById('char-counter');
+
+if (messageInput && charCounter) {
+  messageInput.addEventListener('input', () => {
+    const length = messageInput.value.length;
+    const max = 500;
+    charCounter.textContent = `${length} / ${max}`;
+    
+    charCounter.classList.remove('warning', 'danger');
+    if (length > 400) {
+      charCounter.classList.add('warning');
+    }
+    if (length > 480) {
+      charCounter.classList.add('danger');
+    }
+  });
+}
+
+// Phone number formatting
+const phoneInput = document.getElementById('phone');
+if (phoneInput) {
+  phoneInput.addEventListener('input', (e) => {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length > 10) value = value.slice(0, 10);
+    
+    if (value.length >= 6) {
+      value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6)}`;
+    } else if (value.length >= 3) {
+      value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+    }
+    
+    e.target.value = value;
+  });
+}
+
+// Validation functions
+function validateEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
+}
+
+function validatePhone(phone) {
+  const digits = phone.replace(/\D/g, '');
+  return digits.length >= 10;
+}
+
+function showError(fieldId, message) {
+  const input = document.getElementById(fieldId);
+  const error = document.getElementById(`${fieldId}-error`);
+  
+  if (input) {
+    input.classList.add('error');
+    input.classList.remove('success');
+  }
+  if (error) {
+    error.querySelector('span').textContent = message;
+    error.classList.add('show');
+  }
+}
+
+function clearError(fieldId) {
+  const input = document.getElementById(fieldId);
+  const error = document.getElementById(`${fieldId}-error`);
+  
+  if (input) {
+    input.classList.remove('error');
+    input.classList.add('success');
+  }
+  if (error) {
+    error.classList.remove('show');
+  }
+}
+
+function clearAllErrors() {
+  document.querySelectorAll('.form-input').forEach(input => {
+    input.classList.remove('error', 'success');
+  });
+  document.querySelectorAll('.form-error').forEach(error => {
+    error.classList.remove('show');
+  });
+}
+
+// Real-time validation
+document.querySelectorAll('.form-input').forEach(input => {
+  input.addEventListener('blur', () => {
+    validateField(input);
+  });
+  
+  input.addEventListener('input', () => {
+    if (input.classList.contains('error')) {
+      validateField(input);
+    }
+  });
+});
+
+function validateField(input) {
+  const id = input.id;
+  const value = input.value.trim();
+  
+  switch(id) {
+    case 'firstName':
+      if (!value) {
+        showError('firstName', 'First name is required');
+        return false;
+      }
+      clearError('firstName');
+      return true;
+      
+    case 'lastName':
+      if (!value) {
+        showError('lastName', 'Last name is required');
+        return false;
+      }
+      clearError('lastName');
+      return true;
+      
+    case 'email':
+      if (!value) {
+        showError('email', 'Email is required');
+        return false;
+      }
+      if (!validateEmail(value)) {
+        showError('email', 'Please enter a valid email');
+        return false;
+      }
+      clearError('email');
+      return true;
+      
+    case 'phone':
+      if (!value) {
+        showError('phone', 'Phone number is required');
+        return false;
+      }
+      if (!validatePhone(value)) {
+        showError('phone', 'Please enter a valid phone number');
+        return false;
+      }
+      clearError('phone');
+      return true;
+      
+    case 'service':
+      if (!value) {
+        showError('service', 'Please select a service');
+        return false;
+      }
+      clearError('service');
+      return true;
+      
+    case 'industry':
+      if (!value) {
+        showError('industry', 'Please select your industry');
+        return false;
+      }
+      clearError('industry');
+      return true;
+      
+    default:
+      return true;
+  }
+}
+
+// Form submission
+contactForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  // Validate all required fields
+  let isValid = true;
+  const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'service', 'industry'];
+  
+  requiredFields.forEach(fieldId => {
+    const input = document.getElementById(fieldId);
+    if (!validateField(input)) {
+      isValid = false;
+    }
+  });
+  
+  if (!isValid) {
+    // Scroll to first error
+    const firstError = document.querySelector('.form-input.error');
+    if (firstError) {
+      firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      firstError.focus();
+    }
+    return;
+  }
+  
+  // Show loading state
+  submitBtn.classList.add('loading');
+  submitBtn.disabled = true;
+  
+  // Simulate API call
+  await new Promise(resolve => setTimeout(resolve, 2000));
+  
+  // Reset loading state
+  submitBtn.classList.remove('loading');
+  submitBtn.disabled = false;
+  
+  // Show success modal
+  document.getElementById('success-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  
+  // Reset form
+  contactForm.reset();
+  clearAllErrors();
+  if (charCounter) charCounter.textContent = '0 / 500';
+});
+
+// =================== MODAL ===================
+function closeModal() {
+  document.getElementById('success-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// =================== FAQ ACCORDION ===================
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+  const question = item.querySelector('.faq-question');
+  
+  question.addEventListener('click', () => {
+    const isActive = item.classList.contains('active');
+    
+    // Close all items
+    faqItems.forEach(i => i.classList.remove('active'));
+    
+    // Open clicked item if it wasn't active
+    if (!isActive) {
+      item.classList.add('active');
+    }
+  });
+});
+
+// =================== GSAP ANIMATIONS ===================
+function initAnimations() {
+  gsap.registerPlugin(ScrollTrigger);
+  
+  // Init Three.js
+  initHeroThreeJS();
+  
+  // Hero animations
+  gsap.fromTo('.contact-breadcrumb', 
+    { opacity: 0, y: 20 },
+    { opacity: 1, y: 0, duration: 0.8, delay: 0.2 }
+  );
+  
+  gsap.fromTo('.contact-hero-label', 
+    { opacity: 0, x: -30 },
+    { opacity: 1, x: 0, duration: 0.8, delay: 0.3 }
+  );
+  
+  gsap.fromTo('.contact-hero-title', 
+    { opacity: 0, y: 50 },
+    { opacity: 1, y: 0, duration: 1, delay: 0.4, ease: 'power4.out' }
+  );
+  
+  gsap.fromTo('.contact-hero-desc', 
+    { opacity: 0, y: 30 },
+    { opacity: 1, y: 0, duration: 0.8, delay: 0.6 }
+  );
+  
+  gsap.fromTo('.contact-form', 
+    { opacity: 0, y: 50 },
+    { opacity: 1, y: 0, duration: 1, delay: 0.8 }
+  );
+  
+  gsap.fromTo('.phone-mockup', 
+    { opacity: 0, scale: 0.8, y: 50 },
+    { opacity: 1, scale: 1, y: 0, duration: 1, delay: 1, ease: 'back.out(1.7)' }
+  );
+  
+  gsap.fromTo('.phone-float', 
+    { opacity: 0, scale: 0.8 },
+    { opacity: 1, scale: 1, duration: 0.8, stagger: 0.2, delay: 1.3, ease: 'back.out(1.7)' }
+  );
+  
+  // Contact info cards
+  gsap.fromTo('.contact-info-card', 
+    { opacity: 0, y: 50 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: '.contact-info-grid',
+        start: 'top 80%'
+      }
+    }
+  );
+  
+  // Map section
+  gsap.fromTo('.map-content', 
+    { opacity: 0, x: -50 },
+    {
+      opacity: 1,
+      x: 0,
+      duration: 1,
+      scrollTrigger: {
+        trigger: '#map-section',
+        start: 'top 70%'
+      }
+    }
+  );
+  
+  gsap.fromTo('.map-visual', 
+    { opacity: 0, x: 50 },
+    {
+      opacity: 1,
+      x: 0,
+      duration: 1,
+      scrollTrigger: {
+        trigger: '#map-section',
+        start: 'top 70%'
+      }
+    }
+  );
+  
+  gsap.fromTo('.office-location', 
+    { opacity: 0, x: -30 },
+    {
+      opacity: 1,
+      x: 0,
+      duration: 0.6,
+      stagger: 0.15,
+      scrollTrigger: {
+        trigger: '.office-locations',
+        start: 'top 80%'
+      }
+    }
+  );
+  
+  // Map pins
+  gsap.fromTo('.map-pin', 
+    { opacity: 0, scale: 0 },
+    {
+      opacity: 1,
+      scale: 1,
+      duration: 0.5,
+      stagger: 0.2,
+      ease: 'back.out(1.7)',
+      scrollTrigger: {
+        trigger: '.map-visual',
+        start: 'top 70%'
+      }
+    }
+  );
+  
+  // FAQ items
+  gsap.fromTo('.faq-item', 
+    { opacity: 0, y: 30 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: '.faq-grid',
+        start: 'top 80%'
+      }
+    }
+  );
+  
+  // Social links
+  gsap.fromTo('.social-link-btn', 
+    { opacity: 0, y: 30 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: '.social-links',
+        start: 'top 85%'
+      }
+    }
+  );
+  
+  // Section titles
+  document.querySelectorAll('.section-title').forEach(title => {
+    gsap.fromTo(title, 
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: title,
+          start: 'top 85%'
+        }
+      }
+    );
+  });
+  
+  // Section labels
+  document.querySelectorAll('.section-label').forEach(label => {
+    gsap.fromTo(label, 
+      { opacity: 0, x: -30 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.8,
+        scrollTrigger: {
+          trigger: label,
+          start: 'top 85%'
+        }
+      }
+    );
+  });
+}
+
+// =================== SMOOTH SCROLL ===================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// =================== PHONE ACTION BUTTONS ===================
+document.querySelectorAll('.phone-action-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    this.style.transform = 'scale(0.9)';
+    setTimeout(() => {
+      this.style.transform = '';
+    }, 150);
+  });
+});
+
+console.log('🚀 Run It Remote - Contact Page Loaded Successfully');
+</script>
+
+</body>
+</html>

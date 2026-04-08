@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Terms & Conditions — Run It Remote</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<!-- Three.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<!-- Lenis Smooth Scroll -->
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
+<style>
+:root {
+  --cyan: #00C2D4;
+  --cyan-light: #00E5F9;
+  --cyan-dark: #00A3B3;
+  --cyan-glow: rgba(0, 194, 212, 0.5);
+  --black: #0A0A0A;
+  --black-light: #121212;
+  --black-lighter: #1a1a1a;
+  --white: #FFFFFF;
+  --gray: #888888;
+  --gray-light: #CCCCCC;
+  --gray-dark: #444444;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 3px; }
+::selection { background: var(--cyan); color: var(--black); }
+
+/* =================== NAVBAR =================== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0.75rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s;
+  height: 60px;
+}
+nav.scrolled {
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  height: 55px;
+}
+
+.nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; z-index: 1001; }
+.nav-logo-text { font-weight: 800; font-size: 0.85rem; letter-spacing: 0.12em; color: var(--white); }
+
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: var(--gray-light);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after{
+  content:'';
+  position:absolute;
+  bottom:-5px; left:0;
+  width:0; height:1px;
+  background: var(--cyan);
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--cyan); }
+.nav-links a:hover::after { width:100%; }
+
+.nav-cta { display:flex; align-items:center; gap: 1rem; }
+.nav-time { font-size: 0.65rem; color: var(--gray); text-align: right; line-height: 1.3; }
+.nav-time span { display:block; color: var(--cyan); font-weight: 600; }
+
+.btn-primary {
+  padding: 0.6rem 1.25rem;
+  background: var(--cyan);
+  color: var(--black);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+.btn-primary::before {
+  content:'';
+  position:absolute;
+  top:0; left:-100%;
+  width:100%; height:100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s;
+}
+.btn-primary:hover::before { left:100%; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--cyan-glow); }
+
+.btn-secondary {
+  padding: 0.7rem 1.5rem;
+  background: transparent;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn-secondary:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: rgba(0, 194, 212, 0.1);
+}
+
+/* Mobile Menu */
+.mobile-menu-btn {
+  display: none;
+  width: 40px; height: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1002;
+  background: transparent;
+  border: none;
+  padding: 8px;
+}
+.mobile-menu-btn span { width: 22px; height: 2px; background: var(--white); transition: all 0.3s; display:block; }
+.mobile-menu-btn.active span:nth-child(1){ transform: rotate(45deg) translate(5px, 5px); }
+.mobile-menu-btn.active span:nth-child(2){ opacity:0; transform: translateX(-10px); }
+.mobile-menu-btn.active span:nth-child(3){ transform: rotate(-45deg) translate(5px, -5px); }
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.98);
+  backdrop-filter: blur(20px);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s;
+}
+.mobile-menu.open { opacity: 1; visibility: visible; }
+.mobile-menu a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.mobile-menu.open a { opacity: 1; transform: translateY(0); transition: all 0.4s ease; }
+.mobile-menu a:hover { color: var(--cyan); }
+
+/* =================== PAGE HERO =================== */
+#page-hero{
+  /* min-height: 60vh; */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 3rem 60px;
+  overflow: hidden;
+}
+#hero-canvas{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.page-hero-gradient{
+  position:absolute; inset:0; z-index:1;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 194, 212, 0.14), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 60%, rgba(0, 194, 212, 0.08), transparent);
+}
+.page-hero-grid{
+  position:absolute; inset:0; z-index:1;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+}
+.page-hero-content{
+  position: relative;
+  z-index: 5;
+  max-width: 1100px;
+  width: 100%;
+  text-align: center;
+}
+.hero-badge{
+  display:inline-flex; align-items:center; gap: .6rem;
+  padding: .5rem 1rem;
+  background: rgba(0, 194, 212, 0.1);
+  border: 1px solid rgba(0, 194, 212, 0.3);
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+.hero-badge-dot{
+  width:6px; height:6px; border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 0 0 var(--cyan-glow);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 var(--cyan-glow); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 10px transparent; }
+}
+.hero-badge-text{
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+.page-title{
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+.gradient-text{
+  background: linear-gradient(135deg, var(--cyan) 0%, var(--cyan-light) 50%, var(--white) 100%);
+  -webkit-background-clip: text;
+   background-clip: text; 
+  -webkit-text-fill-color: transparent;
+}
+.page-subtitle{
+  margin-top: 1rem;
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  color: var(--gray);
+  max-width: 760px;
+  margin-left:auto; margin-right:auto;
+}
+.meta-row{
+  display:flex;
+  gap: .75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.75rem;
+}
+.meta-pill{
+  padding: .6rem .9rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 999px;
+  font-size: .75rem;
+  color: var(--gray-light);
+}
+.meta-pill strong{ color: var(--white); }
+
+/* =================== CONTENT =================== */
+.section-pad { padding: clamp(60px, 10vw, 110px) clamp(1rem, 4vw, 3rem); }
+.container { max-width: 1100px; margin: 0 auto; }
+
+.legal-layout{
+  display:grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+.toc{
+  position: sticky;
+  top: 90px;
+  background: var(--black-lighter);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 1.25rem;
+}
+.toc-title{
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gray-light);
+  margin-bottom: 1rem;
+}
+.toc a{
+  display:flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .7rem .75rem;
+  border-radius: 12px;
+  text-decoration:none;
+  color: var(--gray);
+  border: 1px solid transparent;
+  transition: all .25s;
+  font-size: .9rem;
+}
+.toc a:hover{
+  color: var(--white);
+  background: rgba(0,194,212,0.06);
+  border-color: rgba(0,194,212,0.25);
+}
+.toc a .num{
+  color: var(--cyan);
+  font-weight: 800;
+  font-size: .75rem;
+  letter-spacing: .08em;
+}
+
+.legal-card{
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+.legal-card::before{
+  content:'';
+  position:absolute;
+  top:0; left:1.5rem; right:1.5rem;
+  height:2px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  opacity: .9;
+}
+.legal-card h2{
+  font-size: 1.35rem;
+  font-weight: 900;
+  margin-bottom: .6rem;
+}
+.legal-card p{ color: var(--gray-light); font-size: .95rem; line-height: 1.8; margin-bottom: .8rem; }
+.legal-card ul{ padding-left: 1.1rem; color: var(--gray-light); margin: .6rem 0 0; }
+.legal-card li{ margin: .4rem 0; line-height: 1.7; }
+
+.notice{
+  background: linear-gradient(180deg, rgba(0,194,212,0.10), rgba(0,194,212,0.02));
+  border: 1px solid rgba(0,194,212,0.18);
+}
+.notice p{ color: rgba(255,255,255,0.78); }
+
+.inline-link{
+  color: var(--cyan);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0,194,212,0.35);
+}
+.inline-link:hover{ border-bottom-color: var(--cyan); }
+
+/* =================== FOOTER =================== */
+footer {
+  padding: clamp(40px, 8vw, 60px) clamp(1rem, 4vw, 3rem) clamp(25px, 4vw, 35px);
+  background: var(--black);
+  border-top: 1px solid rgba(255,255,255,0.03);
+}
+.footer-container { max-width: 1200px; margin: 0 auto; }
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: 3rem;
+  margin-bottom: 2.5rem;
+}
+.footer-brand p {
+  font-size: 0.85rem;
+  color: var(--gray);
+  line-height: 1.7;
+  margin: 1rem 0;
+}
+.footer-social { display:flex; gap: .6rem; }
+.social-link {
+  width: 36px; height: 36px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 50%;
+  display:flex; align-items:center; justify-content:center;
+  color: var(--gray);
+  transition: all .3s;
+  text-decoration:none;
+}
+.social-link:hover { background: var(--cyan); border-color: var(--cyan); color: var(--black); transform: translateY(-2px); }
+.footer-title{
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+.footer-links{ list-style:none; display:flex; flex-direction:column; gap: .6rem; }
+.footer-links a{ font-size: .8rem; color: var(--gray); text-decoration:none; transition: color .3s; }
+.footer-links a:hover{ color: var(--cyan); }
+
+.footer-contact-item{
+  display:flex; align-items:center; gap: .6rem;
+  margin-bottom: .6rem; min-height: 32px;
+}
+.footer-contact-item svg{
+  color: var(--cyan);
+  width: 20px; height: 20px;
+  flex-shrink:0;
+}
+.footer-contact-item span,
+.footer-contact-item a{
+  font-size: .8rem; color: var(--gray);
+  text-decoration:none; line-height: 1.5;
+}
+.footer-contact-item a:hover{ color: var(--cyan); }
+
+.footer-bottom{
+  display:flex; justify-content: space-between; align-items:center;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-bottom p{ font-size: .7rem; color: var(--gray); }
+.footer-bottom-links{ display:flex; gap: 1.5rem; }
+.footer-bottom-links a{ font-size:.7rem; color: var(--gray); text-decoration:none; transition: color .3s; }
+.footer-bottom-links a:hover{ color: var(--cyan); }
+
+/* =================== RESPONSIVE =================== */
+@media (max-width: 1200px){
+  nav { padding: 0.6rem 1.5rem; height: 55px; }
+  nav.scrolled { height: 50px; }
+  .nav-time{ display:none; }
+  .footer-grid{ grid-template-columns: 1fr 1fr; }
+  .legal-layout{ grid-template-columns: 1fr; }
+  .toc{ position: relative; top: 0; }
+}
+@media (max-width: 1024px){
+  .nav-links{ display:none; }
+  .mobile-menu-btn{ display:flex; }
+  nav { padding: 0.5rem 1.25rem; height: 52px; }
+  nav.scrolled { height: 48px; }
+  #page-hero{ padding: 85px 1.25rem 45px; min-height: 55vh; }
+}
+@media (max-width: 768px){
+  nav { padding: 0.5rem 1rem; height: 50px; }
+  nav.scrolled { height: 46px; }
+  .btn-primary{ padding: .5rem 1rem; font-size: .65rem; }
+  .footer-grid{ grid-template-columns: 1fr; gap: 1.5rem; }
+  .footer-bottom{ flex-direction: column; text-align: center; }
+}
+@media (max-width:360px) {
+     .nav-logo-text img{width: 130px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="about.html" onclick="closeMobileMenu()">About</a>
+  <a href="industry.html" onclick="closeMobileMenu()">Industries</a>
+  <a href="index.html#process" onclick="closeMobileMenu()">Process</a>
+  <a href="contact.html" onclick="closeMobileMenu()">Contacts</a>
+  <a href="#cta" class="btn-primary" onclick="closeMobileMenu()" style="margin-top: 1rem;">Get Started</a>
+</div>
+
+<!-- Navbar -->
+<nav id="navbar">
+  <a href="./index.html" class="nav-logo">
+    <span class="nav-logo-text">
+      <img src="./logo-run-it-remote.png" width="200" alt="Run It Remote">
+    </span>
+  </a>
+
+  <ul class="nav-links">
+     <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="industry.html">Industries</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="contact.html">Contacts</a></li>
+  </ul>
+
+  <div class="nav-cta">
+    <div class="nav-time">
+      <span>LOCAL TIME</span>
+      <span id="nav-time">SUN 10:00 PM</span>
+    </div>
+    <a href="./index.html#cta" class="btn-primary">Get Started</a>
+  </div>
+
+  <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Hero -->
+<section id="page-hero">
+  <div class="page-hero-gradient"></div>
+  <div class="page-hero-grid"></div>
+  <!-- <canvas id="hero-canvas"></canvas> -->
+
+  <div class="page-hero-content">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      <span class="hero-badge-text">Legal</span>
+    </div>
+
+    <h1 class="page-title">
+      Terms <span class="gradient-text">&amp; Conditions</span>
+    </h1>
+
+    <p class="page-subtitle">
+      These Terms govern your use of our website and services. By accessing or using Run It Remote, you agree to these Terms.
+    </p>
+
+    <div class="meta-row">
+      <div class="meta-pill"><strong>Effective:</strong> <span>January 1, 2026</span></div>
+      <div class="meta-pill"><strong>Last updated:</strong> <span>April 8, 2026</span></div>
+      <a class="meta-pill inline-link" href="#contact">Need help? Contact us</a>
+    </div>
+  </div>
+</section>
+
+<!-- Content -->
+<section id="terms" class="section-pad">
+  <div class="container">
+    <div class="legal-layout">
+      <!-- TOC -->
+      <aside class="toc">
+        <div class="toc-title">On this page</div>
+        <a href="#acceptance"><span>Acceptance</span><span class="num">01</span></a>
+        <a href="#services"><span>Services</span><span class="num">02</span></a>
+        <a href="#eligibility"><span>Eligibility</span><span class="num">03</span></a>
+        <a href="#accounts"><span>Accounts & Communication</span><span class="num">04</span></a>
+        <a href="#payments"><span>Fees & Payments</span><span class="num">05</span></a>
+        <a href="#ip"><span>Intellectual Property</span><span class="num">06</span></a>
+        <a href="#prohibited"><span>Prohibited Uses</span><span class="num">07</span></a>
+        <a href="#disclaimer"><span>Disclaimers</span><span class="num">08</span></a>
+        <a href="#liability"><span>Limitation of Liability</span><span class="num">09</span></a>
+        <a href="#termination"><span>Termination</span><span class="num">10</span></a>
+        <a href="#law"><span>Governing Law</span><span class="num">11</span></a>
+        <a href="#contact"><span>Contact</span><span class="num">12</span></a>
+      </aside>
+
+      <!-- MAIN -->
+      <main>
+        <article class="legal-card notice" id="acceptance">
+          <h2>1) Acceptance of Terms</h2>
+          <p>
+            By accessing our website or engaging our services, you agree to be bound by these Terms & Conditions and our
+            <a class="inline-link" href="./privacy-policy.html">Privacy Policy</a>.
+          </p>
+        </article>
+
+        <article class="legal-card" id="services">
+          <h2>2) Services</h2>
+          <p>
+            Run It Remote provides outbound calling, lead generation, appointment setting, and related support services
+            (“Services”). Specific deliverables, timelines, and pricing may be defined in a separate proposal, statement
+            of work, or agreement.
+          </p>
+        </article>
+
+        <article class="legal-card" id="eligibility">
+          <h2>3) Eligibility</h2>
+          <p>
+            You represent that you are at least 18 years old and have authority to enter into these Terms on behalf of
+            yourself or the organization you represent.
+          </p>
+        </article>
+
+        <article class="legal-card" id="accounts">
+          <h2>4) Accounts & Communication</h2>
+          <p>
+            You agree to provide accurate information when contacting us or requesting services. We may communicate with
+            you via email, phone, or text regarding onboarding, service updates, and support.
+          </p>
+        </article>
+
+        <article class="legal-card" id="payments">
+          <h2>5) Fees & Payments</h2>
+          <p>
+            Fees are due as agreed in your proposal or invoice. Late payments may result in paused services. Unless
+            otherwise stated, all fees are non-refundable once work has begun.
+          </p>
+        </article>
+
+        <article class="legal-card" id="ip">
+          <h2>6) Intellectual Property</h2>
+          <p>
+            Website content, branding, design, and materials are owned by Run It Remote or licensors and are protected by
+            applicable laws. You may not copy, modify, distribute, or exploit them without written permission.
+          </p>
+        </article>
+
+        <article class="legal-card" id="prohibited">
+          <h2>7) Prohibited Uses</h2>
+          <p>You agree not to:</p>
+          <ul>
+            <li>Use the website or services for unlawful, abusive, or fraudulent purposes.</li>
+            <li>Attempt to gain unauthorized access to systems, data, or accounts.</li>
+            <li>Transmit malicious code, spam, or interfere with site operation.</li>
+          </ul>
+        </article>
+
+        <article class="legal-card" id="disclaimer">
+          <h2>8) Disclaimers</h2>
+          <p>
+            The website and services are provided “as is” and “as available.” We do not guarantee specific outcomes or
+            revenue results, as performance depends on many factors outside our control (market conditions, offer,
+            pricing, lead quality, etc.).
+          </p>
+        </article>
+
+        <article class="legal-card" id="liability">
+          <h2>9) Limitation of Liability</h2>
+          <p>
+            To the maximum extent permitted by law, Run It Remote will not be liable for indirect, incidental, special,
+            consequential, or punitive damages, or any loss of profits, revenue, or data arising from your use of the
+            website or services.
+          </p>
+        </article>
+
+        <article class="legal-card" id="termination">
+          <h2>10) Termination</h2>
+          <p>
+            We may suspend or terminate access to the website or services if you violate these Terms or if required for
+            security or legal reasons. Termination does not eliminate payment obligations for services already performed.
+          </p>
+        </article>
+
+        <article class="legal-card" id="law">
+          <h2>11) Governing Law</h2>
+          <p>
+            These Terms are governed by applicable laws in the jurisdiction where Run It Remote operates, unless a
+            separate written agreement states otherwise.
+          </p>
+        </article>
+
+        <article class="legal-card" id="contact">
+          <h2>12) Contact</h2>
+          <p>If you have questions about these Terms, contact us:</p>
+          <ul>
+            <li>Email: <a class="inline-link" href="mailto:support@runitremote.com">support@runitremote.com</a></li>
+            <li>Phone: <a class="inline-link" href="tel:4049055636">+1 (404) 905-5636</a></li>
+          </ul>
+
+          <div style="display:flex; gap: .75rem; flex-wrap: wrap; margin-top: 1rem;">
+            <a class="btn-primary" href="./index.html#cta">Get Started</a>
+            <a class="btn-secondary" href="#page-hero">Back to top</a>
+          </div>
+        </article>
+      </main>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="./index.html" class="nav-logo" style="margin-bottom: 0.5rem;">
+          <span class="nav-logo-text"><img src="./logo-run-it-remote.png" width="150" alt=""></span>
+        </a>
+        <p>Cold calling specialists delivering qualified leads across Real Estate, Home Services, and Solar.</p>
+        <div class="footer-social">
+          <a href="#" class="social-link" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    
+       <div>
+        <h4 class="footer-title">Company</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="industry.html">Industries</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Services</h4>
+        <ul class="footer-links">
+          <li><a href="industry.html#industries-served">All Services</a></li>
+          <li><a href="index.html#process">Our Process</a></li>
+          <li><a href="index.html#why-us">Why Choose Us</a></li>
+          <li><a href="about.html#team">Meet the Team</a></li>
+        </ul>
+      </div>
+
+
+      <div>
+        <h4 class="footer-title">Contact</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.79 19.79 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <a href="tel:4049055636">+1 (404) 905-5636</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <polyline points="22,7 12,13 2,7"/>
+          </svg>
+          <a href="mailto:support@runitremote.com">support@runitremote.com</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <span>Mon–Fri 8am–8pm EST</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Run It Remote LLC</p>
+      <div class="footer-bottom-links">
+        <a href="./privacy-policy.html">Privacy Policy</a>
+        <a href="./terms-services.html">Terms & Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* =================== Lenis =================== */
+function initLenis() {
+  const lenis = new Lenis({
+    duration: 1.1,
+    easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smooth: true,
+    smoothTouch: false
+  });
+  function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+  requestAnimationFrame(raf);
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(time => lenis.raf(time * 1000));
+  gsap.ticker.lagSmoothing(0);
+}
+
+/* =================== Time =================== */
+function updateTime() {
+  const n = new Date();
+  const d = ['SUN','MON','TUE','WED','THU','FRI','SAT'][n.getDay()];
+  const h = n.getHours(), m = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('nav-time');
+  if (el) el.textContent = `${d} ${h%12||12}:${m} ${h>=12?'PM':'AM'}`;
+}
+updateTime(); setInterval(updateTime, 1000);
+
+/* =================== Navbar =================== */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 80);
+});
+
+/* =================== Mobile Menu =================== */
+const mobileBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+mobileBtn.addEventListener('click', () => {
+  mobileBtn.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+function closeMobileMenu(){
+  mobileBtn.classList.remove('active');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* =================== Smooth Anchor Scroll =================== */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+/* =================== Three.js Background =================== */
+function initThreeJS() {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setSize(window.innerWidth, Math.max(window.innerHeight * 0.6, 500));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  const geo = new THREE.BufferGeometry();
+  const count = 650;
+  const pos = new Float32Array(count * 3);
+  for (let i = 0; i < count * 3; i++) pos[i] = (Math.random() - 0.5) * 12;
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+
+  const mat = new THREE.PointsMaterial({ size: 0.02, color: 0x00C2D4, transparent: true, opacity: 0.55 });
+  const particles = new THREE.Points(geo, mat);
+  scene.add(particles);
+
+  const ring = new THREE.Mesh(
+    new THREE.TorusGeometry(2.6, 0.012, 16, 120),
+    new THREE.MeshBasicMaterial({ color: 0x00C2D4, transparent: true, opacity: 0.22 })
+  );
+  ring.rotation.x = Math.PI / 2;
+  scene.add(ring);
+
+  camera.position.z = 5;
+
+  let mx = 0, my = 0;
+  document.addEventListener('mousemove', e => {
+    mx = (e.clientX / window.innerWidth) * 2 - 1;
+    my = -(e.clientY / window.innerHeight) * 2 + 1;
+  });
+
+  function animate() {
+    requestAnimationFrame(animate);
+    particles.rotation.y += 0.00045;
+    ring.rotation.z += 0.0022;
+    camera.position.x += (mx * 0.25 - camera.position.x) * 0.02;
+    camera.position.y += (my * 0.18 - camera.position.y) * 0.02;
+    camera.lookAt(scene.position);
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, Math.max(window.innerHeight * 0.6, 500));
+  });
+}
+
+/* =================== GSAP =================== */
+function initAnimations(){
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.fromTo('.hero-badge', {opacity:0, y:18}, {opacity:1, y:0, duration:.7, ease:'power3.out'});
+  gsap.fromTo('.page-title', {opacity:0, y:24}, {opacity:1, y:0, duration:.9, delay:.1, ease:'power3.out'});
+  gsap.fromTo('.page-subtitle', {opacity:0, y:22}, {opacity:1, y:0, duration:.8, delay:.25, ease:'power3.out'});
+  gsap.fromTo('.meta-row', {opacity:0, y:18}, {opacity:1, y:0, duration:.8, delay:.35, ease:'power3.out'});
+
+  gsap.utils.toArray('.legal-card, .toc').forEach((el) => {
+    gsap.fromTo(el, {opacity:0, y:30}, {
+      opacity:1, y:0, duration:.8, ease:'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 85%' }
+    });
+  });
+}
+
+initLenis();
+initThreeJS();
+initAnimations();
+</script>
+
+</body>
+</html>
