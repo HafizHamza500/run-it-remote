@@ -94,6 +94,15 @@ nav.scrolled {
 .nav-links a:hover { color: var(--cyan); }
 .nav-links a:hover::after { width:100%; }
 
+@media (min-width: 1024px) {
+  .nav-links a {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--white);
+  }
+}
+
 .nav-cta { display:flex; align-items:center; gap: 1rem; }
 .nav-time { font-size: 0.65rem; color: var(--gray); text-align: right; line-height: 1.3; }
 .nav-time span { display:block; color: var(--cyan); font-weight: 600; }
@@ -510,7 +519,17 @@ footer {
 <div class="mobile-menu" id="mobile-menu">
   <a href="about.html" onclick="closeMobileMenu()">About</a>
   <a href="industry.html" onclick="closeMobileMenu()">Industries</a>
-  <a href="index.html#process" onclick="closeMobileMenu()">Process</a>
+  <details class="mobile-submenu">
+    <summary>Services</summary>
+    <div class="mobile-submenu-links">
+      <a href="industry.html#industries-served" onclick="closeMobileMenu()">Real Estate Outreach</a>
+      <a href="industry.html#industries-served" onclick="closeMobileMenu()">Home Services Leads</a>
+      <a href="industry.html#industries-served" onclick="closeMobileMenu()">Solar & Energy Growth</a>
+      <a href="contact.html" onclick="closeMobileMenu()">Cold Calling Campaigns</a>
+      <a href="contact.html" onclick="closeMobileMenu()">Qualified Appointments</a>
+      <a href="contact.html" onclick="closeMobileMenu()">Lead Nurturing</a>
+    </div>
+  </details>
   <a href="contact.html" onclick="closeMobileMenu()">Contacts</a>
   <a href="#cta" class="btn-primary" onclick="closeMobileMenu()" style="margin-top: 1rem;">Get Started</a>
 </div>
@@ -532,11 +551,11 @@ footer {
   </ul>
 
   <div class="nav-cta">
-    <div class="nav-time">
+    <!-- <div class="nav-time">
       <span>LOCAL TIME</span>
       <span id="nav-time">SUN 10:00 PM</span>
-    </div>
-    <!-- <a href="./index.html#cta" class="btn-primary">Get Started</a> -->
+    </div> -->
+    <a href="./index.html#cta" class="btn-primary">Get Started</a>
   </div>
 
   <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">

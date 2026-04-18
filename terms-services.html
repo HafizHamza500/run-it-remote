@@ -94,6 +94,15 @@ nav.scrolled {
 .nav-links a:hover { color: var(--cyan); }
 .nav-links a:hover::after { width:100%; }
 
+@media (min-width: 1024px) {
+  .nav-links a {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--white);
+  }
+}
+
 .nav-cta { display:flex; align-items:center; gap: 1rem; }
 .nav-time { font-size: 0.65rem; color: var(--gray); text-align: right; line-height: 1.3; }
 .nav-time span { display:block; color: var(--cyan); font-weight: 600; }
@@ -505,11 +514,11 @@ footer {
   </ul>
 
   <div class="nav-cta">
-    <div class="nav-time">
+    <!-- <div class="nav-time">
       <span>LOCAL TIME</span>
       <span id="nav-time">SUN 10:00 PM</span>
-    </div>
-    <!-- <a href="./index.html#cta" class="btn-primary">Get Started</a> -->
+    </div> -->
+    <a href="./index.html#cta" class="btn-primary">Get Started</a>
   </div>
 
   <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">

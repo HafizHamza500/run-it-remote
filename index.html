@@ -208,6 +208,8 @@ nav.scrolled {
   display: flex;
   gap: 2rem;
   list-style: none;
+  flex: 1;
+  justify-content: center;
 }
 
 .nav-links a {
@@ -233,6 +235,173 @@ nav.scrolled {
 
 .nav-links a:hover { color: var(--cyan); }
 .nav-links a:hover::after { width: 100%; }
+
+@media (min-width: 1024px) {
+  .nav-links a {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--white);
+  }
+}
+
+.nav-links li.dropdown {
+  position: relative;
+}
+
+.nav-links .dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.nav-links .dropdown-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.nav-links li.dropdown:hover .dropdown-arrow,
+.nav-links li.dropdown:focus-within .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  width: min(820px, calc(100vw - 3rem));
+  padding: 1.75rem;
+  background: rgba(10, 10, 10, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  z-index: 1000;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.dropdown-panel::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 16px;
+  height: 16px;
+  background: rgba(10, 10, 10, 0.98);
+  border-left: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.nav-links li.dropdown:hover .dropdown-panel,
+.nav-links li.dropdown:focus-within .dropdown-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+.dropdown-column {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.dropdown-column h4 {
+  margin: 0 0 0.8rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.dropdown-column a {
+  color: var(--gray-light);
+  text-decoration: none;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  transition: color 0.2s;
+}
+
+.dropdown-column a:hover {
+  color: var(--white);
+}
+
+@media (max-width: 1024px) {
+  .dropdown-panel {
+    display: none;
+  }
+}
+
+.mobile-submenu {
+  width: 100%;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 18px;
+  background: transparent;
+  overflow: hidden;
+}
+
+.mobile-submenu summary {
+  list-style: none;
+  padding: 0;
+  color: var(--white);
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border: none;
+  background: transparent;
+  font-size: 1.25rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.mobile-submenu summary::-webkit-details-marker {
+  display: none;
+}
+
+.mobile-submenu summary::after {
+  content: '+';
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.mobile-submenu[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.mobile-submenu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.75rem 0 1rem;
+  align-items: center;
+}
+
+.mobile-submenu-links a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.95rem;
+  outline: none;
+  background: transparent !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-submenu-links a:focus,
+.mobile-submenu-links a:active {
+  outline: none;
+  background: transparent !important;
+  color: var(--white);
+}
 
 .nav-cta {
   display: flex;
@@ -1647,12 +1816,12 @@ nav.scrolled {
 .testimonials-wrapper {
   position: relative;
   overflow: hidden;
-  padding: 1rem 0;
+  padding: 0;
 }
 
 .testimonials-track {
   display: flex;
-  gap: 1.5rem;
+  gap: 0.75rem;
   animation: testimonialSlide 40s linear infinite;
 }
 
@@ -1666,18 +1835,94 @@ nav.scrolled {
 }
 
 .testimonial-card {
-  flex: 0 0 380px;
+  flex: 0 0 420px;
   background: var(--black-lighter);
   border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 20px;
-  padding: 2rem;
+  border-radius: 22px;
+  padding: 0;
+  overflow: hidden;
   transition: all 0.4s;
 }
 
 .testimonial-card:hover {
   border-color: rgba(0, 194, 212, 0.3);
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 194, 212, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 194, 212, 0.12);
+}
+
+.testimonial-video-card {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 420px;
+  max-width: 420px;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.testimonial-video-preview {
+  position: relative;
+  min-height: 180px;
+  border-radius: 18px;
+  background-image: url('https://img.youtube.com/vi/5-pNv-g0wyo/hqdefault.jpg');
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.testimonial-video-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  width: 92%;
+  padding: 0.9rem 1rem;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.65);
+  color: var(--white);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.testimonial-video-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0, 194, 212, 0.18);
+}
+
+.testimonial-video-link small {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.8rem;
+}
+
+.testimonial-video-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.35);
+}
+
+.testimonial-video-iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  border: none;
+  border-radius: 0;
+  display: block;
+}
+
+.testimonial-video-card.video-open .testimonial-video-preview {
+  display: none;
+}
+
+.testimonial-video-card.video-open .testimonial-video-iframe {
+  display: block;
 }
 
 .testimonial-stars {
@@ -2342,6 +2587,127 @@ footer {
     height: 6px;
   }
 }
+
+.video-box {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  border-radius: 26px;
+  overflow: hidden;
+  background: #050505;
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.45);
+}
+
+/* thumbnail */
+.video-thumb {
+  position: relative;
+  cursor: pointer;
+  display: block;
+  min-height: 380px;
+  background: linear-gradient(135deg, rgba(0,194,212,0.15), rgba(10,10,10,0.96));
+  border: 1px solid rgba(0,194,212,0.18);
+}
+
+.video-thumb::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(0,194,212,0.2), transparent 24%), radial-gradient(circle at bottom right, rgba(255,255,255,0.08), transparent 20%);
+  pointer-events: none;
+}
+
+.video-thumb-inner {
+  position: absolute;
+  bottom: 28px;
+  left: 28px;
+  z-index: 1;
+  color: var(--white);
+}
+
+.video-thumb-inner .video-label {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.35rem;
+}
+
+.video-thumb-inner .video-status {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.75);
+}
+
+/* play button center */
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 194, 212, 0.95);
+  color: #050505;
+  font-size: 34px;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 18px 34px rgba(0, 194, 212, 0.25);
+  animation: videoPulse 2.2s ease-in-out infinite;
+}
+
+.video-thumb::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140px;
+  height: 140px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(0,194,212,0.28);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+@keyframes videoPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.05); }
+}
+
+/* iframe hidden initially */
+#youtubeVideo {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: none;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    grid-template-columns: 1fr;
+  }
+  .video-box {
+    max-width: 100%;
+    border-radius: 20px;
+  }
+  .video-thumb {
+    min-height: 320px;
+  }
+  .video-thumb-inner {
+    bottom: 22px;
+    left: 22px;
+  }
+  .video-thumb-inner .video-label {
+    font-size: 1rem;
+  }
+  .play-btn {
+    width: 64px;
+    height: 64px;
+    font-size: 28px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2373,7 +2739,17 @@ footer {
 <div class="mobile-menu" id="mobile-menu">
   <a href="about.html" onclick="closeMobileMenu()">About</a>
   <a href="industry.html" onclick="closeMobileMenu()">Industries</a>
-  <a href="#process" onclick="closeMobileMenu()">Process</a>
+  <details class="mobile-submenu" open>
+    <summary>Services</summary>
+    <div class="mobile-submenu-links">
+      <a href="industry.html#industries-served" onclick="closeMobileMenu()">Real Estate Outreach</a>
+      <a href="industry.html#industries-served" onclick="closeMobileMenu()">Home Services Leads</a>
+      <a href="industry.html#industries-served" onclick="closeMobileMenu()">Solar & Energy Growth</a>
+      <a href="contact.html" onclick="closeMobileMenu()">Cold Calling Campaigns</a>
+      <a href="contact.html" onclick="closeMobileMenu()">Qualified Appointments</a>
+      <a href="contact.html" onclick="closeMobileMenu()">Lead Nurturing</a>
+    </div>
+  </details>
   <a href="contact.html" onclick="closeMobileMenu()">Contacts</a>
   <a href="#cta" class="btn-primary" onclick="closeMobileMenu()" style="margin-top: 1rem;">Get Started</a>
 </div>
@@ -2388,7 +2764,33 @@ footer {
      <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="industry.html">Industries</a></li>
-    <li><a href="#process">Process</a></li>
+    <li class="dropdown">
+      <a href="index.html#process" class="dropdown-toggle">Services <span class="dropdown-arrow">▾</span></a>
+      <div class="dropdown-panel">
+        <div class="dropdown-column">
+          <a href="industry.html#industries-served">Home Services</a>
+          <a href="industry.html#industries-served">Quality Validation</a>
+          <a href="industry.html#industries-served">AI Automation</a>
+          <a href="industry.html#industries-served">CRM Developmenet</a>
+             <a href="contact.html">Internet & Telecom</a>
+        </div>
+        <div class="dropdown-column">
+          <a href="industry.html#industries-served">Customer Support</a>
+          <a href="contact.html">Virtual Assistant</a>
+          <a href="contact.html">Website Development</a>
+          <a href="contact.html">Solar Energy</a>
+          <a href="contact.html">Data Mining</a>
+
+        </div>
+        <div class="dropdown-column">
+          <a href="industry.html#industries-served">Business Finance</a>
+          <a href="contact.html">Flooring</a>
+           <a href="contact.html">Life Insurance</a>
+          <a href="contact.html">Merchant Sales</a>
+
+        </div>
+      </div>
+    </li>
     <li><a href="contact.html">Contacts</a></li>
   </ul>
   
@@ -2472,9 +2874,9 @@ footer {
             <span style="font-size: 7px; color: var(--cyan); border: 1px solid rgba(0, 194, 212, 0.3); padding: 0 4px;">EN</span>
           </div>
           <div style="font-size: 9px; color: var(--white);">
-            <p>Remote Cold Calling</p>
-            <p>+ Lead Generation</p>
-            <p style="color: var(--cyan);">= Business Growth</p>
+            <p>Your Business</p>
+            <p>+ RIR</p>
+            <p style="color: var(--cyan);">= Success Funnel</p>
           </div>
         </div>
       </div>
@@ -2516,8 +2918,8 @@ footer {
     <div class="float-card-icon">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
     </div>
-    <div class="float-card-value">24/7</div>
-    <div class="float-card-label">Support</div>
+    <div class="float-card-value">99.8%</div>
+    <div class="float-card-label">Client Satisfaction</div>
   </div>
   
   <div class="hero-content">
@@ -2553,8 +2955,8 @@ footer {
         <div class="hero-stat-label">Industries</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-value">24/7</div>
-        <div class="hero-stat-label">Support</div>
+        <div class="hero-stat-value">100%</div>
+        <div class="hero-stat-label">Client Satisfaction</div>
       </div>
     </div>
   </div>
@@ -2625,7 +3027,7 @@ footer {
       </div>
     </div>
     
-    <div class="about-visual">
+    <!-- <div class="about-visual">
       <div class="about-float about-float-1">
         <div style="display: flex; align-items: center; gap: 0.4rem;">
           <div style="width: 6px; height: 6px; background: #22c55e; border-radius: 50%;"></div>
@@ -2672,7 +3074,25 @@ footer {
         
         <div class="dash-chart" id="about-chart"></div>
       </div>
+    </div> -->
+  <div class="video-box" id="videoBox">
+    <div class="video-thumb" id="videoThumb">
+      <div class="video-thumb-inner">
+        <div class="video-label">Run It Remote</div>
+        <div class="video-status">See How It Works</div>
+      </div>
+      <div class="play-btn">▶</div>
     </div>
+
+    <!-- YouTube iframe (hidden initially) -->
+    <iframe
+      id="youtubeVideo"
+      src=""
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+    ></iframe>
+  </div>
   </div>
 </section>
 
@@ -3011,8 +3431,8 @@ footer {
         <div class="why-card-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         </div>
-        <h4>AI-Powered Dialing</h4>
-        <p>Smart algorithms maximize contact rates and minimize downtime.</p>
+        <h4>Scalable Growth Solutions</h4>
+        <p>Our systems are built to grow with your business and maximize long-term success.</p>
       </div>
       
       <div class="why-card">
@@ -3021,7 +3441,7 @@ footer {
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
         <h4>Quality Guarantee</h4>
-        <p>94% lead quality score or we rework at no extra cost.</p>
+        <p>99.9% lead quality score or we rework at no extra cost.</p>
       </div>
       
       <div class="why-card">
@@ -3045,20 +3465,20 @@ footer {
     
     <div class="counter-section">
       <div class="counter-item">
-        <div class="counter-value counter" data-target="50000">0</div>
+        <div class="counter-value counter">1M+</div>
         <div class="counter-label">Leads Generated</div>
       </div>
       <div class="counter-item">
-        <div class="counter-value counter" data-target="340">0</div>
+        <div class="counter-value counter">3x</div>
         <div class="counter-label">% Avg ROI</div>
       </div>
       <div class="counter-item">
-        <div class="counter-value counter" data-target="98">0</div>
-        <div class="counter-label">% Retention</div>
+        <div class="counter-value counter">99.9</div>
+        <div class="counter-label">% Lead Quality</div>
       </div>
       <div class="counter-item">
-        <div class="counter-value">24/7</div>
-        <div class="counter-label">Support</div>
+        <div class="counter-value">99.8%</div>
+        <div class="counter-label">Client Satisfaction</div>
       </div>
     </div>
   </div>
@@ -3160,21 +3580,21 @@ footer {
     <div class="result-card">
       <div class="result-ring">
         <svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="45"/><circle class="progress" cx="50" cy="50" r="45" data-percent="94"/></svg>
-        <div class="value">94%</div>
+        <div class="value">99.8%</div>
       </div>
       <h4>Lead Quality</h4>
     </div>
     <div class="result-card">
       <div class="result-ring">
         <svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="45"/><circle class="progress" cx="50" cy="50" r="45" data-percent="98"/></svg>
-        <div class="value">98%</div>
+        <div class="value">82%</div>
       </div>
-      <h4>Retention</h4>
+      <h4>Performance Score</h4>
     </div>
     <div class="result-card">
       <div class="result-ring">
         <svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="45"/><circle class="progress" cx="50" cy="50" r="45" data-percent="85"/></svg>
-        <div class="value">340%</div>
+        <div class="value">3x%</div>
       </div>
       <h4>Avg ROI</h4>
     </div>
@@ -3190,61 +3610,20 @@ footer {
   
   <div class="testimonials-wrapper">
     <div class="testimonials-track">
-      <div class="testimonial-card">
-        <div class="testimonial-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <div class="testimonial-quote">"</div>
-        <p class="testimonial-text">Run It Remote transformed our pipeline. We went from 5 leads a week to over 40. Incredible results!</p>
-        <div class="testimonial-author"><div class="testimonial-avatar">MK</div><div class="testimonial-info"><h5>Michael K.</h5><p>Atlanta Realty Group</p></div></div>
+      <div class="testimonial-card testimonial-video-card">
+        <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/5-pNv-g0wyo?rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
-      
-      <div class="testimonial-card">
-        <div class="testimonial-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <div class="testimonial-quote">"</div>
-        <p class="testimonial-text">Solar is tough to sell. These guys educated prospects first. Our close rate jumped 40% in 60 days.</p>
-        <div class="testimonial-author"><div class="testimonial-avatar">SR</div><div class="testimonial-info"><h5>Sarah R.</h5><p>SunPower Local</p></div></div>
+      <div class="testimonial-card testimonial-video-card">
+        <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/RN14zUD0dgo?si=y2uDbwGcYL2NaXJB" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
-      
-      <div class="testimonial-card">
-        <div class="testimonial-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <div class="testimonial-quote">"</div>
-        <p class="testimonial-text">For HVAC we needed 24/7 response. They captured $200K in revenue we would have lost. Worth every penny.</p>
-        <div class="testimonial-author"><div class="testimonial-avatar">JT</div><div class="testimonial-info"><h5>James T.</h5><p>CoolAir Systems</p></div></div>
+      <div class="testimonial-card testimonial-video-card">
+        <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/22Aon2UVfcY?si=E86RwQo3VJGW1iUZ" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
-      
-      <div class="testimonial-card">
-        <div class="testimonial-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <div class="testimonial-quote">"</div>
-        <p class="testimonial-text">Best decision we made. Professional team, quality leads, amazing support. Highly recommend!</p>
-        <div class="testimonial-author"><div class="testimonial-avatar">LP</div><div class="testimonial-info"><h5>Lisa P.</h5><p>Premier Roofing</p></div></div>
+      <div class="testimonial-card testimonial-video-card">
+        <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/FRYYITsJSCM?si=1hva6eDHhRe2K7ez" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
-      
-      <!-- Duplicates for infinite loop -->
-      <div class="testimonial-card">
-        <div class="testimonial-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <div class="testimonial-quote">"</div>
-        <p class="testimonial-text">Run It Remote transformed our pipeline. We went from 5 leads a week to over 40. Incredible results!</p>
-        <div class="testimonial-author"><div class="testimonial-avatar">MK</div><div class="testimonial-info"><h5>Michael K.</h5><p>Atlanta Realty Group</p></div></div>
-      </div>
-      
-      <div class="testimonial-card">
-        <div class="testimonial-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <div class="testimonial-quote">"</div>
-        <p class="testimonial-text">Solar is tough to sell. These guys educated prospects first. Our close rate jumped 40% in 60 days.</p>
-        <div class="testimonial-author"><div class="testimonial-avatar">SR</div><div class="testimonial-info"><h5>Sarah R.</h5><p>SunPower Local</p></div></div>
-      </div>
-      
-      <div class="testimonial-card">
-        <div class="testimonial-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <div class="testimonial-quote">"</div>
-        <p class="testimonial-text">For HVAC we needed 24/7 response. They captured $200K in revenue we would have lost. Worth every penny.</p>
-        <div class="testimonial-author"><div class="testimonial-avatar">JT</div><div class="testimonial-info"><h5>James T.</h5><p>CoolAir Systems</p></div></div>
-      </div>
-      
-      <div class="testimonial-card">
-        <div class="testimonial-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <div class="testimonial-quote">"</div>
-        <p class="testimonial-text">Best decision we made. Professional team, quality leads, amazing support. Highly recommend!</p>
-        <div class="testimonial-author"><div class="testimonial-avatar">LP</div><div class="testimonial-info"><h5>Lisa P.</h5><p>Premier Roofing</p></div></div>
+      <div class="testimonial-card testimonial-video-card">
+        <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/EqNaHbeAY6o?si=8znm-WVWsj0mfxJ3" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
     </div>
   </div>
@@ -3292,9 +3671,20 @@ footer {
         <div class="form-group">
           <select class="form-input" required>
             <option value="">Select Industry</option>
-            <option style="color: black;">Real Estate</option>
             <option style="color: black;">Home Services</option>
-            <option style="color: black;">Solar / Energy</option>
+                <option style="color: black;">Quality Validation</option>
+            <option style="color: black;">AI Automation</option>
+            <option style="color: black;">CRM Development</option>
+            <option style="color: black;">Customer Support</option>
+                <option style="color: black;">Website Development</option>
+            <option style="color: black;">Virtual Assistance</option>
+            <option style="color: black;">Solar Energy</option>
+                <option style="color: black;">Business Finance</option>
+            <option style="color: black;">Flooring</option>
+            <option style="color: black;">Data Mining</option>
+                <option style="color: black;">Merchant Sales</option>
+            <option style="color: black;">Internet & Telecom</option>
+            <option style="color: black;">Life Insurance</option>
             <option style="color: black;">Other</option>
           </select>
         </div>
@@ -3393,7 +3783,7 @@ const loadInterval = setInterval(() => {
           initAnimations();
         }
       });
-    }, 300);
+    }, 200);
   }
   document.getElementById('loader-bar').style.width = progress + '%';
   document.getElementById('loader-percent').textContent = Math.round(progress) + '%';
@@ -3425,10 +3815,12 @@ if (cursor) {
 
 // Time
 function updateTime() {
+  const el = document.getElementById('nav-time');
+  if (!el) return;
   const n = new Date();
   const d = ['SUN','MON','TUE','WED','THU','FRI','SAT'][n.getDay()];
   const h = n.getHours(), m = String(n.getMinutes()).padStart(2,'0');
-  document.getElementById('nav-time').textContent = `${d} ${h%12||12}:${m} ${h>=12?'PM':'AM'}`;
+  el.textContent = `${d} ${h%12||12}:${m} ${h>=12?'PM':'AM'}`;
 }
 updateTime(); setInterval(updateTime, 1000);
 
@@ -3794,6 +4186,34 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+
+const videoThumb = document.getElementById("videoThumb");
+const youtubeVideo = document.getElementById("youtubeVideo");
+
+if (videoThumb && youtubeVideo) {
+  videoThumb.addEventListener("click", function () {
+    youtubeVideo.src = "https://www.youtube.com/embed/5-pNv-g0wyo?autoplay=1&rel=0&showinfo=0&modestbranding=1";
+    youtubeVideo.style.display = "block";
+    videoThumb.style.display = "none";
+  });
+}
+
+document.querySelectorAll('.testimonial-video-play').forEach(button => {
+  button.addEventListener('click', function () {
+    const card = this.closest('.testimonial-video-card');
+    if (!card) return;
+    const iframe = card.querySelector('.testimonial-video-iframe');
+    const preview = card.querySelector('.testimonial-video-preview');
+    const url = this.dataset.video;
+    if (!iframe || !url) return;
+    iframe.src = url;
+    preview.style.display = 'none';
+    iframe.style.display = 'block';
+    card.classList.add('video-open');
+  });
+});
+
 </script>
 
 </body>
