@@ -232,7 +232,7 @@ nav.scrolled {
   top: calc(100% + 10px);
   left: 50%;
   transform: translateX(-50%) translateY(10px);
-  width: min(820px, calc(100vw - 3rem));
+  width: min(600px, calc(100vw - 3rem));
   padding: 1.75rem;
   background: rgba(10, 10, 10, 0.98);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -244,8 +244,8 @@ nav.scrolled {
   transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
   z-index: 1000;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
   align-items: start;
 }
 
@@ -3721,29 +3721,6 @@ footer {
 </div>
 
 <script>
-// Loader
-let progress = 0;
-const loadInterval = setInterval(() => {
-  progress += Math.random() * 25;
-  if (progress >= 100) {
-    progress = 100;
-    clearInterval(loadInterval);
-    setTimeout(() => {
-      gsap.to('#loader', {
-        opacity: 0,
-        duration: 0.5,
-        onComplete: () => {
-          document.getElementById('loader').style.display = 'none';
-          initLenis();
-          initAnimations();
-        }
-      });
-    }, 200);
-  }
-  document.getElementById('loader-bar').style.width = progress + '%';
-  document.getElementById('loader-percent').textContent = Math.round(progress) + '%';
-}, 80);
-
 // Lenis
 function initLenis() {
   const lenis = new Lenis({ duration: 1.2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smooth: true, smoothTouch: false });
