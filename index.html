@@ -8,6 +8,8 @@
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<!-- <link rel="icon" href="" type="image/png"> -->
+ <link rel="icon" href="https://runitremote.com/wp-content/uploads/2024/08/cropped-runit-favicon-32x32.png" sizes="32x32">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -54,47 +56,7 @@ body {
 ::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 3px; }
 ::selection { background: var(--cyan); color: var(--black); }
 
-/* =================== LOADER =================== */
-#loader {
-  position: fixed;
-  inset: 0;
-  background: var(--black);
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 1.5rem;
-}
 
-.loader-logo {
-  font-size: clamp(1.2rem, 3vw, 2rem);
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  color: var(--white);
-}
-
-.loader-logo span { color: var(--cyan); }
-
-.loader-bar-container {
-  width: min(180px, 50vw);
-  height: 2px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.loader-bar {
-  width: 0%;
-  height: 100%;
-  background: linear-gradient(90deg, var(--cyan), var(--cyan-light));
-}
-
-.loader-percent {
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  color: var(--gray);
-}
 
 /* =================== CURSOR =================== */
 /* .cursor, .cursor-dot {
@@ -955,7 +917,7 @@ nav.scrolled {
 
 .marquee-track {
   display: flex;
-  animation: marquee 30s linear infinite;
+  animation: marquee 60s linear infinite;
 }
 
 @keyframes marquee {
@@ -2712,14 +2674,6 @@ footer {
 </head>
 <body>
 
-<!-- Loader -->
-<div id="loader">
-  <div class="loader-logo">RUN IT <span>REMOTE</span></div>
-  <div class="loader-bar-container">
-    <div class="loader-bar" id="loader-bar"></div>
-  </div>
-  <div class="loader-percent" id="loader-percent">0%</div>
-</div>
 
 <!-- Cursor -->
 <!-- <div class="cursor"></div>
