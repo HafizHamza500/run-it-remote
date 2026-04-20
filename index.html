@@ -585,6 +585,35 @@ nav.scrolled {
 }
 
 .hero-title-left {
+  font-size: clamp(3rem, 4vw, 4.2rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  margin: 0;
+  position: relative;
+  right: 60px;
+}
+
+.hero-title-left .gradient-text {
+  background: linear-gradient(135deg, var(--cyan) 0%, var(--cyan-light) 50%, var(--white) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 80px;
+}
+
+.hero-text-right {
+  text-align: right;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding-right: 6rem;
+}
+
+.hero-title-right {
   font-size: clamp(2rem, 4.4vw, 4.2rem);
   font-weight: 900;
   line-height: 1.1;
@@ -593,7 +622,7 @@ nav.scrolled {
   margin: 0;
 }
 
-.hero-title-left .gradient-text {
+.hero-title-right .gradient-text {
   background: linear-gradient(135deg, var(--cyan) 0%, var(--cyan-light) 50%, var(--white) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -834,6 +863,7 @@ nav.scrolled {
     padding-left: 0;
     align-items: flex-start;
   }
+  .hero-text-right { display: none; }
   .hero-title-left { font-size: clamp(2.2rem, 4vw, 3.5rem); }
   .hero-phone-wrapper { width: 260px; height: 260px; }
   .hero-phone-center { width: 160px; height: 160px; }
@@ -866,6 +896,8 @@ nav.scrolled {
     padding-left: 0;
     width: 100%;
   }
+
+  .hero-text-right { display: none; }
 
   .hero-title-left {
     font-size: clamp(2.8rem, 10vw, 3.5rem);
@@ -2788,7 +2820,7 @@ footer {
   <div class="hero-scanline hero-scanline-1"></div>
   <div class="hero-scanline hero-scanline-2"></div>
   
-  <!-- Split Layout: Text on left, Phone centered -->
+  <!-- Split Layout: Text on left, Phone centered, Text on right -->
   <div class="hero-split-layout">
     <div class="hero-text-left">
       <h1 class="hero-title-left">
@@ -2819,6 +2851,12 @@ footer {
      
         </div>
       </div>
+    </div>
+    <div class="hero-text-right">
+      <h1 class="hero-title-right">
+        <div>Tuned</div>
+        <div class="gradient-text">for Success</div>
+      </h1>
     </div>
   </div>
   
