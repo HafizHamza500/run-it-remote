@@ -397,7 +397,7 @@ nav.scrolled {
   top: calc(100% + 10px);
   left: 50%;
   transform: translateX(-50%) translateY(10px);
-  width: min(900px, calc(100vw - 3rem));
+  width: min(550px, calc(100vw - 3rem));
   padding: 1.75rem;
   background: rgba(10, 10, 10, 0.98);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -427,7 +427,7 @@ nav.scrolled {
 }
 
 .dropdown-panel.industries-panel {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .dropdown-panel.services-panel {
