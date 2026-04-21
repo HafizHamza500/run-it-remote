@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our Services — RUN IT REMOTE | Cold Calling & Lead Generation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="icon" href="https://runitremote.com/wp-content/uploads/2024/08/cropped-runit-favicon-32x32.png" sizes="32x32">
+ <link rel="icon" href="assets/favicon-runitremote.png" sizes="16x16">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -324,7 +324,7 @@ nav.scrolled {
 .service-content { padding: 1rem 0; }
 
 .service-num {
-  font-size: 5rem; font-weight: 900; color: rgba(0,194,212,0.06);
+  font-size: 5rem; font-weight: 900; color: rgba(0,194,212,0.12);
   line-height: 1; margin-bottom: -2.5rem; position: relative; z-index: 0;
 }
 .service-content h2 {
@@ -512,6 +512,7 @@ footer {
   nav { padding: 0.5rem 1.25rem; height: 52px; }
   nav.scrolled { height: 48px; }
   .service-features-grid { grid-template-columns: 1fr; }
+  .services-hero-right{display: none;}
 }
 @media (max-width: 768px) {
   nav { padding: 0.5rem 1rem; height: 50px; }
@@ -547,6 +548,15 @@ footer {
   .section-title { font-size: 1.6rem; }
   .overview-grid { grid-template-columns: 1fr; }
 }
+
+@media (width:768px) {
+  .myBtn{
+    display: none;
+  }
+  .nav-logo img{
+    width: 230px;
+  }
+}
 </style>
 </head>
 <body>
@@ -563,7 +573,7 @@ footer {
 <!-- Navbar -->
 <nav id="navbar">
   <a href="index.html" class="nav-logo">
-    <span class="nav-logo-text"><img src="./remote-logo-.png" width="150" alt="Run It Remote"></span>
+    <span class="nav-logo-text"><img src="./remote-logo-.png" width="230" alt="Run It Remote"></span>
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
@@ -615,7 +625,7 @@ footer {
     </li>
     <li><a href="contact.html">Contacts</a></li>
   </ul>
-  <a href="#services-cta" class="btn-primary nav-cta-btn">Get Started</a>
+  <a href="#services-cta" class="btn-primary nav-cta-btn myBtn">Get Started</a>
   
   <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -680,7 +690,7 @@ footer {
   <div class="overview-inner">
     <div class="overview-header">
       <div class="section-label" style="justify-content:center">Complete Solutions</div>
-      <h2 class="section-title">Full Service <span class="highlight">Lineup.</span></h2>
+      <h2 class="section-title">Service <span class="highlight">Lineup.</span></h2>
       <p>Everything you need to scale your business — under one roof, powered by remote experts.</p>
     </div>
     <div class="overview-grid">
@@ -745,11 +755,7 @@ footer {
   <div class="service-inner">
     <div class="service-img-box">
       <img src="https://i.pinimg.com/1200x/5f/70/49/5f70491125d978eaf2e33f16d5cdd320.jpg" alt="Virtual Assistant" loading="lazy">
-      <div class="service-img-overlay">
-        <div class="sio-stat"><div class="sio-val">500+</div><div class="sio-lbl">VAs Placed</div></div>
-        <div class="sio-stat"><div class="sio-val">98%</div><div class="sio-lbl">Satisfaction</div></div>
-        <div class="sio-stat"><div class="sio-val">40%</div><div class="sio-lbl">Cost Saved</div></div>
-      </div>
+    
     </div>
     <div class="service-content">
       <div class="service-num">01</div>
@@ -772,11 +778,7 @@ footer {
   <div class="service-inner reverse">
     <div class="service-img-box">
       <img src="https://images.unsplash.com/photo-1553775282-20af80779df7?w=800&q=80" alt="Customer Support" loading="lazy">
-      <div class="service-img-overlay">
-        <div class="sio-stat"><div class="sio-val">24/7</div><div class="sio-lbl">Coverage</div></div>
-        <div class="sio-stat"><div class="sio-val">92%</div><div class="sio-lbl">CSAT Score</div></div>
-        <div class="sio-stat"><div class="sio-val">&lt;2m</div><div class="sio-lbl">Avg Response</div></div>
-      </div>
+  
     </div>
     <div class="service-content">
       <div class="service-num">02</div>
@@ -799,11 +801,7 @@ footer {
   <div class="service-inner">
     <div class="service-img-box">
       <img src="https://i.pinimg.com/1200x/18/30/8d/18308d46ce6699445930cef594ae5845.jpg" alt="Appointment Setting" loading="lazy">
-      <div class="service-img-overlay">
-        <div class="sio-stat"><div class="sio-val">1.2K+</div><div class="sio-lbl">Appts/Month</div></div>
-        <div class="sio-stat"><div class="sio-val">94%</div><div class="sio-lbl">Show Rate</div></div>
-        <div class="sio-stat"><div class="sio-val">48hr</div><div class="sio-lbl">Avg Booking</div></div>
-      </div>
+     
     </div>
     <div class="service-content">
       <div class="service-num">03</div>
@@ -826,11 +824,7 @@ footer {
   <div class="service-inner reverse">
     <div class="service-img-box">
       <img src="https://i.pinimg.com/736x/dc/0e/6d/dc0e6dd3e5f68e58d8f6a87630b36c93.jpg" alt="Quality Validation" loading="lazy">
-      <div class="service-img-overlay">
-        <div class="sio-stat"><div class="sio-val">100%</div><div class="sio-lbl">Lead Verified</div></div>
-        <div class="sio-stat"><div class="sio-val">0</div><div class="sio-lbl">Bad Leads Billed</div></div>
-        <div class="sio-stat"><div class="sio-val">3-Tier</div><div class="sio-lbl">QA Process</div></div>
-      </div>
+   
     </div>
     <div class="service-content">
       <div class="service-num">04</div>
@@ -853,11 +847,7 @@ footer {
   <div class="service-inner">
     <div class="service-img-box">
       <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Data Intelligence" loading="lazy">
-      <div class="service-img-overlay">
-        <div class="sio-stat"><div class="sio-val">10M+</div><div class="sio-lbl">Records/Mo</div></div>
-        <div class="sio-stat"><div class="sio-val">99%</div><div class="sio-lbl">Accuracy</div></div>
-        <div class="sio-stat"><div class="sio-val">48hr</div><div class="sio-lbl">Turnaround</div></div>
-      </div>
+     
     </div>
     <div class="service-content">
       <div class="service-num">05</div>
@@ -880,11 +870,7 @@ footer {
   <div class="service-inner reverse">
     <div class="service-img-box">
       <img src="https://i.pinimg.com/1200x/0a/9e/d7/0a9ed7796b48f63ebb69305ebeaf0d7c.jpg" alt="AI Automation" loading="lazy">
-      <div class="service-img-overlay">
-        <div class="sio-stat"><div class="sio-val">70%</div><div class="sio-lbl">Tasks Automated</div></div>
-        <div class="sio-stat"><div class="sio-val">24/7</div><div class="sio-lbl">Active</div></div>
-        <div class="sio-stat"><div class="sio-val">3×</div><div class="sio-lbl">Productivity</div></div>
-      </div>
+ 
     </div>
     <div class="service-content">
       <div class="service-num">06</div>
@@ -906,12 +892,8 @@ footer {
   <div class="service-section-glow"></div>
   <div class="service-inner">
     <div class="service-img-box">
-      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" alt="IT Tech Outsourcing" loading="lazy">
-      <div class="service-img-overlay">
-        <div class="sio-stat"><div class="sio-val">50+</div><div class="sio-lbl">Tech Experts</div></div>
-        <div class="sio-stat"><div class="sio-val">99.9%</div><div class="sio-lbl">Uptime SLA</div></div>
-        <div class="sio-stat"><div class="sio-val">60%</div><div class="sio-lbl">Cost Reduction</div></div>
-      </div>
+      <img src="https://i.pinimg.com/736x/a2/6c/1f/a26c1f5b46081c2cc9ee79068f1ee205.jpg" alt="IT Tech Outsourcing" loading="lazy">
+  
     </div>
     <div class="service-content">
       <div class="service-num">07</div>
@@ -934,11 +916,7 @@ footer {
   <div class="service-inner reverse">
     <div class="service-img-box">
       <img src="https://i.pinimg.com/736x/53/6e/be/536ebe74080f2877b36610437f769f8c.jpg" alt="HR Solutions" loading="lazy">
-      <div class="service-img-overlay">
-        <div class="sio-stat"><div class="sio-val">200+</div><div class="sio-lbl">Hires/Yr</div></div>
-        <div class="sio-stat"><div class="sio-val">14 Day</div><div class="sio-lbl">Avg Hire Time</div></div>
-        <div class="sio-stat"><div class="sio-val">95%</div><div class="sio-lbl">Retention Rate</div></div>
-      </div>
+    
     </div>
     <div class="service-content">
       <div class="service-num">08</div>
@@ -961,11 +939,7 @@ footer {
   <div class="service-inner">
     <div class="service-img-box">
       <img src="https://i.pinimg.com/736x/6a/7a/15/6a7a150b675aeb0ed2b1995aa74ceb25.jpg" alt="Digital Marketing" loading="lazy">
-      <div class="service-img-overlay">
-        <div class="sio-stat"><div class="sio-val">340%</div><div class="sio-lbl">Avg ROI</div></div>
-        <div class="sio-stat"><div class="sio-val">50K+</div><div class="sio-lbl">Leads/Yr</div></div>
-        <div class="sio-stat"><div class="sio-val">12+</div><div class="sio-lbl">Channels</div></div>
-      </div>
+   
     </div>
     <div class="service-content">
       <div class="service-num">09</div>
@@ -987,12 +961,8 @@ footer {
   <div class="service-section-glow"></div>
   <div class="service-inner reverse">
     <div class="service-img-box">
-      <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80" alt="Finance and Accounting" loading="lazy">
-      <div class="service-img-overlay">
-        <div class="sio-stat"><div class="sio-val">100%</div><div class="sio-lbl">Accuracy</div></div>
-        <div class="sio-stat"><div class="sio-val">50%</div><div class="sio-lbl">Cost Savings</div></div>
-        <div class="sio-stat"><div class="sio-val">CPA</div><div class="sio-lbl">Supervised</div></div>
-      </div>
+      <img src="https://i.pinimg.com/1200x/37/bd/94/37bd94aa89df712e400ce0123b22d9e6.jpg" alt="Finance and Accounting" loading="lazy">
+   
     </div>
     <div class="service-content">
       <div class="service-num">10</div>
@@ -1049,18 +1019,27 @@ footer {
             <option>HR Solutions</option>
             <option>Digital Marketing & Sales</option>
             <option>Finance & Accounting</option>
-            <option>All Services</option>
           </select>
         </div>
         <div class="form-group">
           <select class="form-input" required>
             <option value="">Select Industry</option>
-            <option>Real Estate</option>
-            <option>Home Services</option>
-            <option>Solar & Energy</option>
-            <option>Insurance</option>
-            <option>SAAS</option>
-            <option>Healthcare</option>
+          <option value="real-estate">Real Estate</option>
+            <option value="home-services">Home Services</option>
+            <option value="solar">Solar & Energy</option>
+            <option value="construction">Construction</option>
+            <option value="internet telecom">Internet & Telecom</option>
+              <option value="audit & accounting">Audit & Accounting</option>
+            <option value="insurance">Insurance</option>
+            <option value="solar">Solar & Energy</option>
+            <option value="mortgage">Mortgagae</option>
+               <option value="pest control">Pest Control</option>
+            <option value="merchandising">Merchandising</option>
+               <option value="hvac">HVAC</option>
+            <option value="financing">Financing</option>
+               <option value="saas">SAAS</option>
+            <option value="automobile">Automobile</option>
+                <option value="automobile">Healkthcare</option>
             <option>Other</option>
           </select>
         </div>

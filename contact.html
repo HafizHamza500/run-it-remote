@@ -7,7 +7,7 @@
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="icon" href="https://runitremote.com/wp-content/uploads/2024/08/cropped-runit-favicon-32x32.png" sizes="32x32">
+<link rel="icon" href="assets/favicon-runitremote.png" sizes="16x16">
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -1985,6 +1985,12 @@ footer {
   .section-title { font-size: 1.6rem; }
   .nav-logo-text img { width: 130px; }
 }
+
+@media (width:768px) {
+  .myBtn{
+    display: none;
+  }
+}
 </style>
 </head>
 <body>
@@ -2071,7 +2077,7 @@ footer {
   </ul>
   
   
-  <a href="#cta" class="btn-primary nav-cta-btn">Get Started</a>
+  <a href="#cta" class="btn-primary nav-cta-btn myBtn">Get Started</a>
   
   <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
     <span></span>
@@ -2206,10 +2212,16 @@ footer {
             <label for="service">Service Interested In <span class="required">*</span></label>
             <select id="service" name="service" class="form-input" required>
               <option value="">Select a service</option>
-              <option value="cold-calling">Cold Calling</option>
-              <option value="lead-generation">Lead Generation</option>
-              <option value="appointment-setting">Appointment Setting</option>
-              <option value="all-services">All Services</option>
+              <option>Virtual Assistant</option>
+            <option>Customer Support</option>
+            <option>Appointment Setup</option>
+            <option>Quality Validation</option>
+            <option>Data Intelligence</option>
+            <option>AI Automation</option>
+            <option>IT & Tech Outsourcing</option>
+            <option>HR Solutions</option>
+            <option>Digital Marketing & Sales</option>
+            <option>Finance & Accounting</option>
             </select>
             <div class="form-error" id="service-error">
               <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -2220,9 +2232,22 @@ footer {
             <label for="industry">Your Industry <span class="required">*</span></label>
             <select id="industry" name="industry" class="form-input" required>
               <option value="">Select your industry</option>
-              <option value="real-estate">Real Estate</option>
-              <option value="home-services">Home Services</option>
-              <option value="solar-energy">Solar & Energy</option>
+           <option value="real-estate">Real Estate</option>
+            <option value="home-services">Home Services</option>
+            <option value="solar">Solar & Energy</option>
+            <option value="construction">Construction</option>
+            <option value="internet telecom">Internet & Telecom</option>
+              <option value="audit & accounting">Audit & Accounting</option>
+            <option value="insurance">Insurance</option>
+            <option value="solar">Solar & Energy</option>
+            <option value="mortgage">Mortgagae</option>
+               <option value="pest control">Pest Control</option>
+            <option value="merchandising">Merchandising</option>
+               <option value="hvac">HVAC</option>
+            <option value="financing">Financing</option>
+               <option value="saas">SAAS</option>
+            <option value="automobile">Automobile</option>
+                <option value="automobile">Healkthcare</option>
               <option value="other">Other</option>
             </select>
             <div class="form-error" id="industry-error">
@@ -3257,7 +3282,12 @@ document.querySelectorAll('.phone-action-btn').forEach(btn => {
   });
 });
 
-console.log('🚀 Run It Remote - Contact Page Loaded Successfully');
+
+// =================== INITIALIZE ===================
+document.addEventListener('DOMContentLoaded', () => {
+  initLenis();
+  initAnimations();
+});
 </script>
 
 </body>

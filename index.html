@@ -8,8 +8,7 @@
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<!-- <link rel="icon" href="" type="image/png"> -->
- <link rel="icon" href="https://runitremote.com/wp-content/uploads/2024/08/cropped-runit-favicon-32x32.png" sizes="32x32">
+ <!-- <link rel="icon" href="assets/favicon-runitremote.png" sizes="16x16"> -->
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -602,11 +601,11 @@ nav.scrolled {
 }
 
 .hero-text-right {
-  text-align: right;
+  text-align: left;
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: center;
   padding-right: 6rem;
 }
@@ -801,10 +800,18 @@ nav.scrolled {
   inset: 0; width: 100%; height: 100%;
   background: rgba(10, 10, 10, 0.75);
   border-radius: 50%;
-  border: 2px solid var(--cyan);
+  border: 1px solid rgba(0, 194, 212, 0.4);
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 0 60px rgba(0, 194, 212, 0.35), inset 0 0 30px rgba(0, 194, 212, 0.08);
+  transition: all 0.3s ease;
 }
+
+.hero-phone-center:hover .phone-center {
+  background: rgba(5, 5, 5, 0.9);
+  border-color: rgba(0, 194, 212, 0.8);
+  box-shadow: 0 0 80px rgba(0, 194, 212, 0.6), inset 0 0 50px rgba(0, 194, 212, 0.2);
+}
+
 .phone-center svg { width: 80px; height: 80px; color: var(--cyan); }
 
 /* Scroll Indicator */
@@ -969,7 +976,7 @@ nav.scrolled {
 
 .marquee-track {
   display: flex;
-  animation: marquee 60s linear infinite;
+  animation: marquee 20s linear infinite;
 }
 
 @keyframes marquee {
@@ -1836,7 +1843,8 @@ nav.scrolled {
 .testimonials-track {
   display: flex;
   gap: 0.75rem;
-  animation: testimonialSlide 40s linear infinite;
+  width: fit-content;
+  animation: testimonialSlide 25s linear infinite;
 }
 
 .testimonials-track:hover {
@@ -1845,7 +1853,12 @@ nav.scrolled {
 
 @keyframes testimonialSlide {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(calc(-1 * (420px * 5 + 0.75rem * 5))); }
+}
+
+@keyframes testimonialSlideMobile {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-1 * (300px * 5 + 0.75rem * 5))); }
 }
 
 .testimonial-card {
@@ -2501,6 +2514,7 @@ footer {
   .counter-section { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
   
   .testimonial-card { flex: 0 0 300px; padding: 1.5rem; }
+  .testimonials-track { animation: testimonialSlideMobile 25s linear infinite; }
   
   .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .footer-bottom { flex-direction: column; text-align: center; }
@@ -2512,6 +2526,16 @@ footer {
     display: none;
   }
 }
+@media (width:768px) {
+  .myBtn{
+    display: none;
+  }
+  .float-card-icon{
+    width: 22px;
+    height: 22px;
+  }
+}
+
 
 /* Small Mobile */
 @media (max-width: 480px) {
@@ -2585,7 +2609,7 @@ footer {
     max-width: 80px;
   }
   .marquee-track{
-      animation: marquee 60s linear infinite;
+      animation: marquee 2s linear infinite;
   }
   .hero-annotation-left {
     left: -10%;
@@ -2729,11 +2753,6 @@ footer {
 </head>
 <body>
 
-
-<!-- Cursor -->
-<!-- <div class="cursor"></div>
-<div class="cursor-dot"></div> -->
-
 <!-- SVG Gradient -->
 <svg style="position: absolute; width: 0; height: 0;">
   <defs>
@@ -2785,7 +2804,6 @@ footer {
           <a href="contact.html">SAAS</a>
           <a href="contact.html">Automobile</a>
           <a href="contact.html">Healthcare</a>
-
         </div>
         
         
@@ -2817,7 +2835,7 @@ footer {
     <li><a href="contact.html">Contacts</a></li>
   </ul>
   
-  <a href="#cta" class="btn-primary nav-cta-btn">Get Started</a>
+  <a href="#cta" class="btn-primary nav-cta-btn myBtn">Get Started</a>
   
   <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
     <span></span>
@@ -2849,7 +2867,7 @@ footer {
         
       </svg>
       
-      <div class="hero-phone-center">
+      <a href="#cta" class="hero-phone-center" style="display: block; text-decoration: none;">
         <div class="hero-phone-container phone-animate-float" style="margin: 0;">
           <div class="phone-ring phone-ring-1"></div>
           <div class="phone-ring phone-ring-2"></div>
@@ -2860,7 +2878,7 @@ footer {
             </svg>
           </div>
         </div>
-      </div>
+      </a>
       
       <div class="hero-annotation hero-annotation-top-right">
         <div style="display: flex; align-items: flex-start; gap: 6px; justify-content: flex-end;">
@@ -3597,6 +3615,24 @@ footer {
   
   <div class="testimonials-wrapper">
     <div class="testimonials-track">
+      <!-- Original 5 cards -->
+      <div class="testimonial-card testimonial-video-card">
+        <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/5-pNv-g0wyo?rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+      <div class="testimonial-card testimonial-video-card">
+        <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/RN14zUD0dgo?si=y2uDbwGcYL2NaXJB" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+      <div class="testimonial-card testimonial-video-card">
+        <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/22Aon2UVfcY?si=E86RwQo3VJGW1iUZ" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+      <div class="testimonial-card testimonial-video-card">
+        <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/FRYYITsJSCM?si=1hva6eDHhRe2K7ez" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+      <div class="testimonial-card testimonial-video-card">
+        <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/EqNaHbeAY6o?si=8znm-WVWsj0mfxJ3" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+      
+      <!-- Duplicate 5 cards for infinite scroll -->
       <div class="testimonial-card testimonial-video-card">
         <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/5-pNv-g0wyo?rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
@@ -3762,31 +3798,6 @@ function initLenis() {
   gsap.ticker.add(time => lenis.raf(time * 1000));
   gsap.ticker.lagSmoothing(0);
 }
-
-// Cursor
-const cursor = document.querySelector('.cursor');
-const cursorDot = document.querySelector('.cursor-dot');
-if (cursor) {
-  document.addEventListener('mousemove', e => {
-    gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.3 });
-    gsap.to(cursorDot, { x: e.clientX, y: e.clientY, duration: 0.1 });
-  });
-  document.querySelectorAll('a, button, .industry-card, .about-feature, .testimonial-card, .result-card, .why-card').forEach(el => {
-    el.addEventListener('mouseenter', () => cursor.classList.add('active'));
-    el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
-  });
-}
-
-// Time
-function updateTime() {
-  const el = document.getElementById('nav-time');
-  if (!el) return;
-  const n = new Date();
-  const d = ['SUN','MON','TUE','WED','THU','FRI','SAT'][n.getDay()];
-  const h = n.getHours(), m = String(n.getMinutes()).padStart(2,'0');
-  el.textContent = `${d} ${h%12||12}:${m} ${h>=12?'PM':'AM'}`;
-}
-updateTime(); setInterval(updateTime, 1000);
 
 // Navbar
 window.addEventListener('scroll', () => {

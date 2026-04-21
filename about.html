@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About Us — RUN IT REMOTE | Cold Calling & Lead Generation</title>
 
+<link rel="icon" href="assets/favicon-runitremote.png" sizes="16x16">
+
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,47 +55,7 @@ body {
 ::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 3px; }
 ::selection { background: var(--cyan); color: var(--black); }
 
-/* =================== LOADER =================== */
-#loader {
-  position: fixed;
-  inset: 0;
-  background: var(--black);
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 1.5rem;
-}
 
-.loader-logo {
-  font-size: clamp(1.2rem, 3vw, 2rem);
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  color: var(--white);
-}
-
-.loader-logo span { color: var(--cyan); }
-
-.loader-bar-container {
-  width: min(180px, 50vw);
-  height: 2px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.loader-bar {
-  width: 0%;
-  height: 100%;
-  background: linear-gradient(90deg, var(--cyan), var(--cyan-light));
-}
-
-.loader-percent {
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  color: var(--gray);
-}
 
 /* =================== NAVBAR =================== */
 nav {
@@ -2178,18 +2140,16 @@ footer {
   .about-hero-title { font-size: 2rem; }
   .nav-logo-text img { width: 130px; }
 }
+
+@media (width:768px) {
+  .myBtn{
+    display: none;
+  }
+}
 </style>
 </head>
 <body>
 
-<!-- Loader -->
-<div id="loader">
-  <div class="loader-logo">RUN IT <span>REMOTE</span></div>
-  <div class="loader-bar-container">
-    <div class="loader-bar" id="loader-bar"></div>
-  </div>
-  <div class="loader-percent" id="loader-percent">0%</div>
-</div>
 
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobile-menu">
@@ -2264,7 +2224,7 @@ footer {
     <li><a href="contact.html">Contacts</a></li>
   </ul>
   
-  <a href="#about-cta" class="btn-primary nav-cta-btn">Get Started</a>
+  <a href="#about-cta" class="btn-primary nav-cta-btn myBtn">Get Started</a>
   
   <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
     <span></span>
@@ -2894,28 +2854,7 @@ footer {
 </footer>
 
 <script>
-// =================== LOADER ===================
-let progress = 0;
-const loadInterval = setInterval(() => {
-  progress += Math.random() * 25;
-  if (progress >= 100) {
-    progress = 100;
-    clearInterval(loadInterval);
-    setTimeout(() => {
-      gsap.to('#loader', {
-        opacity: 0,
-        duration: 0.5,
-        onComplete: () => {
-          document.getElementById('loader').style.display = 'none';
-          initLenis();
-          initAnimations();
-        }
-      });
-    }, 300);
-  }
-  document.getElementById('loader-bar').style.width = progress + '%';
-  document.getElementById('loader-percent').textContent = Math.round(progress) + '%';
-}, 80);
+
 
 // =================== LENIS SMOOTH SCROLL ===================
 function initLenis() {
@@ -3378,6 +3317,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
+});
+
+
+// =================== INITIALIZE ===================
+document.addEventListener('DOMContentLoaded', () => {
+  initLenis();
+  initAnimations();
 });
 </script>
 
