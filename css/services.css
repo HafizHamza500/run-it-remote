@@ -89,7 +89,7 @@ nav.scrolled {
   border-left: 1px solid rgba(255,255,255,0.08);
   border-top: 1px solid rgba(255,255,255,0.08);
 }
-.dropdown-panel.industries-panel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.dropdown-panel.industries-panel { grid-template-columns: repeat(2, minmax(0, 1fr));   grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .dropdown-panel.services-panel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 /* Only enable hover dropdown on desktop (laptop/desktop) */
 @media (min-width: 1025px) {
