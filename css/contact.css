@@ -135,7 +135,7 @@ nav.scrolled {
 }
 .dropdown-panel {
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + 4px);
   /* left: 70%; */
   transform: translateX(-50%) translateY(10px);
   width: min(550px, calc(100vw - 3rem));
@@ -155,7 +155,7 @@ nav.scrolled {
 }
 
 .dropdown-panel::before {
-  content: '';
+  content: none;
   position: absolute;
   top: -8px;
   left: 50%;

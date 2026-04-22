@@ -23,7 +23,7 @@
   <a href="about.html" onclick="closeMobileMenu()">About</a>
   <a href="industry.html" onclick="closeMobileMenu()">Industries</a>
   <a href="services.html" onclick="closeMobileMenu()">Services</a>
-  <a href="contact.html" onclick="closeMobileMenu()">Contacts</a>
+  <a href="contact.html" onclick="closeMobileMenu()">Contact Us</a>
   <a href="#services-cta" class="btn-primary" onclick="closeMobileMenu()" style="margin-top:1rem;">Get Started</a>
 </div>
 
@@ -66,7 +66,7 @@
       </div>
     </li>
     <li class="dropdown">
-      <a href="services.html" class="dropdown-toggle">Services <span class="dropdown-arrow">▾</span></a>
+      <a href="services.html" class="dropdown-toggle" style="color: #00E5F9;">Services <span class="dropdown-arrow">▾</span></a>
       <div class="dropdown-panel services-panel">
         <div class="dropdown-column">
           <a href="services.html#lead-generation">Lead Generation</a>
@@ -83,7 +83,7 @@
         </div>
       </div>
     </li>
-    <li><a href="contact.html">Contacts</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
   </ul>
   <a href="#services-cta" class="btn-primary nav-cta-btn myBtn">Get Started</a>
   
@@ -363,16 +363,13 @@
         <div class="form-group">
           <select class="form-input" required>
             <option value="">Select Service</option>
-            <option>Virtual Assistant</option>
-            <option>Customer Support</option>
-            <option>Appointment Setup</option>
-            <option>Quality Validation</option>
-            <option>Data Intelligence</option>
-            <option>AI Automation</option>
-            <option>IT & Tech Outsourcing</option>
-            <option>HR Solutions</option>
-            <option>Digital Marketing & Sales</option>
-            <option>Finance & Accounting</option>
+            <option value="lead generation">Lead Generation</option>
+            <option value="customer support">Customer Support</option>
+            <option value="appointment setup">Appointment Setup</option>
+            <option value="quality validation">Quality Validation</option>
+            <option value="data intelligence">Data Intelligence</option>
+            <option value="ai automation">AI Automation</option>
+      
           </select>
         </div>
         <div class="form-group">
@@ -383,17 +380,12 @@
             <option value="solar">Solar & Energy</option>
             <option value="construction">Construction</option>
             <option value="internet telecom">Internet & Telecom</option>
-              <option value="audit & accounting">Audit & Accounting</option>
             <option value="insurance">Insurance</option>
-            <option value="solar">Solar & Energy</option>
             <option value="mortgage">Mortgagae</option>
-            <option value="merchandising">Merchandising</option>
-               <option value="hvac">HVAC</option>
             <option value="financing">Financing</option>
                <option value="saas">SAAS</option>
-            <option value="automobile">Automobile</option>
-                <option value="automobile">Healkthcare</option>
-            <option>Other</option>
+        
+            <option value="other">Other</option>
           </select>
         </div>
         <button type="submit" class="form-submit">Get Free Quote →</button>
