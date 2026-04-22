@@ -2320,6 +2320,12 @@ footer {
 
 .footer-bottom-links a:hover { color: var(--cyan); }
 
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 /* =================== MODAL =================== */
 #modal {
   display: none;
