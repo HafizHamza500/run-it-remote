@@ -1,309 +1,368 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RUN IT REMOTE — Cold Calling & Lead Generation</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RUN IT REMOTE — Cold Calling & Lead Generation</title>
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="icon" href="assets/favicon-runitremote.png" sizes="16x16">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<!-- GSAP -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" href="assets/favicon-runitremote.png" sizes="16x16">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
 
-<!-- Three.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-<!-- Lenis Smooth Scroll -->
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-<!-- CSS Link -->
-<link rel="stylesheet" href="css/home.css">
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
+  <!-- CSS Link -->
+  <link rel="stylesheet" href="css/home.css">
 </head>
+
 <body>
 
-<!-- SVG Gradient -->
-<svg style="position: absolute; width: 0; height: 0;">
-  <defs>
-    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#00C2D4"/>
-      <stop offset="100%" style="stop-color:#00E5F9"/>
-    </linearGradient>
-  </defs>
-</svg>
+  <!-- SVG Gradient -->
+  <svg style="position: absolute; width: 0; height: 0;">
+    <defs>
+      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#00C2D4" />
+        <stop offset="100%" style="stop-color:#00E5F9" />
+      </linearGradient>
+    </defs>
+  </svg>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobile-menu">
-  <a href="about.html" onclick="closeMobileMenu()">About</a>
-  <a href="industry.html" onclick="closeMobileMenu()">Industries</a>
-  <a href="services.html" onclick="closeMobileMenu()">Services</a>
-  <a href="contact.html" onclick="closeMobileMenu()">Contacts</a>
-  <a href="#cta" class="btn-primary" onclick="closeMobileMenu()" style="margin-top: 1rem;">Get Started</a>
-</div>
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="industry.html" onclick="closeMobileMenu()">Industries</a>
+    <a href="services.html" onclick="closeMobileMenu()">Services</a>
+    <a href="contact.html" onclick="closeMobileMenu()">Contacts</a>
+    <a href="#cta" class="btn-primary" onclick="closeMobileMenu()" style="margin-top: 1rem;">Get Started</a>
+  </div>
 
-<!-- Navbar -->
-<nav id="navbar">
-  <a href="#" class="nav-logo">
-    <span class="nav-logo-text"><img src="./remote-logo-.png" width="230" alt=""></span>
-  </a>
-  
-  <ul class="nav-links">
-     <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li class="dropdown">
-      <a href="industry.html" class="dropdown-toggle">Industries <span class="dropdown-arrow">▾</span></a>
-      <div class="dropdown-panel industries-panel">
-       <div class="dropdown-column">
-          <a href="industry.html#industry-real-estate">Real Estate</a>
-          <a href="industry.html#industry-home-services">Home Services</a>
-           <a href="industry.html#industry-construction">Construction</a>
+  <!-- Navbar -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">
+      <span class="nav-logo-text"><img src="./remote-logo-.png" width="230" alt=""></span>
+    </a>
+    <div class="navlinksdiv">
 
-         
-        </div>
-        <div class="dropdown-column">
-          
-          <a href="industry.html#industry-insurance">Insurance</a>
-          <a href="industry.html#industry-solar">Solar Energy</a>
-          <a href="industry.html#industry-financing">Financing</a>
-          
-        </div>
-        
-        <div class="dropdown-column">
-          <a href="industry.html#industry-mortgage">Mortgage</a>
-          <a href="industry.html#industry-telecom">Internet & Telecom</a>
-          <a href="industry.html#industry-saas">SAAS</a>
-         
-         
-        </div>
-        
-        
-        
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+
+        <li><a href="about.html">About</a></li>
+        <li class="dropdown">
+          <a href="industry.html" class="dropdown-toggle">Industries <span class="dropdown-arrow">▾</span></a>
+          <div class="dropdown-panel industries-panel">
+            <div class="dropdown-column">
+              <a href="industry.html#industry-real-estate">Real Estate</a>
+              <a href="industry.html#industry-home-services">Home Services</a>
+              <a href="industry.html#industry-construction">Construction</a>
+
+
+            </div>
+            <div class="dropdown-column">
+
+              <a href="industry.html#industry-insurance">Insurance</a>
+              <a href="industry.html#industry-solar">Solar Energy</a>
+              <a href="industry.html#industry-financing">Financing</a>
+
+            </div>
+
+            <div class="dropdown-column">
+              <a href="industry.html#industry-mortgage">Mortgage</a>
+              <a href="industry.html#industry-telecom">Internet & Telecom</a>
+              <a href="industry.html#industry-saas">SAAS</a>
+
+
+            </div>
+
+
+
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="services.html" class="dropdown-toggle">Services <span class="dropdown-arrow">▾</span></a>
+          <div class="dropdown-panel services-panel">
+            <div class="dropdown-column">
+              <a href="services.html#lead-generation">Lead Generation</a>
+              <a href="services.html#appointment-setup">Appointment Setup</a>
+              <!-- <a href="services.html#sales-funnel">Sales Funnel</a> -->
+              <a href="services.html#customer-support">Customer Support</a>
+
+            </div>
+            <div class="dropdown-column">
+              <a href="services.html#ai-automation">AI Automation</a>
+              <a href="services.html#quality-validation">Quality Validation</a>
+              <a href="services.html#data-intelligence">Data Intelligence</a>
+
+            </div>
+          </div>
+        </li>
+        <li><a href="contact.html">Contacts</a></li>
+      </ul>
+    </div>
+    <a href="#cta" class="btn-primary nav-cta-btn myBtn">Get Started</a>
+
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-gradient"></div>
+    <div class="hero-grid"></div>
+    <!-- <canvas id="hero-canvas"></canvas> -->
+
+    <!-- Scanlines moving across hero -->
+    <div class="hero-scanline hero-scanline-1"></div>
+    <div class="hero-scanline hero-scanline-2"></div>
+
+    <!-- Split Layout: Text on left, Phone centered, Text on right -->
+    <div class="hero-split-layout">
+      <div class="hero-text-left">
+        <h1 class="hero-title-left">
+          <div>Your</div>
+          <div class="gradient-text">Sales Engine</div>
+        </h1>
       </div>
-    </li>
-    <li class="dropdown">
-      <a href="services.html" class="dropdown-toggle">Services <span class="dropdown-arrow">▾</span></a>
-      <div class="dropdown-panel services-panel">
-        <div class="dropdown-column">
-          <a href="services.html#lead-generation">Lead Generation</a>
-          <a href="services.html#appointment-setup">Appointment Setup</a>
-           <!-- <a href="services.html#sales-funnel">Sales Funnel</a> -->
-          <a href="services.html#customer-support">Customer Support</a>
+      <div class="hero-phone-wrapper">
+        <svg class="hero-annotation-svg" viewBox="0 0 350 350" preserveAspectRatio="xMidYMid meet" style="z-index: -2;">
 
-        </div>
-        <div class="dropdown-column">
-          <a href="services.html#quality-validation">Quality Validation</a>
-          <a href="services.html#ai-automation">AI Automation</a>
-          <a href="services.html#data-intelligence">Data Intelligence</a>
-           
+        </svg>
+
+        <a href="#cta" class="hero-phone-center" style="display: block; text-decoration: none;">
+          <div class="hero-phone-container phone-animate-float" style="margin: 0;">
+            <div class="phone-ring phone-ring-1"></div>
+            <div class="phone-ring phone-ring-2"></div>
+            <div class="phone-ring phone-ring-3"></div>
+            <div class="phone-center phone-rotating-border phone-glow-pulse" style="opacity:0.85;">
+              <img src="assets/call-removebg-preview.png" height="100%" >
+            </div>
+          </div>
+        </a>
+
+        <div class="hero-annotation hero-annotation-top-right">
+          <div style="display: flex; align-items: flex-start; gap: 6px; justify-content: flex-end;">
+
+          </div>
         </div>
       </div>
-    </li>
-    <li><a href="contact.html">Contacts</a></li>
-  </ul>
-  
-  <a href="#cta" class="btn-primary nav-cta-btn myBtn">Get Started</a>
-  
-  <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-</nav>
+      <div class="hero-text-right">
+        <h1 class="hero-title-right">
+          <div>Tuned</div>
+          <div class="gradient-text">for Success</div>
+        </h1>
+      </div>
+    </div>
 
-<!-- Hero -->
-<section id="hero">
-  <div class="hero-gradient"></div>
-  <div class="hero-grid"></div>
-  <!-- <canvas id="hero-canvas"></canvas> -->
-  
-  <!-- Scanlines moving across hero -->
-  <div class="hero-scanline hero-scanline-1"></div>
-  <div class="hero-scanline hero-scanline-2"></div>
-  
-  <!-- Split Layout: Text on left, Phone centered, Text on right -->
-  <div class="hero-split-layout">
-    <div class="hero-text-left">
-      <h1 class="hero-title-left">
-        <div>Your</div>
-        <div class="gradient-text">Sales Engine</div>
+    <div class="hero-float-card hero-float-1">
+      <div class="float-card-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="1.5">
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.962.362 1.893.698 2.78L8.46 8.06a2 2 0 0 1-.45 2.11l-1.33 1.33a16 16 0 0 0 6 6l1.33-1.33a2 2 0 0 1 2.11-.45l2.56.87a12.84 12.84 0 0 0 .698 2.78A2 2 0 0 1 21 16.92z" />
+        </svg>
+      </div>
+      <div class="float-card-value">1.5M+</div>
+      <div class="float-card-label">Dails/Day<Dails>
+          <day></day>
+      </div>
+    </div>
+
+    <div class="hero-float-card hero-float-2">
+      <div class="float-card-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2">
+          <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+        </svg>
+      </div>
+      <div class="float-card-value" style="color: #22c55e;">2.5x</div>
+      <div class="float-card-label">Avg ROI</div>
+    </div>
+
+    <div class="hero-float-card hero-float-3">
+      <div class="float-card-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+        </svg>
+      </div>
+      <div class="float-card-value">1000+</div>
+      <div class="float-card-label">Daily Leads</div>
+    </div>
+
+    <div class="hero-float-card hero-float-4">
+      <div class="float-card-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2">
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="12 6 12 12 16 14" />
+        </svg>
+      </div>
+      <div class="float-card-value">100%</div>
+      <div class="float-card-label">Client Satisfaction</div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        <span class="hero-badge-text">Cold Calling Experts</span>
+      </div>
+
+      <h1 class="hero-title">
+        <div class="hero-title-line"><span>Your Sales</span></div>
+        <div class="hero-title-line"><span class="gradient-text">Pipeline,</span></div>
+        <div class="hero-title-line"><span>Supercharged.</span></div>
       </h1>
-    </div>
-    <div class="hero-phone-wrapper">
-      <svg class="hero-annotation-svg" viewBox="0 0 350 350" preserveAspectRatio="xMidYMid meet" style="z-index: -2;">
-        
-      </svg>
-      
-      <a href="#cta" class="hero-phone-center" style="display: block; text-decoration: none;">
-        <div class="hero-phone-container phone-animate-float" style="margin: 0;">
-          <div class="phone-ring phone-ring-1"></div>
-          <div class="phone-ring phone-ring-2"></div>
-          <div class="phone-ring phone-ring-3"></div>
-          <div class="phone-center phone-rotating-border phone-glow-pulse">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
-          </div>
-        </div>
-      </a>
-      
-      <div class="hero-annotation hero-annotation-top-right">
-        <div style="display: flex; align-items: flex-start; gap: 6px; justify-content: flex-end;">
-     
-        </div>
-      </div>
-    </div>
-    <div class="hero-text-right">
-      <h1 class="hero-title-right">
-        <div>Tuned</div>
-        <div class="gradient-text">for Success</div>
-      </h1>
-    </div>
-  </div>
-  
-  <div class="hero-float-card hero-float-1">
-    <div class="float-card-icon">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.962.362 1.893.698 2.78L8.46 8.06a2 2 0 0 1-.45 2.11l-1.33 1.33a16 16 0 0 0 6 6l1.33-1.33a2 2 0 0 1 2.11-.45l2.56.87a12.84 12.84 0 0 0 .698 2.78A2 2 0 0 1 21 16.92z"/></svg>
-    </div>
-    <div class="float-card-value">1.5M+</div>
-    <div class="float-card-label">Dails/Day<Dails>
-    <day></day></div>
-  </div>
-  
-  <div class="hero-float-card hero-float-2">
-    <div class="float-card-icon">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
-    </div>
-    <div class="float-card-value" style="color: #22c55e;">2.5x</div>
-    <div class="float-card-label">Avg ROI</div>
-  </div>
-  
-  <div class="hero-float-card hero-float-3">
-    <div class="float-card-icon">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-    </div>
-    <div class="float-card-value">1000+</div>
-    <div class="float-card-label">Daily Leads</div>
-  </div>
-  
-  <div class="hero-float-card hero-float-4">
-    <div class="float-card-icon">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-    </div>
-    <div class="float-card-value">100%</div>
-    <div class="float-card-label">Client Satisfaction</div>
-  </div>
-  
-  <div class="hero-content">
-    <div class="hero-badge">
-      <div class="hero-badge-dot"></div>
-      <span class="hero-badge-text">Cold Calling Experts</span>
-    </div>
-    
-    <h1 class="hero-title">
-      <div class="hero-title-line"><span>Your Sales</span></div>
-      <div class="hero-title-line"><span class="gradient-text">Pipeline,</span></div>
-      <div class="hero-title-line"><span>Supercharged.</span></div>
-    </h1>
-    
-    <p class="hero-subtitle">Transform cold prospects into hot opportunities. Our elite remote team delivers qualified leads directly to your closers.</p>
-    
-    <div class="hero-cta">
-      <a href="#cta" class="btn-primary">Start Growing <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      <a href="#process" class="btn-secondary">How It Works</a>
-    </div>
-    
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-value counter" data-target="500">0</div>
-        <div class="hero-stat-label">Calls Daily</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-value counter" data-target="98">0</div>
-        <div class="hero-stat-label">% Retention</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-value">3</div>
-        <div class="hero-stat-label">Industries</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-value">100%</div>
-        <div class="hero-stat-label">Client Satisfaction</div>
-      </div>
-    </div>
-  </div>
-  
 
-</section>
+      <p class="hero-subtitle">Transform cold prospects into hot opportunities. Our elite remote team delivers qualified
+        leads directly to your closers.</p>
 
-<!-- Marquee -->
-<div class="marquee-section">
-  <div class="marquee-track">
-    <div class="marquee-item"><div class="marquee-dot"></div><span>Real Estate</span></div>
-    <div class="marquee-item"><div class="marquee-dot"></div><span>Cold Calling</span></div>
-    <div class="marquee-item"><div class="marquee-dot"></div><span>Home Services</span></div>
-    <div class="marquee-item"><div class="marquee-dot"></div><span>Appointments Setting</span></div>
-    <div class="marquee-item"><div class="marquee-dot"></div><span>Solar Energy</span></div>
-    <div class="marquee-item"><div class="marquee-dot"></div><span>Lead Generation</span></div>
-    <div class="marquee-item"><div class="marquee-dot"></div><span>Pipeline Growth</span></div>
-    <div class="marquee-item"><div class="marquee-dot"></div><span>Virtual Assistant</span></div>
-    <div class="marquee-item"><div class="marquee-dot"></div><span>AI Automation</span></div>
-    <div class="marquee-item"><div class="marquee-dot"></div><span>Customer Support</span></div>
-    <div class="marquee-item"><div class="marquee-dot"></div><span>Data mining</span></div>
-    <div class="marquee-item"><div class="marquee-dot"></div><span>Roofing HVAC</span></div>
-    <div class="marquee-item"><div class="marquee-dot"></div><span>CRM Development</span></div>
-    <div class="marquee-item"><div class="marquee-dot"></div><span>Clients Form</span></div>
-  </div>
-</div>
+      <div class="hero-cta">
+        <a href="#cta" class="btn-primary">Start Growing <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg></a>
+        <a href="#process" class="btn-secondary">How It Works</a>
+      </div>
 
-<!-- About -->
-<section id="about" class="section-pad">
-  <!-- <div class="about-bg-text">CALLS</div> -->
-  
-  <div class="about-container">
-    <div class="about-content">
-      <div class="section-label">Who We Are</div>
-      <h2 class="section-title">We Make Calls.<br><span class="highlight">You Close Deals.</span></h2>
-      <p class="section-text">At Run It Remote, we're the engine behind your revenue. Our cold-calling specialists turn prospects into opportunities.</p>
-      
-      <div class="about-features">
-        <div class="about-feature">
-          <div class="about-feature-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <div class="about-feature-content">
-            <h4>Expert Agents</h4>
-            <p>...</p>
-          </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-value counter" data-target="500">0</div>
+          <div class="hero-stat-label">Calls Daily</div>
         </div>
-        
-        <div class="about-feature">
-          <div class="about-feature-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </div>
-          <div class="about-feature-content">
-            <h4>Dashboards</h4>
-            <p>Monthly reporting with every metric at your fingertips.</p>
-          </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value counter" data-target="98">0</div>
+          <div class="hero-stat-label">% Retention</div>
         </div>
-        
-        <div class="about-feature">
-          <div class="about-feature-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <div class="about-feature-content">
-            <h4>No Lock-Ins</h4>
-            <p>Month-to-month agreements based on results.</p>
-          </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">3</div>
+          <div class="hero-stat-label">Industries</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">100%</div>
+          <div class="hero-stat-label">Client Satisfaction</div>
         </div>
       </div>
     </div>
-    
-    <!-- <div class="about-visual">
+
+
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <div class="marquee-item">
+        <div class="marquee-dot"></div><span>Real Estate</span>
+      </div>
+      <div class="marquee-item">
+        <div class="marquee-dot"></div><span>Cold Calling</span>
+      </div>
+      <div class="marquee-item">
+        <div class="marquee-dot"></div><span>Home Services</span>
+      </div>
+      <div class="marquee-item">
+        <div class="marquee-dot"></div><span>Appointments Setting</span>
+      </div>
+      <div class="marquee-item">
+        <div class="marquee-dot"></div><span>Solar Energy</span>
+      </div>
+      <div class="marquee-item">
+        <div class="marquee-dot"></div><span>Lead Generation</span>
+      </div>
+      <div class="marquee-item">
+        <div class="marquee-dot"></div><span>Pipeline Growth</span>
+      </div>
+      <div class="marquee-item">
+        <div class="marquee-dot"></div><span>Virtual Assistant</span>
+      </div>
+      <div class="marquee-item">
+        <div class="marquee-dot"></div><span>AI Automation</span>
+      </div>
+      <div class="marquee-item">
+        <div class="marquee-dot"></div><span>Customer Support</span>
+      </div>
+      <div class="marquee-item">
+        <div class="marquee-dot"></div><span>Data mining</span>
+      </div>
+      <div class="marquee-item">
+        <div class="marquee-dot"></div><span>Roofing HVAC</span>
+      </div>
+      <div class="marquee-item">
+        <div class="marquee-dot"></div><span>CRM Development</span>
+      </div>
+      <div class="marquee-item">
+        <div class="marquee-dot"></div><span>Clients Form</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- About -->
+  <section id="about" class="section-pad">
+    <!-- <div class="about-bg-text">CALLS</div> -->
+
+    <div class="about-container">
+      <div class="about-content">
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title">We Make Calls.<br><span class="highlight">You Close Deals.</span></h2>
+        <p class="section-text">At Run It Remote, we're the engine behind your revenue. Our cold-calling specialists
+          turn prospects into opportunities.</p>
+
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="about-feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <div class="about-feature-content">
+              <h4>Expert Agents</h4>
+              <p>...</p>
+            </div>
+          </div>
+
+          <div class="about-feature">
+            <div class="about-feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+              </svg>
+            </div>
+            <div class="about-feature-content">
+              <h4>Dashboards</h4>
+              <p>Monthly reporting with every metric at your fingertips.</p>
+            </div>
+          </div>
+
+          <div class="about-feature">
+            <div class="about-feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
+            <div class="about-feature-content">
+              <h4>No Lock-Ins</h4>
+              <p>Month-to-month agreements based on results.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="about-visual">
       <div class="about-float about-float-1">
         <div style="display: flex; align-items: center; gap: 0.4rem;">
           <div style="width: 6px; height: 6px; background: #22c55e; border-radius: 50%;"></div>
@@ -351,192 +410,213 @@
         <div class="dash-chart" id="about-chart"></div>
       </div>
     </div> -->
-  <div class="video-box" id="videoBox">
-    <div class="video-thumb" id="videoThumb">
-      <div class="video-thumb-inner">
-        <div class="video-label">Run It Remote</div>
-        <div class="video-status">See How It Works</div>
+      <div class="video-box" id="videoBox">
+        <div class="video-thumb" id="videoThumb">
+          <div class="video-thumb-inner">
+            <div class="video-label">Run It Remote</div>
+            <div class="video-status">See How It Works</div>
+          </div>
+          <div class="play-btn">▶</div>
+        </div>
+
+        <!-- YouTube iframe (hidden initially) -->
+        <iframe id="youtubeVideo" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
-      <div class="play-btn">▶</div>
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section id="industries" class="section-pad">
+    <div class="industries-bg-glow"></div>
+
+    <div class="industries-header">
+      <div class="section-label" style="justify-content: center;">Services We Serve</div>
+      <h2 class="section-title">6+ Verticals.<br><span class="highlight">One Expertise.</span></h2>
     </div>
 
-    <!-- YouTube iframe (hidden initially) -->
-    <iframe
-      id="youtubeVideo"
-      src=""
-      frameborder="0"
-      allow="autoplay; encrypted-media"
-      allowfullscreen
-    ></iframe>
-  </div>
-  </div>
-</section>
+    <div class="industries-grid">
+      <div class="industry-card">
+        <div class="industry-num">01</div>
+        <div class="industry-icon-wrap">
+          <div class="industry-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="1.5">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+          </div>
+        </div>
+        <h3>Lead Generation</h3>
+        <p>Attract, engage, and convert high-quality leads into real customers</p>
+        <div class="industry-stats">
+          <div class="industry-stat">
+            <div class="industry-stat-val">2.4K+</div>
+            <div class="industry-stat-label">Leads/Mo</div>
+          </div>
+          <div class="industry-stat">
+            <div class="industry-stat-val">24%</div>
+            <div class="industry-stat-label">Conv Rate</div>
+          </div>
+        </div>
+        <a href="#" class="industry-link">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg></a>
+      </div>
 
-<!-- Industries -->
-<section id="industries" class="section-pad">
-  <div class="industries-bg-glow"></div>
-  
-  <div class="industries-header">
-    <div class="section-label" style="justify-content: center;">Services We Serve</div>
-    <h2 class="section-title">7+ Verticals.<br><span class="highlight">One Expertise.</span></h2>
-  </div>
-  
-  <div class="industries-grid">
-    <div class="industry-card">
-      <div class="industry-num">01</div>
-      <div class="industry-icon-wrap">
-        <div class="industry-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <div class="industry-card">
+        <div class="industry-num">02</div>
+        <div class="industry-icon-wrap">
+          <div class="industry-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="1.5">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
         </div>
+        <h3>Appointment Setup</h3>
+        <p>Book qualified appointments that drive real business opportunities.</p>
+        <div class="industry-stats">
+          <div class="industry-stat">
+            <div class="industry-stat-val">2.1K+</div>
+            <div class="industry-stat-label">Leads/Mo</div>
+          </div>
+          <div class="industry-stat">
+            <div class="industry-stat-val">22%</div>
+            <div class="industry-stat-label">Conv Rate</div>
+          </div>
+        </div>
+        <a href="#" class="industry-link">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg></a>
       </div>
-      <h3>Lead Generation</h3>
-      <p>Attract, engage, and convert high-quality leads into real customers</p>
-      <div class="industry-stats">
-        <div class="industry-stat">
-          <div class="industry-stat-val">2.4K+</div>
-          <div class="industry-stat-label">Leads/Mo</div>
+
+      <div class="industry-card">
+        <div class="industry-num">03</div>
+        <div class="industry-icon-wrap">
+          <div class="industry-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="1.5">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+          </div>
         </div>
-        <div class="industry-stat">
-          <div class="industry-stat-val">24%</div>
-          <div class="industry-stat-label">Conv Rate</div>
+        <h3>Customer Support</h3>
+        <p>Inbound Calls, Ticket Handling, Client Relations.</p>
+        <div class="industry-stats">
+          <div class="industry-stat">
+            <div class="industry-stat-val">1.5K+</div>
+            <div class="industry-stat-label">Leads/Mo</div>
+          </div>
+          <div class="industry-stat">
+            <div class="industry-stat-val">28%</div>
+            <div class="industry-stat-label">Conv Rate</div>
+          </div>
         </div>
+        <a href="#" class="industry-link">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg></a>
       </div>
-      <a href="#" class="industry-link">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
-    
-    <div class="industry-card">
-      <div class="industry-num">02</div>
-      <div class="industry-icon-wrap">
-        <div class="industry-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+
+      <div class="industry-card">
+        <div class="industry-num">04</div>
+        <div class="industry-icon-wrap">
+          <div class="industry-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="1.5">
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+            </svg>
+          </div>
         </div>
+        <h3>AI Automation</h3>
+        <p>Process Automation, AI Integration, Smart Workflows.</p>
+        <div class="industry-stats">
+          <div class="industry-stat">
+            <div class="industry-stat-val">3.1K+</div>
+            <div class="industry-stat-label">Leads/Mo</div>
+          </div>
+          <div class="industry-stat">
+            <div class="industry-stat-val">45%</div>
+            <div class="industry-stat-label">Efficiency</div>
+          </div>
+        </div>
+        <a href="#" class="industry-link">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg></a>
       </div>
-      <h3>Quality Validation</h3>
-      <p>Lead Verification, Data Accuracy, Quality Assurance.</p>
-      <div class="industry-stats">
-        <div class="industry-stat">
-          <div class="industry-stat-val">1.8K+</div>
-          <div class="industry-stat-label">Leads/Mo</div>
+
+      <div class="industry-card">
+        <div class="industry-num">05</div>
+        <div class="industry-icon-wrap">
+          <div class="industry-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="1.5">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+              <polyline points="22 4 12 14.01 9 11.01" />
+            </svg>
+          </div>
         </div>
-        <div class="industry-stat">
-          <div class="industry-stat-val">98%</div>
-          <div class="industry-stat-label">Accuracy</div>
+        <h3>Quality Validation</h3>
+        <p>Lead Verification, Data Accuracy, Quality Assurance.</p>
+        <div class="industry-stats">
+          <div class="industry-stat">
+            <div class="industry-stat-val">1.8K+</div>
+            <div class="industry-stat-label">Leads/Mo</div>
+          </div>
+          <div class="industry-stat">
+            <div class="industry-stat-val">98%</div>
+            <div class="industry-stat-label">Accuracy</div>
+          </div>
         </div>
+        <a href="#" class="industry-link">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg></a>
       </div>
-      <a href="#" class="industry-link">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
-    
-    <div class="industry-card">
-      <div class="industry-num">03</div>
-      <div class="industry-icon-wrap">
-        <div class="industry-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
+
+
+
+
+
+
+
+
+      <div class="industry-card">
+        <div class="industry-num">06</div>
+        <div class="industry-icon-wrap">
+          <div class="industry-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="1.5">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
+          </div>
         </div>
+        <h3>Data Intelligence</h3>
+        <p>Transform data into insights that fuel smarter business growth.</p>
+        <div class="industry-stats">
+          <div class="industry-stat">
+            <div class="industry-stat-val">1.0K+</div>
+            <div class="industry-stat-label">Leads/Mo</div>
+          </div>
+          <div class="industry-stat">
+            <div class="industry-stat-val">32%</div>
+            <div class="industry-stat-label">Conv Rate</div>
+          </div>
+        </div>
+        <a href="#" class="industry-link">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg></a>
       </div>
-      <h3>AI Automation</h3>
-      <p>Process Automation, AI Integration, Smart Workflows.</p>
-      <div class="industry-stats">
-        <div class="industry-stat">
-          <div class="industry-stat-val">3.1K+</div>
-          <div class="industry-stat-label">Leads/Mo</div>
-        </div>
-        <div class="industry-stat">
-          <div class="industry-stat-val">45%</div>
-          <div class="industry-stat-label">Efficiency</div>
-        </div>
-      </div>
-      <a href="#" class="industry-link">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
-    
-    <div class="industry-card">
-      <div class="industry-num">04</div>
-      <div class="industry-icon-wrap">
-        <div class="industry-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        </div>
-      </div>
-      <h3>Sales Funnel</h3>
-      <p>Turn traffic into revenue with high-converting sales funnels.</p>
-      <div class="industry-stats">
-        <div class="industry-stat">
-          <div class="industry-stat-val">1.2K+</div>
-          <div class="industry-stat-label">Leads/Mo</div>
-        </div>
-        <div class="industry-stat">
-          <div class="industry-stat-val">35%</div>
-          <div class="industry-stat-label">Conv Rate</div>
-        </div>
-      </div>
-      <a href="#" class="industry-link">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
-    
-    <div class="industry-card">
-      <div class="industry-num">05</div>
-      <div class="industry-icon-wrap">
-        <div class="industry-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-      </div>
-      <h3>Customer Support</h3>
-      <p>Inbound Calls, Ticket Handling, Client Relations.</p>
-      <div class="industry-stats">
-        <div class="industry-stat">
-          <div class="industry-stat-val">1.5K+</div>
-          <div class="industry-stat-label">Leads/Mo</div>
-        </div>
-        <div class="industry-stat">
-          <div class="industry-stat-val">28%</div>
-          <div class="industry-stat-label">Conv Rate</div>
-        </div>
-      </div>
-      <a href="#" class="industry-link">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
-    
-    <div class="industry-card">
-      <div class="industry-num">06</div>
-      <div class="industry-icon-wrap">
-        <div class="industry-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-      </div>
-      <h3>Appointment Setup</h3>
-      <p>Book qualified appointments that drive real business opportunities.</p>
-      <div class="industry-stats">
-        <div class="industry-stat">
-          <div class="industry-stat-val">2.1K+</div>
-          <div class="industry-stat-label">Leads/Mo</div>
-        </div>
-        <div class="industry-stat">
-          <div class="industry-stat-val">22%</div>
-          <div class="industry-stat-label">Conv Rate</div>
-        </div>
-      </div>
-      <a href="#" class="industry-link">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
-    
-    <div class="industry-card">
-      <div class="industry-num">07</div>
-      <div class="industry-icon-wrap">
-        <div class="industry-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        </div>
-      </div>
-      <h3>Data Intelligence</h3>
-      <p>Transform data into insights that fuel smarter business growth.</p>
-      <div class="industry-stats">
-        <div class="industry-stat">
-          <div class="industry-stat-val">1.0K+</div>
-          <div class="industry-stat-label">Leads/Mo</div>
-        </div>
-        <div class="industry-stat">
-          <div class="industry-stat-val">32%</div>
-          <div class="industry-stat-label">Conv Rate</div>
-        </div>
-      </div>
-      <a href="#" class="industry-link">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
-    
-    <!-- <div class="industry-card">
+
+      <!-- <div class="industry-card">
       <div class="industry-num">08</div>
       <div class="industry-icon-wrap">
         <div class="industry-icon">
@@ -689,377 +769,475 @@
       </div>
       <a href="#" class="industry-link">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </div> -->
-  </div> 
-</section>
+    </div>
+  </section>
 
-<!-- NEW: Why Choose Us -->
-<section id="why-us" class="section-pad">
-  <div class="why-us-container">
-    <div class="why-us-header">
-      <div class="section-label" style="justify-content: center;">Why Choose Us</div>
-      <h2 class="section-title">The Unfair <span class="highlight">Advantage.</span></h2>
-      <p class="section-text" style="text-align: center;">What sets us apart from every other cold calling agency.</p>
-    </div>
-    
-    <div class="why-us-grid">
-      <div class="why-card">
-        <div class="why-card-num">01</div>
-        <div class="why-card-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        </div>
-        <h4>Scalable Growth Solutions</h4>
-        <p>Our systems are built to grow with your business and maximize long-term success.</p>
+  <!-- NEW: Why Choose Us -->
+  <section id="why-us" class="section-pad">
+    <div class="why-us-container">
+      <div class="why-us-header">
+        <div class="section-label" style="justify-content: center;">Why Choose Us</div>
+        <h2 class="section-title">The Unfair <span class="highlight">Advantage.</span></h2>
+        <p class="section-text" style="text-align: center;">What sets us apart from every other cold calling agency.</p>
       </div>
-      
-      <div class="why-card">
-        <div class="why-card-num">02</div>
-        <div class="why-card-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-        </div>
-        <h4>Quality Guarantee</h4>
-        <p>99.9% lead quality score or we rework at no extra cost.</p>
-      </div>
-      
-      <div class="why-card">
-        <div class="why-card-num">03</div>
-        <div class="why-card-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        </div>
-        <h4>Data Security</h4>
-        <p>256-bit encryption. SOC 2 compliant. Your data is safe.</p>
-      </div>
-      
-      <div class="why-card">
-        <div class="why-card-num">04</div>
-        <div class="why-card-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-        <h4>Dedicated Manager</h4>
-        <p>Personal account manager from day one. Always available.</p>
-      </div>
-    </div>
-    
-    <div class="counter-section">
-      <div class="counter-item">
-        <div class="counter-value counter">1M+</div>
-        <div class="counter-label">Leads Generated</div>
-      </div>
-      <div class="counter-item">
-        <div class="counter-value counter">2.5x</div>
-        <div class="counter-label">Avg ROI</div>
-      </div>
-      <div class="counter-item">
-        <div class="counter-value counter">99.9</div>
-        <div class="counter-label">% Lead Quality</div>
-      </div>
-      <div class="counter-item">
-        <div class="counter-value">100%</div>
-        <div class="counter-label">Client Satisfaction</div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- Process -->
-<section id="process" class="section-pad">
-  <div class="process-header">
-    <div class="section-label" style="justify-content: center;">Our Process</div>
-    <h2 class="section-title">From Inquiry To<br><span class="highlight">Closed Deal.</span></h2>
-  </div>
-  
-  <div class="process-timeline">
-    <div class="process-line"><div class="process-line-fill" id="process-line-fill"></div></div>
-    
-    <div class="process-step">
-      <div class="process-node"><span>01</span></div>
-      <div class="process-content">
-        <h3>Inquiry Form</h3>
-        <p>Submit details through our portal. Takes 5 minutes.</p>
+      <div class="why-us-grid">
+        <div class="why-card">
+          <div class="why-card-num">01</div>
+          <div class="why-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg>
+          </div>
+          <h4>Scalable Growth Solutions</h4>
+          <p>Our systems are built to grow with your business and maximize long-term success.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-card-num">02</div>
+          <div class="why-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <path d="M9 12l2 2 4-4" />
+            </svg>
+          </div>
+          <h4>Quality Guarantee</h4>
+          <p>99.9% lead quality score or we rework at no extra cost.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-card-num">03</div>
+          <div class="why-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+          </div>
+          <h4>Data Security</h4>
+          <p>256-bit encryption. SOC 2 compliant. Your data is safe.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-card-num">04</div>
+          <div class="why-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+          </div>
+          <h4>Dedicated Manager</h4>
+          <p>Personal account manager from day one. Always available.</p>
+        </div>
       </div>
-      <div class="process-visual">
-        <div class="process-card">
-          <div class="process-card-header">
-            <div class="process-card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-            <div class="process-card-info"><h4>Quick Setup</h4><p>5 min form</p></div>
+
+      <div class="counter-section">
+        <div class="counter-item">
+          <div class="counter-value counter">1M+</div>
+          <div class="counter-label">Leads Generated</div>
+        </div>
+        <div class="counter-item">
+          <div class="counter-value counter">2.5x</div>
+          <div class="counter-label">Avg ROI</div>
+        </div>
+        <div class="counter-item">
+          <div class="counter-value counter">99.9</div>
+          <div class="counter-label">% Lead Quality</div>
+        </div>
+        <div class="counter-item">
+          <div class="counter-value">100%</div>
+          <div class="counter-label">Client Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process" class="section-pad">
+    <div class="process-header">
+      <div class="section-label" style="justify-content: center;">Our Process</div>
+      <h2 class="section-title">From Inquiry To<br><span class="highlight">Closed Deal.</span></h2>
+    </div>
+
+    <div class="process-timeline">
+      <div class="process-line">
+        <div class="process-line-fill" id="process-line-fill"></div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-node"><span>01</span></div>
+        <div class="process-content">
+          <h3>Inquiry Form</h3>
+          <p>Submit details through our portal. Takes 5 minutes.</p>
+        </div>
+        <div class="process-visual">
+          <div class="process-card">
+            <div class="process-card-header">
+              <div class="process-card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="#00C2D4" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                </svg></div>
+              <div class="process-card-info">
+                <h4>Quick Setup</h4>
+                <p>5 min form</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-node"><span>02</span></div>
+        <div class="process-content">
+          <h3>Strategy Call</h3>
+          <p>We build custom strategy within 24 hours.</p>
+        </div>
+        <div class="process-visual">
+          <div class="process-card">
+            <div class="process-card-header">
+              <div class="process-card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="#00C2D4" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07" />
+                </svg></div>
+              <div class="process-card-info">
+                <h4>24hr Response</h4>
+                <p>Custom plan</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-node"><span>03</span></div>
+        <div class="process-content">
+          <h3>Onboarding</h3>
+          <p>Script, train, launch — fully briefed agents.</p>
+        </div>
+        <div class="process-visual">
+          <div class="process-card">
+            <div class="process-card-header">
+              <div class="process-card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="#00C2D4" stroke-width="2">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="8.5" cy="7" r="4" />
+                  <line x1="20" y1="8" x2="20" y2="14" />
+                  <line x1="23" y1="11" x2="17" y2="11" />
+                </svg></div>
+              <div class="process-card-info">
+                <h4>Agent Training</h4>
+                <p>Specialists</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-node"><span>04</span></div>
+        <div class="process-content">
+          <h3>Track & Optimize</h3>
+          <p>Live dashboard, weekly reviews, continuous A/B testing.</p>
+        </div>
+        <div class="process-visual">
+          <div class="process-card">
+            <div class="process-card-header">
+              <div class="process-card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="#00C2D4" stroke-width="2">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                </svg></div>
+              <div class="process-card-info">
+                <h4>Real-time</h4>
+                <p>Optimization</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    
-    <div class="process-step">
-      <div class="process-node"><span>02</span></div>
-      <div class="process-content">
-        <h3>Strategy Call</h3>
-        <p>We build custom strategy within 24 hours.</p>
+  </section>
+
+  <!-- Results -->
+  <section id="results" class="section-pad">
+    <div class="results-bg"></div>
+
+    <div class="results-header">
+      <div class="section-label" style="justify-content: center;">Our Results</div>
+      <h2 class="section-title">Metrics That<br><span class="highlight">Matter.</span></h2>
+    </div>
+
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-ring">
+          <svg viewBox="0 0 100 100">
+            <circle class="bg" cx="50" cy="50" r="45" />
+            <circle class="progress" cx="50" cy="50" r="45" data-percent="85" />
+          </svg>
+          <div class="value">85%</div>
+        </div>
+        <h4>Contact Rate</h4>
       </div>
-      <div class="process-visual">
-        <div class="process-card">
-          <div class="process-card-header">
-            <div class="process-card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07"/></svg></div>
-            <div class="process-card-info"><h4>24hr Response</h4><p>Custom plan</p></div>
+      <div class="result-card">
+        <div class="result-ring">
+          <svg viewBox="0 0 100 100">
+            <circle class="bg" cx="50" cy="50" r="45" />
+            <circle class="progress" cx="50" cy="50" r="45" data-percent="94" />
+          </svg>
+          <div class="value">99.8%</div>
+        </div>
+        <h4>Lead Quality</h4>
+      </div>
+      <div class="result-card">
+        <div class="result-ring">
+          <svg viewBox="0 0 100 100">
+            <circle class="bg" cx="50" cy="50" r="45" />
+            <circle class="progress" cx="50" cy="50" r="45" data-percent="98" />
+          </svg>
+          <div class="value">82%</div>
+        </div>
+        <h4>Performance Score</h4>
+      </div>
+      <div class="result-card">
+        <div class="result-ring">
+          <svg viewBox="0 0 100 100">
+            <circle class="bg" cx="50" cy="50" r="45" />
+            <circle class="progress" cx="50" cy="50" r="45" data-percent="85" />
+          </svg>
+          <div class="value">2.5x</div>
+        </div>
+        <h4>Avg ROI</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="section-pad">
+    <div class="testimonials-header">
+      <div class="section-label" style="justify-content: center;">Success Stories</div>
+      <h2 class="section-title">Real Clients.<br><span class="highlight">Real Results.</span></h2>
+    </div>
+
+    <div class="testimonials-wrapper">
+      <div class="testimonials-track">
+        <!-- Original 5 cards -->
+        <div class="testimonial-card testimonial-video-card">
+          <iframe class="testimonial-video-iframe"
+            src="https://www.youtube.com/embed/5-pNv-g0wyo?rel=0&modestbranding=1" allow="autoplay; encrypted-media"
+            allowfullscreen></iframe>
+        </div>
+        <div class="testimonial-card testimonial-video-card">
+          <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/RN14zUD0dgo?si=y2uDbwGcYL2NaXJB"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <div class="testimonial-card testimonial-video-card">
+          <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/22Aon2UVfcY?si=E86RwQo3VJGW1iUZ"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <div class="testimonial-card testimonial-video-card">
+          <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/FRYYITsJSCM?si=1hva6eDHhRe2K7ez"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <div class="testimonial-card testimonial-video-card">
+          <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/EqNaHbeAY6o?si=8znm-WVWsj0mfxJ3"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+
+        <!-- Duplicate 5 cards for infinite scroll -->
+        <div class="testimonial-card testimonial-video-card">
+          <iframe class="testimonial-video-iframe"
+            src="https://www.youtube.com/embed/5-pNv-g0wyo?rel=0&modestbranding=1" allow="autoplay; encrypted-media"
+            allowfullscreen></iframe>
+        </div>
+        <div class="testimonial-card testimonial-video-card">
+          <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/RN14zUD0dgo?si=y2uDbwGcYL2NaXJB"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <div class="testimonial-card testimonial-video-card">
+          <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/22Aon2UVfcY?si=E86RwQo3VJGW1iUZ"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <div class="testimonial-card testimonial-video-card">
+          <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/FRYYITsJSCM?si=1hva6eDHhRe2K7ez"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <div class="testimonial-card testimonial-video-card">
+          <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/EqNaHbeAY6o?si=8znm-WVWsj0mfxJ3"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="section-pad">
+    <div class="cta-bg"></div>
+    <div class="cta-grid-bg"></div>
+
+    <div class="cta-container">
+      <div class="cta-content">
+        <div class="section-label">Get Started</div>
+        <h2 class="section-title">Ready To<br><span class="highlight">Scale?</span></h2>
+        <p class="section-text">Let's architect your growth strategy today.</p>
+
+        <div class="cta-contact">
+          <a href="tel:4049055636" class="cta-contact-item">
+            <div class="cta-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C2D4"
+                stroke-width="2">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3" />
+              </svg></div>
+            <div class="cta-contact-info"><span>Phone</span>
+              <p>+1 (404) 905-5636</p>
+            </div>
+          </a>
+          <a href="mailto:support@runitremote.com" class="cta-contact-item">
+            <div class="cta-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C2D4"
+                stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg></div>
+            <div class="cta-contact-info"><span>Email</span>
+              <p>support@runitremote.com</p>
+            </div>
+          </a>
+
+          <a href="mailto:support@runitremote.com" class="cta-contact-item">
+            <div class="cta-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C2D4"
+                stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg></div>
+            <div class="cta-contact-info"><span>Hours</span>
+              <p>Mon–Fri 8am–8pm EST</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="cta-form-container">
+        <h3 class="form-title">Send a Message</h3>
+        <p class="form-subtitle">We'll respond within 24 hours.</p>
+
+        <form id="cta-form">
+          <div class="form-row">
+            <div class="form-group"><input type="text" class="form-input" placeholder="First Name" required></div>
+            <div class="form-group"><input type="text" class="form-input" placeholder="Last Name" required></div>
+          </div>
+          <div class="form-group"><input type="email" class="form-input" placeholder="Email" required></div>
+          <div class="form-group"><input type="tel" maxlength="13" class="form-input" placeholder="Phone"></div>
+          <div class="form-group">
+            <select class="form-input" required>
+              <option value="">Select Industry</option>
+              <option style="color: black;">Home Services</option>
+              <option style="color: black;">Quality Validation</option>
+              <option style="color: black;">AI Automation</option>
+              <option style="color: black;">CRM Development</option>
+              <option style="color: black;">Customer Support</option>
+              <option style="color: black;">Website Development</option>
+              <option style="color: black;">Virtual Assistance</option>
+              <option style="color: black;">Solar Energy</option>
+              <option style="color: black;">Business Finance</option>
+              <option style="color: black;">Flooring</option>
+              <option style="color: black;">Data Mining</option>
+              <option style="color: black;">Merchant Sales</option>
+              <option style="color: black;">Internet & Telecom</option>
+              <option style="color: black;">Life Insurance</option>
+              <option style="color: black;">Other</option>
+            </select>
+          </div>
+          <div class="form-group"><textarea class="form-input" rows="3" placeholder="Your goals..."></textarea></div>
+          <button type="submit" class="form-submit">Submit →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo" style="margin-bottom: 0.5rem;">
+            <!-- <div class="nav-logo-icon" style="width: 32px; height: 32px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3"/></svg></div> -->
+            <span class="nav-logo-text"><img src="./remote-logo-.png" width="150" alt=""></span>
+          </a>
+          <p>Cold calling specialists delivering qualified leads across Real Estate, Home Services, and Solar.</p>
+          <div class="footer-social">
+            <a href="#" class="social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg></a>
+            <a href="#" class="social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg></a>
           </div>
         </div>
-      </div>
-    </div>
-    
-    <div class="process-step">
-      <div class="process-node"><span>03</span></div>
-      <div class="process-content">
-        <h3>Onboarding</h3>
-        <p>Script, train, launch — fully briefed agents.</p>
-      </div>
-      <div class="process-visual">
-        <div class="process-card">
-          <div class="process-card-header">
-            <div class="process-card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></div>
-            <div class="process-card-info"><h4>Agent Training</h4><p>Specialists</p></div>
-          </div>
+        <div>
+          <h4 class="footer-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="industry.html">Industries</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Services</h4>
+          <ul class="footer-links">
+            <li><a href="industry.html#industries-served">All Services</a></li>
+            <li><a href="#process">Our Process</a></li>
+            <li><a href="#why-us">Why Choose Us</a></li>
+            <li><a href="about.html#team">Meet the Team</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Contact</h4>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.79 19.79 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg><a href="tel:4049055636">+1 (404) 905-5636</a></div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <polyline points="22,7 12,13 2,7" />
+            </svg><a href="mailto:support@runitremote.com">support@runitremote.com</a></div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg><span>Mon–Fri 8am–8pm EST</span></div>
         </div>
       </div>
-    </div>
-    
-    <div class="process-step">
-      <div class="process-node"><span>04</span></div>
-      <div class="process-content">
-        <h3>Track & Optimize</h3>
-        <p>Live dashboard, weekly reviews, continuous A/B testing.</p>
+      <div class="footer-bottom">
+        <p>© 2024 Run It Remote LLC</p>
+        <div class="footer-bottom-links"><a href="privacy-policy.html">Privacy Policy</a><a
+            href="terms-services.html">Terms & Conditions</a></div>
       </div>
-      <div class="process-visual">
-        <div class="process-card">
-          <div class="process-card-header">
-            <div class="process-card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg></div>
-            <div class="process-card-info"><h4>Real-time</h4><p>Optimization</p></div>
-          </div>
-        </div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="modal">
+    <div id="modal-backdrop" onclick="closeModal()"></div>
+    <div id="modal-content">
+      <div class="modal-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#00C2D4"
+          stroke-width="2.5">
+          <polyline points="20 6 9 17 4 12" />
+        </svg></div>
+      <h3 class="modal-title">Message Sent!</h3>
+      <p class="modal-text">We'll reach out within 24 hours.</p>
+      <div class="modal-buttons">
+        <a href="tel:4049055636" class="btn-primary">Call Now</a>
+        <button onclick="closeModal()" class="btn-secondary">Close</button>
       </div>
     </div>
   </div>
-</section>
 
-<!-- Results -->
-<section id="results" class="section-pad">
-  <div class="results-bg"></div>
-  
-  <div class="results-header">
-    <div class="section-label" style="justify-content: center;">Our Results</div>
-    <h2 class="section-title">Metrics That<br><span class="highlight">Matter.</span></h2>
-  </div>
-  
-  <div class="results-grid">
-    <div class="result-card">
-      <div class="result-ring">
-        <svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="45"/><circle class="progress" cx="50" cy="50" r="45" data-percent="85"/></svg>
-        <div class="value">85%</div>
-      </div>
-      <h4>Contact Rate</h4>
-    </div>
-    <div class="result-card">
-      <div class="result-ring">
-        <svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="45"/><circle class="progress" cx="50" cy="50" r="45" data-percent="94"/></svg>
-        <div class="value">99.8%</div>
-      </div>
-      <h4>Lead Quality</h4>
-    </div>
-    <div class="result-card">
-      <div class="result-ring">
-        <svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="45"/><circle class="progress" cx="50" cy="50" r="45" data-percent="98"/></svg>
-        <div class="value">82%</div>
-      </div>
-      <h4>Performance Score</h4>
-    </div>
-    <div class="result-card">
-      <div class="result-ring">
-        <svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="45"/><circle class="progress" cx="50" cy="50" r="45" data-percent="85"/></svg>
-        <div class="value">2.5x</div>
-      </div>
-      <h4>Avg ROI</h4>
-    </div>
-  </div>
-</section>
-
-<!-- Testimonials -->
-<section id="testimonials" class="section-pad">
-  <div class="testimonials-header">
-    <div class="section-label" style="justify-content: center;">Success Stories</div>
-    <h2 class="section-title">Real Clients.<br><span class="highlight">Real Results.</span></h2>
-  </div>
-  
-  <div class="testimonials-wrapper">
-    <div class="testimonials-track">
-      <!-- Original 5 cards -->
-      <div class="testimonial-card testimonial-video-card">
-        <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/5-pNv-g0wyo?rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      </div>
-      <div class="testimonial-card testimonial-video-card">
-        <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/RN14zUD0dgo?si=y2uDbwGcYL2NaXJB" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      </div>
-      <div class="testimonial-card testimonial-video-card">
-        <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/22Aon2UVfcY?si=E86RwQo3VJGW1iUZ" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      </div>
-      <div class="testimonial-card testimonial-video-card">
-        <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/FRYYITsJSCM?si=1hva6eDHhRe2K7ez" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      </div>
-      <div class="testimonial-card testimonial-video-card">
-        <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/EqNaHbeAY6o?si=8znm-WVWsj0mfxJ3" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      </div>
-      
-      <!-- Duplicate 5 cards for infinite scroll -->
-      <div class="testimonial-card testimonial-video-card">
-        <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/5-pNv-g0wyo?rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      </div>
-      <div class="testimonial-card testimonial-video-card">
-        <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/RN14zUD0dgo?si=y2uDbwGcYL2NaXJB" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      </div>
-      <div class="testimonial-card testimonial-video-card">
-        <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/22Aon2UVfcY?si=E86RwQo3VJGW1iUZ" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      </div>
-      <div class="testimonial-card testimonial-video-card">
-        <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/FRYYITsJSCM?si=1hva6eDHhRe2K7ez" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      </div>
-      <div class="testimonial-card testimonial-video-card">
-        <iframe class="testimonial-video-iframe" src="https://www.youtube.com/embed/EqNaHbeAY6o?si=8znm-WVWsj0mfxJ3" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section id="cta" class="section-pad">
-  <div class="cta-bg"></div>
-  <div class="cta-grid-bg"></div>
-  
-  <div class="cta-container">
-    <div class="cta-content">
-      <div class="section-label">Get Started</div>
-      <h2 class="section-title">Ready To<br><span class="highlight">Scale?</span></h2>
-      <p class="section-text">Let's architect your growth strategy today.</p>
-      
-      <div class="cta-contact">
-        <a href="tel:4049055636" class="cta-contact-item">
-          <div class="cta-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3"/></svg></div>
-          <div class="cta-contact-info"><span>Phone</span><p>+1 (404) 905-5636</p></div>
-        </a>
-        <a href="mailto:support@runitremote.com" class="cta-contact-item">
-          <div class="cta-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-          <div class="cta-contact-info"><span>Email</span><p>support@runitremote.com</p></div>
-        </a>
-
-           <a href="mailto:support@runitremote.com" class="cta-contact-item">
-          <div class="cta-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-          <div class="cta-contact-info"><span>Hours</span><p>Mon–Fri 8am–8pm EST</p></div>
-        </a>
-      </div>
-    </div>
-    
-    <div class="cta-form-container">
-      <h3 class="form-title">Send a Message</h3>
-      <p class="form-subtitle">We'll respond within 24 hours.</p>
-      
-      <form id="cta-form">
-        <div class="form-row">
-          <div class="form-group"><input type="text" class="form-input" placeholder="First Name" required></div>
-          <div class="form-group"><input type="text" class="form-input" placeholder="Last Name" required></div>
-        </div>
-        <div class="form-group"><input type="email" class="form-input" placeholder="Email" required></div>
-        <div class="form-group"><input type="tel" maxlength="13" class="form-input" placeholder="Phone"></div>
-        <div class="form-group">
-          <select class="form-input" required>
-            <option value="">Select Industry</option>
-            <option style="color: black;">Home Services</option>
-                <option style="color: black;">Quality Validation</option>
-            <option style="color: black;">AI Automation</option>
-            <option style="color: black;">CRM Development</option>
-            <option style="color: black;">Customer Support</option>
-                <option style="color: black;">Website Development</option>
-            <option style="color: black;">Virtual Assistance</option>
-            <option style="color: black;">Solar Energy</option>
-                <option style="color: black;">Business Finance</option>
-            <option style="color: black;">Flooring</option>
-            <option style="color: black;">Data Mining</option>
-                <option style="color: black;">Merchant Sales</option>
-            <option style="color: black;">Internet & Telecom</option>
-            <option style="color: black;">Life Insurance</option>
-            <option style="color: black;">Other</option>
-          </select>
-        </div>
-        <div class="form-group"><textarea class="form-input" rows="3" placeholder="Your goals..."></textarea></div>
-        <button type="submit" class="form-submit">Submit →</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer>
-  <div class="footer-container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="#" class="nav-logo" style="margin-bottom: 0.5rem;">
-          <!-- <div class="nav-logo-icon" style="width: 32px; height: 32px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3"/></svg></div> -->
-          <span class="nav-logo-text"><img src="./remote-logo-.png" width="150" alt=""></span>
-        </a>
-        <p>Cold calling specialists delivering qualified leads across Real Estate, Home Services, and Solar.</p>
-        <div class="footer-social">
-          <a href="#" class="social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-          <a href="#" class="social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-        </div>
-      </div>
-      <div>
-        <h4 class="footer-title">Company</h4>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="industry.html">Industries</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-title">Services</h4>
-        <ul class="footer-links">
-          <li><a href="industry.html#industries-served">All Services</a></li>
-          <li><a href="#process">Our Process</a></li>
-          <li><a href="#why-us">Why Choose Us</a></li>
-          <li><a href="about.html#team">Meet the Team</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="footer-title">Contact</h4>
-        <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.79 19.79 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-</svg><a href="tel:4049055636">+1 (404) 905-5636</a></div>
-        <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-  <rect x="2" y="4" width="20" height="16" rx="2"/>
-  <polyline points="22,7 12,13 2,7"/>
-</svg><a href="mailto:support@runitremote.com">support@runitremote.com</a></div>
-        <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-  <circle cx="12" cy="12" r="10"/>
-  <polyline points="12 6 12 12 16 14"/>
-</svg><span>Mon–Fri 8am–8pm EST</span></div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2024 Run It Remote LLC</p>
-      <div class="footer-bottom-links"><a href="privacy-policy.html">Privacy Policy</a><a href="terms-services.html">Terms & Conditions</a></div>
-    </div>
-  </div>
-</footer>
-
-<!-- Modal -->
-<div id="modal">
-  <div id="modal-backdrop" onclick="closeModal()"></div>
-  <div id="modal-content">
-    <div class="modal-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#00C2D4" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-    <h3 class="modal-title">Message Sent!</h3>
-    <p class="modal-text">We'll reach out within 24 hours.</p>
-    <div class="modal-buttons">
-      <a href="tel:4049055636" class="btn-primary">Call Now</a>
-      <button onclick="closeModal()" class="btn-secondary">Close</button>
-    </div>
-  </div>
-</div>
-
-<script src="js/home.js"></script>
+  <script src="js/home.js"></script>
 
 </body>
+
 </html>

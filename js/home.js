@@ -429,6 +429,8 @@ document.querySelectorAll('.testimonial-video-play').forEach(button => {
   });
 });
 
+
+
 // =================== INITIALIZE ===================
 document.addEventListener('DOMContentLoaded', () => {
   initLenis();

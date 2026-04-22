@@ -141,6 +141,13 @@ nav.scrolled {
   color: var(--white);
 }
 
+/* .navlinksdiv{
+  position: absolute;
+  display: inline-block;
+  width: 100;
+  margin: 30%;
+} */
+
 .nav-links {
   display: flex;
   gap: 2rem;
@@ -216,7 +223,7 @@ nav.scrolled {
 .dropdown-panel {
   position: absolute;
   top: calc(100% + 10px);
-  left: 50%;
+  /* left: 70%; */
   transform: translateX(-50%) translateY(10px);
   width: min(550px, calc(100vw - 3rem));
   padding: 1.25rem;
@@ -248,11 +255,13 @@ nav.scrolled {
 }
 
 .dropdown-panel.industries-panel {
+  left: 80%;
   grid-template-columns: repeat(2, minmax(0, 1fr));
      grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .dropdown-panel.services-panel {
+  left: -60%;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
@@ -728,13 +737,13 @@ nav.scrolled {
   0% { transform: translateY(-100%); }
   100% { transform: translateY(100vh); }
 }
-.hero-scanline {
+/* .hero-scanline {
   position: absolute; left: 0; right: 0; height: 2px;
   background: linear-gradient(90deg, transparent, var(--cyan), transparent);
   opacity: 0.4; pointer-events: none; z-index: 2;
 }
 .hero-scanline-1 { animation: hero-scanline 4s linear infinite; animation-delay: 0s; }
-.hero-scanline-2 { animation: hero-scanline 4s linear infinite; animation-delay: 2s; }
+.hero-scanline-2 { animation: hero-scanline 4s linear infinite; animation-delay: 2s; } */
 
 @keyframes phone-rotate-border { to { transform: rotate(360deg); } }
 .phone-rotating-border { position: relative; }
