@@ -487,11 +487,7 @@ nav.scrolled {
   grid-template-columns: 1fr 1fr;
   overflow: hidden;
 
-  /* Background Image */
-  background: url("https://i.pinimg.com/1200x/f8/c9/27/f8c927bfe1157f3502022c6c081c9754.jpg") center/cover no-repeat;
-    background: url("https://i.pinimg.com/1200x/f8/c9/27/f8c927bfe1157f3502022c6c081c9754.jpg") center/cover no-repeat;
-  background: url("https://i.pinimg.com/1200x/f8/c9/27/f8c927bfe1157f3502022c6c081c9754.jpg") center/cover no-repeat;
-    background: url("https://i.pinimg.com/1200x/f8/c9/27/f8c927bfe1157f3502022c6c081c9754.jpg") center/cover no-repeat;
+      background: url("/assets/about-hero-img.jpg") center/cover no-repeat;
 
 
 }
