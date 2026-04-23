@@ -46,11 +46,6 @@ if (mobileBtn && mobileMenu) {
     mobileBtn.classList.toggle('active');
     mobileMenu.classList.toggle('open');
     document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-    
-    // Hide Get Started button in navbar when mobile menu is open (on mobile/tablet)
-    if (window.innerWidth <= 1024 && navCtaBtn) {
-      navCtaBtn.style.display = mobileMenu.classList.contains('open') ? 'none' : 'flex';
-    }
   });
 }
 
@@ -58,23 +53,7 @@ function closeMobileMenu() {
   mobileBtn.classList.remove('active');
   mobileMenu.classList.remove('open');
   document.body.style.overflow = '';
-  
-  // Show Get Started button in navbar when mobile menu closes (on mobile/tablet)
-  if (window.innerWidth <= 1024 && navCtaBtn) {
-    navCtaBtn.style.display = 'flex';
-  }
 }
-
-// Handle resize to reset button visibility
-window.addEventListener('resize', () => {
-  if (navCtaBtn) {
-    if (window.innerWidth > 1024) {
-      navCtaBtn.style.display = 'flex';
-    } else {
-      navCtaBtn.style.display = mobileMenu.classList.contains('open') ? 'none' : 'flex';
-    }
-  }
-});
 
 // =================== THREE.JS - HERO CANVAS ===================
 function initHeroThreeJS() {

@@ -168,13 +168,13 @@ nav.scrolled {
 }
 
 .dropdown-panel.industries-panel {
-  left: 80%;
+  left: 96%;
   grid-template-columns: repeat(2, minmax(0, 1fr));
      grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .dropdown-panel.services-panel {
-  left: -60%;
+  left: -40%;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 /* Only enable hover dropdown on desktop (laptop/desktop) */
@@ -214,6 +214,13 @@ nav.scrolled {
 }
 
 @media (max-width: 1024px) {
+  .nav-links { display: none; }
+  .nav-cta-btn { display: none !important; }
+  .mobile-menu-btn { display: flex; }
+  
+  nav { padding: 0.5rem 1.25rem; height: 52px; }
+  nav.scrolled { height: 48px; }
+  
   .dropdown-panel {
     display: none;
   }
@@ -225,8 +232,8 @@ nav.scrolled {
   border: none;
   border-radius: 18px;
   background: transparent;
-  overflow: hidden;
-}
+  overflow: hidden;}
+
 
 .mobile-submenu summary {
   list-style: none;
@@ -499,11 +506,11 @@ nav.scrolled {
 .contact-hero-content {
   position: relative;
   z-index: 10;
-  max-width: 1400px;
+  max-width: 1000px;
   margin: 0 auto;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  /* grid-template-columns: 1fr 1.2fr; */
   gap: 4rem;
   align-items: center;
 }
@@ -819,9 +826,9 @@ nav.scrolled {
 }
 
 /* Hero Right - Form */
-.contact-hero-right {
-  max-width: 550px;
-}
+/* .contact-hero-right { */
+  /* max-width: 550px; */
+/* } */
 
 .contact-breadcrumb {
   display: flex;
@@ -1378,6 +1385,38 @@ textarea.form-input {
     radial-gradient(circle at 70% 60%, rgba(0, 194, 212, 0.1) 0%, transparent 25%);
 }
 
+
+/* .map-visual {
+  position: relative;
+  height: 450px;
+  background: url("YOUR-IMAGE-URL") center/cover no-repeat;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.map-visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 1;
+}
+
+.map-visual > * {
+  position: relative;
+  z-index: 2;
+} */
+
+
+
+
+
+
+
+
+
+
 .map-placeholder {
   position: absolute;
   inset: 0;
@@ -1880,13 +1919,13 @@ footer {
   .nav-links { gap: 1.5rem; }
   .nav-time { display: none; }
   
-  .contact-hero-content { grid-template-columns: 1fr; }
+  /* .contact-hero-content { grid-template-columns: 1fr; } */
   .contact-hero-left { 
     order: 2;
     height: 450px;
     margin-top: 2rem;
   }
-  .contact-hero-right { order: 1; max-width: 100%; }
+  /* .contact-hero-right { order: 1; max-width: 100%; } */
   
   .phone-mockup { width: 240px; height: 500px; }
   .phone-float { display: none; }

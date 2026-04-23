@@ -255,13 +255,13 @@ nav.scrolled {
 }
 
 .dropdown-panel.industries-panel {
-  left: 80%;
+  left: 96%;
   grid-template-columns: repeat(2, minmax(0, 1fr));
      grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .dropdown-panel.services-panel {
-  left: -60%;
+  left: -40%;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
@@ -395,6 +395,7 @@ nav.scrolled {
   transition: all 0.3s;
   white-space: nowrap;
 }
+
 
 .btn-primary::before {
   content: '';
@@ -2456,6 +2457,7 @@ footer {
 /* Tablet Portrait */
 @media (max-width: 1024px) {
   .nav-links { display: none; }
+  .nav-cta-btn { display: none !important; }
   .mobile-menu-btn { display: flex; }
   
   nav { padding: 0.5rem 1.25rem; height: 52px; }
@@ -2554,6 +2556,9 @@ footer {
   .modal-buttons { flex-direction: column; }
   .modal-buttons .btn-primary,
   .modal-buttons .btn-secondary { width: 100%; }
+  .myBtn{
+    display: none;
+  }
 }
 
 /* Extra Small */

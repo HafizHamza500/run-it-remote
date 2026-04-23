@@ -1,232 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact Us — RUN IT REMOTE | Cold Calling & Lead Generation</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — RUN IT REMOTE | Cold Calling & Lead Generation</title>
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="icon" href="assets/favicon-runitremote.png" sizes="16x16">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" href="assets/favicon-runitremote.png" sizes="16x16">
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
 
-<!-- GSAP -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-<!-- Three.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-<!-- Lenis Smooth Scroll -->
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
 
-<!-- CSS Link -->
-<link rel="stylesheet" href="css/contact.css">
+  <!-- CSS Link -->
+  <link rel="stylesheet" href="css/contact.css">
 </head>
+
 <body>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobile-menu">
-  <a href="about.html" onclick="closeMobileMenu()">About</a>
-  <a href="industry.html" onclick="closeMobileMenu()">Industries</a>
-  <a href="services.html" onclick="closeMobileMenu()">Services</a>
-  <a href="contact.html" onclick="closeMobileMenu()">Contact Us</a>
-  <a href="#cta" class="btn-primary" onclick="closeMobileMenu()" style="margin-top: 1rem;">Get Started</a>
-</div>
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="industry.html" onclick="closeMobileMenu()">Industries</a>
+    <a href="services.html" onclick="closeMobileMenu()">Services</a>
+    <a href="contact.html" onclick="closeMobileMenu()">Contact Us</a>
+    <a href="tel:4049055636" class="btn-primary" onclick="closeMobileMenu()"
+      style="margin-top: 1rem; font-size: 15px; border-radius: 24px;"> 404.905.5636</a>
+  </div>
 
-<!-- Navbar -->
-<nav id="navbar">
-  <a href="index.html" class="nav-logo">
-       <span class="nav-logo-text"><img src="./remote-logo-.png" width="230" alt=""></span>
-  </a>
-   <ul class="nav-links">
-     <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li class="dropdown">
-      <a href="industry.html" class="dropdown-toggle">Industries <span class="dropdown-arrow">▾</span></a>
-      <div class="dropdown-panel industries-panel">
-       <div class="dropdown-column">
-          <a href="industry.html#industry-real-estate">Real Estate</a>
-          <a href="industry.html#industry-home-services">Home Services</a>
-           <a href="industry.html#industry-construction">Construction</a>
+  <!-- Navbar -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-text"><img src="./remote-logo-.png" width="230" alt=""></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li class="dropdown">
+        <a href="industry.html" class="dropdown-toggle">Industries <span class="dropdown-arrow">▾</span></a>
+        <div class="dropdown-panel industries-panel">
+          <div class="dropdown-column">
+            <a href="industry.html#industry-real-estate">Real Estate</a>
+            <a href="industry.html#industry-home-services">Home Services</a>
+            <a href="industry.html#industry-construction">Construction</a>
 
-         
-        </div>
-        <div class="dropdown-column">
-          
-          <a href="industry.html#industry-insurance">Insurance</a>
-          <a href="industry.html#industry-solar">Solar Energy</a>
-          <a href="industry.html#industry-financing">Financing</a>
-          
-        </div>
-        
-        <div class="dropdown-column">
-          <a href="industry.html#industry-mortgage">Mortgage</a>
-          <a href="industry.html#industry-telecom">Internet & Telecom</a>
-          <a href="industry.html#industry-saas">SAAS</a>
-         
-         
-        </div>
-        
-        
-        
-      </div>
-    </li>
-    <li class="dropdown">
-      <a href="services.html" class="dropdown-toggle">Services <span class="dropdown-arrow">▾</span></a>
-      <div class="dropdown-panel services-panel">
-        <div class="dropdown-column">
-          <a href="services.html#lead-generation">Lead Generation</a>
 
-          <a href="services.html#customer-support">Customer Support</a>
-          <a href="services.html#appointment-setup">Appointment Setup</a>
+          </div>
+          <div class="dropdown-column">
+
+            <a href="industry.html#industry-insurance">Insurance</a>
+            <a href="industry.html#industry-solar">Solar Energy</a>
+            <a href="industry.html#industry-financing">Financing</a>
+
+          </div>
+
+          <div class="dropdown-column">
+            <a href="industry.html#industry-mortgage">Mortgage</a>
+            <a href="industry.html#industry-telecom">Internet & Telecom</a>
+            <a href="industry.html#industry-saas">SAAS</a>
+
+
+          </div>
+
+
 
         </div>
-        <div class="dropdown-column">
-          <a href="services.html#quality-validation">Quality Validation</a>
-          <a href="services.html#ai-automation">AI Automation</a>
-          <a href="services.html#data-intelligence">Data Intelligence</a>
-           
-        </div>
-      </div>
-    </li>
-    <li><a href="contact.html" style="color: #00E5F9;">Contact Us</a></li>
-  </ul>
-  
-  
-  <a href="#cta" class="btn-primary nav-cta-btn myBtn">Get Started</a>
-  
-  <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-</nav>
+      </li>
+      <li class="dropdown">
+        <a href="services.html" class="dropdown-toggle">Services <span class="dropdown-arrow">▾</span></a>
+        <div class="dropdown-panel services-panel">
+          <div class="dropdown-column">
+            <a href="services.html#lead-generation">Lead Generation</a>
 
-<!-- =================== CONTACT HERO =================== -->
-<section id="contact-hero">
-  <!-- <canvas id="contact-hero-canvas"></canvas> -->
-  <div class="contact-hero-bg"></div>
-  <div class="contact-hero-grid"></div>
-  
-  <div class="contact-hero-content">
-    <!-- Phone Mockup -->
-    <div class="contact-hero-left">
-      <div class="phone-mockup">
-        <div class="phone-badge-top-right">
-          <div class="float-stat-value">150K+</div>
-          <div class="float-stat-label">Daily Calls</div>
-        </div>
-        <div class="phone-screen">
-          <div class="phone-screen-content">
-            <div class="phone-header">
-              <div class="phone-time" id="phone-time">10:00</div>
-              <div class="phone-date" id="phone-date">Sunday, January 5</div>
-            </div>
-            
-            <div class="phone-call-animation">
-              <div class="caller-avatar">RIR</div>
-              
-              <div class="caller-info">
-                <div class="caller-name">Run It Remote</div>
-                <div class="caller-label">Incoming Call</div>
-              </div>
-              
-              <div class="call-status">
-                <div class="call-status-dot"></div>
-                <span>Connected</span>
-              </div>
-              
-              <div class="call-duration" id="call-duration">00:00</div>
-              
-              <div class="phone-actions">
-                <button class="phone-action-btn mute">
-                  <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-                </button>
-                <button class="phone-action-btn end">
-                  <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                </button>
-                <button class="phone-action-btn speaker">
-                  <svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-                </button>
-              </div>
-            </div>
+            <a href="services.html#customer-support">Customer Support</a>
+            <a href="services.html#appointment-setup">Appointment Setup</a>
+
+          </div>
+          <div class="dropdown-column">
+            <a href="services.html#quality-validation">Quality Validation</a>
+            <a href="services.html#ai-automation">AI Automation</a>
+            <a href="services.html#data-intelligence">Data Intelligence</a>
+
           </div>
         </div>
-      </div>
-    </div>
-    
-    <!-- Contact Form -->
-    <div class="contact-hero-right">
-      <!-- <div class="contact-breadcrumb">
+      </li>
+      <li><a href="contact.html" style="color: #00E5F9;">Contact Us</a></li>
+    </ul>
+
+
+    <a href="tel:+14049055636" class="btn-primary nav-cta-btn myBtn"
+      style="font-size: 15px; border-radius: 24px;">404.905.5636</a>
+
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- =================== CONTACT HERO =================== -->
+  <section id="contact-hero">
+    <!-- <canvas id="contact-hero-canvas"></canvas> -->
+    <div class="contact-hero-bg"></div>
+    <div class="contact-hero-grid"></div>
+
+    <div class="contact-hero-content">
+      <!-- Phone Mockup -->
+
+
+      <!-- Contact Form -->
+      <div class="contact-hero-right">
+        <!-- <div class="contact-breadcrumb">
         <a href="index.html">Home</a>
         <span>/</span>
         <span class="current">Contact</span>
       </div> -->
-      
-      <div class="contact-hero-label">
-        <div class="contact-hero-label-line"></div>
-        <span>Get In Touch</span>
-      </div>
-      
-      <h1 class="contact-hero-title">
-        Let's Start A <span class="highlight">Conversation.</span>
-      </h1>
-      
-      <p class="contact-hero-desc">Ready to supercharge your sales pipeline? Fill out the form below and our team will reach out within 24 hours.</p>
-      
-      <form class="contact-form" id="contact-form" novalidate>
-        <div class="form-header">
-          <h3 class="form-title">Send Us A Message</h3>
-          <p class="form-subtitle">All fields marked with * are required</p>
+
+        <div class="contact-hero-label">
+          <div class="contact-hero-label-line"></div>
+          <span>Get In Touch</span>
         </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="firstName">First Name <span class="required">*</span></label>
-            <input type="text" id="firstName" name="firstName" class="form-input" placeholder="John" required>
-            <div class="form-error" id="firstName-error">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              <span>First name is required</span>
+
+        <h1 class="contact-hero-title">
+          Let's Start A <span class="highlight">Conversation.</span>
+        </h1>
+
+        <p class="contact-hero-desc">Ready to supercharge your sales pipeline? Fill out the form below and our team will
+          reach out within 24 hours.</p>
+
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="form-header">
+            <h3 class="form-title">Send Us A Message</h3>
+            <p class="form-subtitle">All fields marked with * are required</p>
+          </div>
+          <div class="form-row">
+
+            <div class="form-group">
+              <label for="email">Full Name<span class="required">*</span></label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="John Doe" required>
+              <div class="form-error" id="email-error">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+                <span>Valid email is required</span>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="email">Email Address <span class="required">*</span></label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="john@company.com" required>
+              <div class="form-error" id="email-error">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+                <span>Valid email is required</span>
+              </div>
             </div>
           </div>
-          <div class="form-group">
-            <label for="lastName">Last Name <span class="required">*</span></label>
-            <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Doe" required>
-            <div class="form-error" id="lastName-error">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              <span>Last name is required</span>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone Number <span class="required">*</span></label>
+              <input type="tel" id="phone" name="phone" class="form-input" placeholder="(404) 905-5636" required>
+              <div class="form-error" id="phone-error">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+                <span>Valid phone number is required</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="company">Company Name</label>
+              <input type="text" id="company" name="company" class="form-input" placeholder="Your Company">
             </div>
           </div>
-        </div>
-        
-        <div class="form-group">
-          <label for="email">Email Address <span class="required">*</span></label>
-          <input type="email" id="email" name="email" class="form-input" placeholder="john@company.com" required>
-          <div class="form-error" id="email-error">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            <span>Valid email is required</span>
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="phone">Phone Number <span class="required">*</span></label>
-            <input type="tel" id="phone" name="phone" class="form-input" placeholder="(404) 905-5636" required>
-            <div class="form-error" id="phone-error">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              <span>Valid phone number is required</span>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="company">Company Name</label>
-            <input type="text" id="company" name="company" class="form-input" placeholder="Your Company">
-          </div>
-        </div>
-        
-        <div class="form-row">
+
+          <!-- <div class="form-row">
           <div class="form-group">
             <label for="service">Service Interested In <span class="required">*</span></label>
             <select id="service" name="service" class="form-input" required>
@@ -273,354 +240,499 @@
               <span>Please select your industry</span>
             </div>
           </div>
-        </div>
-        
-        <div class="form-group" style="position: relative;">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" class="form-input" placeholder="Tell us about your goals and how we can help..." maxlength="500"></textarea>
-          <span class="char-counter" id="char-counter">0 / 500</span>
-        </div>
-        
-        <button type="submit" class="form-submit" id="submit-btn">
-          <span class="submit-text">Send Message</span>
-          <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          <div class="submit-spinner"></div>
-        </button>
-        
-        <p class="form-privacy">By submitting this form, you agree to our <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>.</p>
-      </form>
-    </div>
-  </div>
-</section>
+        </div> -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">How many deals are you closing</label>
+              <input type="email" id="email" name="email" class="form-input"
+                placeholder="How many deals are you closing" required>
+              <div class="form-error" id="email-error">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">What is your average assignment</label>
+              <input type="email" id="email" name="email" class="form-input"
+                placeholder="What is your average assignment" required>
+              <div class="form-error" id="email-error">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">How many cold callers are you looking to add to your team?</label>
+              <input type="email" id="email" name="email" class="form-input"
+                placeholder="How many cold callers are you looking to add to your team?" required>
+              <div class="form-error" id="email-error">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Have you ever used cold callers before?</label>
+              <input type="email" id="email" name="email" class="form-input"
+                placeholder="Have you ever used cold callers before?" required>
+              <div class="form-error" id="email-error">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
 
-<!-- =================== CONTACT INFO =================== -->
-<section id="contact-info">
-  <div class="contact-info-glow"></div>
-  
-  <div class="contact-info-container">
-    <div class="contact-info-header">
-      <div class="section-label" style="justify-content: center;">Contact Information</div>
-      <h2 class="section-title">Take your Business <span class="highlight">to Next Level.</span></h2>
-    </div>
-    
-    <div class="contact-info-grid">
-      <div class="contact-info-card">
-        <div class="contact-info-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-          </svg>
-        </div>
-        <h4>Phone</h4>
-        <a href="tel:4049055636">+1 (404) 905-5636</a>
-      </div>
-      
-      <div class="contact-info-card">
-        <div class="contact-info-icon">
-          <svg viewBox="0 0 24 24">
-            <rect x="2" y="4" width="20" height="16" rx="2"/>
-            <polyline points="22,7 12,13 2,7"/>
-          </svg>
-        </div>
-        <h4>Email</h4>
-        <a href="mailto:support@runitremote.com">support@runitremote.com</a>
-      </div>
-      
-      <div class="contact-info-card">
-        <div class="contact-info-icon">
-          <svg viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="10"/>
-            <polyline points="12 6 12 12 16 14"/>
-          </svg>
-        </div>
-        <h4>Business Hours</h4>
-        <p>Mon - Fri: 8am - 8pm EST<br>Sat - Sun: 10am - 4pm EST</p>
-      </div>
-      
-      <div class="contact-info-card">
-        <div class="contact-info-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-            <circle cx="12" cy="10" r="3"/>
-          </svg>
-        </div>
-        <h4>Headquarters</h4>
-        <p>Atlanta, Georgia<br>United States</p>
-      </div>
-    </div>
-  </div>
-</section>
+            <div class="form-group">
+              <label for="email">How soon are you looking to start?</label>
+              <input type="email" id="email" name="email" class="form-input"
+                placeholder="How soon are you looking to start?" required>
+              <div class="form-error" id="email-error">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Any additional info you think I should know?</label>
+              <input type="email" id="email" name="email" class="form-input"
+                placeholder="Any additional info you think I should know?" required>
+              <div class="form-error" id="email-error">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          
+          <div style="position: relative; top: 10px;" >
+            <input style="font-size: 12px;" type="checkbox" id="email" name="email" class=""
+            placeholder="Any additional info you think I should know?" required>
+            <label for="email"> Consent to Receive SMS Notifications, Alerts from Run It Remote, LLC. Message frequency varies. Message & data rates may apply. Text HELP to (404) 905-5636 for assistance. You can reply STOP to unsubscribe at any time.</label>
+            
+          </div>
+          <div style="position: relative; top: 22px;">
+            <input type="checkbox" id="email" name="email" class=""
+            placeholder="Any additional info you think I should know?" required>
+            <label for="email">By checking this box I agree to receive occasional marketing messages from Run It Remote, LLC.</label>
+            
+          </div>
 
-<!-- =================== MAP SECTION =================== -->
-<section id="map-section">
-  <div class="map-container">
-    <div class="map-content">
-      <div class="section-label">Our Locations</div>
-      <h2>Global Team. <span class="highlight">Local Expertise.</span></h2>
-      <p>With team members across multiple time zones, we provide round-the-clock coverage for your campaigns. Our distributed model ensures we're always available when your prospects are.</p>
-      
-      <div class="office-locations">
-        <div class="office-location">
-          <div class="office-location-icon">
-            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+
+          <button style="position: relative; top:30px;" type="submit" class="form-submit" id="submit-btn">
+            <span class="submit-text">Send Message</span>
+            <svg viewBox="0 0 24 24">
+              <line x1="22" y1="2" x2="11" y2="13" />
+              <polygon points="22 2 15 22 11 13 2 9 22 2" />
+            </svg>
+            <div class="submit-spinner"></div>
+          </button>
+
+          <p class="form-privacy" style="position: relative; top: 18px;">By submitting this form, you agree to our <a href="privacy-policy.html">Privacy Policy</a> and <a
+              href="terms-services.html">Terms of Service</a>.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== CONTACT INFO =================== -->
+  <section id="contact-info">
+    <div class="contact-info-glow"></div>
+
+    <div class="contact-info-container">
+      <div class="contact-info-header">
+        <div class="section-label" style="justify-content: center;">Contact Information</div>
+        <h2 class="section-title">Take your Business <span class="highlight">to Next Level.</span></h2>
+      </div>
+
+      <div class="contact-info-grid">
+        <div class="contact-info-card">
+          <div class="contact-info-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
           </div>
-          <div class="office-location-info">
-            <h5>Atlanta, USA</h5>
-            <p>Headquarters & Operations</p>
-            <span>Primary Hub</span>
+          <h4>Phone</h4>
+          <a href="tel:4049055636">+1 (404) 905-5636</a>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="contact-info-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <polyline points="22,7 12,13 2,7" />
+            </svg>
+          </div>
+          <h4>Email</h4>
+          <a href="mailto:support@runitremote.com">support@runitremote.com</a>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="contact-info-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+          </div>
+          <h4>Business Hours</h4>
+          <p>Mon - Fri: 8am - 8pm EST<br>Sat - Sun: 10am - 4pm EST</p>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="contact-info-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+          </div>
+          <h4>Headquarters</h4>
+          <p style="font-size: 14px;">Headquarters is in Atlanta, GA</p>
+          <p style="font-size: 14px;">Sales office is in Scottsdale, AZ</p>
+          <p style="font-size: 14px;">BPO operations Karachi, PK</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== MAP SECTION =================== -->
+  <!-- <section id="map-section">
+    <div class="map-container">
+      <div class="map-content">
+        <div class="section-label">Our Locations</div>
+        <h2>Global Team. <span class="highlight">Local Expertise.</span></h2>
+        <p>With team members across multiple time zones, we provide round-the-clock coverage for your campaigns. Our
+          distributed model ensures we're always available when your prospects are.</p>
+
+        <div class="office-locations">
+          <div class="office-location">
+            <div class="office-location-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <div class="office-location-info">
+              <h5>Arizona, USA</h5>
+              <p>Headquarters</p>
+              <span>Primary Hub</span>
+            </div>
+          </div>
+
+          <div class="office-location">
+            <div class="office-location-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <div class="office-location-info">
+              <h5>Manila, Philippines</h5>
+              <p>Support Operations</p>
+              <span>Operations Hub</span>
+            </div>
+          </div>
+
+          <div class="office-location">
+            <div class="office-location-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <div class="office-location-info">
+              <h5>London, UK</h5>
+              <p>Call Center Operations</p>
+              <span>EU Support</span>
+            </div>
           </div>
         </div>
-        
-        <div class="office-location">
-          <div class="office-location-icon">
-            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          <div class="office-location-info">
-            <h5>Manila, Philippines</h5>
-            <p>Call Center Operations</p>
-            <span>Operations Hub</span>
+      </div>
+
+      <div class="map-visual">
+        <div class="map-grid"></div>
+
+        <div class="map-pin map-pin-1">
+          <div class="map-pin-dot"></div>
+          <div class="map-pin-label">
+            <h6>Arizona</h6>
+            <span>HQ</span>
           </div>
         </div>
-        
-        <div class="office-location">
-          <div class="office-location-icon">
-            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+
+        <div class="map-pin map-pin-2">
+          <div class="map-pin-dot"></div>
+          <div class="map-pin-label">
+            <h6>Manila</h6>
+            <span>Operations</span>
           </div>
-          <div class="office-location-info">
-            <h5>London, UK</h5>
-            <p>European Support</p>
+        </div>
+
+        <div class="map-pin map-pin-3">
+          <div class="map-pin-dot"></div>
+          <div class="map-pin-label">
+            <h6>London</h6>
             <span>EU Support</span>
           </div>
         </div>
       </div>
     </div>
-    
-    <div class="map-visual">
-      <div class="map-grid"></div>
-      
-      <div class="map-pin map-pin-1">
-        <div class="map-pin-dot"></div>
-        <div class="map-pin-label">
-          <h6>Atlanta</h6>
-          <span>HQ</span>
-        </div>
-      </div>
-      
-      <div class="map-pin map-pin-2">
-        <div class="map-pin-dot"></div>
-        <div class="map-pin-label">
-          <h6>Manila</h6>
-          <span>Operations</span>
-        </div>
-      </div>
-      
-      <div class="map-pin map-pin-3">
-        <div class="map-pin-dot"></div>
-        <div class="map-pin-label">
-          <h6>London</h6>
-          <span>EU Support</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section> -->
 
-<!-- =================== FAQ =================== -->
-<section id="contact-faq">
-  <div class="faq-container">
-    <div class="faq-header">
-      <div class="section-label" style="justify-content: center;">FAQ</div>
-      <h2 class="section-title">Common <span class="highlight">Questions.</span></h2>
-    </div>
-    
-    <div class="faq-grid">
-      <div class="faq-item">
-        <button class="faq-question">
-          <h4>How quickly will you respond to my inquiry?</h4>
-          <div class="faq-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-content">
-            We pride ourselves on rapid response times. During business hours, you can expect a response within 2-4 hours. For after-hours inquiries, we'll reach out first thing the next business day. Urgent matters? Call us directly at (404) 905-5636.
-          </div>
-        </div>
+  <!-- =================== FAQ =================== -->
+  <section id="contact-faq">
+    <div class="faq-container">
+      <div class="faq-header">
+        <div class="section-label" style="justify-content: center;">FAQ</div>
+        <h2 class="section-title">Frequently Asked <span class="highlight">Questions.</span></h2>
       </div>
-      
-      <div class="faq-item">
-        <button class="faq-question">
-          <h4>What information should I have ready before contacting you?</h4>
-          <div class="faq-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-content">
-            To help us serve you better, have the following ready: your business type/industry, current lead generation methods, target audience, monthly lead volume goals, and any specific challenges you're facing. This helps us provide tailored solutions right from the start.
-          </div>
-        </div>
-      </div>
-      
-      <div class="faq-item">
-        <button class="faq-question">
-          <h4>Do you offer free consultations?</h4>
-          <div class="faq-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-content">
-            Absolutely! We offer a free 30-minute strategy consultation to understand your needs, discuss potential solutions, and answer any questions. There's no obligation — it's simply our way of getting to know your business and showing how we can help.
-          </div>
-        </div>
-      </div>
-      
-      <div class="faq-item">
-        <button class="faq-question">
-          <h4>What's the best way to reach you for urgent matters?</h4>
-          <div class="faq-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-content">
-            For urgent matters, please call us directly at (404) 905-5636. Our phone lines are staffed Monday through Friday from 8am to 8pm EST, with emergency support available on weekends. For existing clients, you also have access to your dedicated account manager's direct line.
-          </div>
-        </div>
-      </div>
-      
-      <div class="faq-item">
-        <button class="faq-question">
-          <h4>Can I schedule a specific time for a call?</h4>
-          <div class="faq-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-content">
-            Yes! When you fill out our contact form, simply mention your preferred time and timezone in the message field. Alternatively, after your initial inquiry, we'll send you a link to our calendar where you can book a time slot that works best for your schedule.
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- =================== SOCIAL CTA =================== -->
-<section id="social-cta">
-  <div class="social-cta-container">
-    <h2 class="social-cta-title">Connect With Us On <span class="highlight">Social Media.</span></h2>
-    <p class="social-cta-desc">Follow us for industry insights, tips, and updates on how we're helping businesses grow.</p>
-    
-    <div class="social-links">
-      <a href="#" class="social-link-btn">
-        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-        <span>Facebook</span>
-      </a>
-      
-      <a href="#" class="social-link-btn">
-        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        <span>LinkedIn</span>
-      </a>
-      
-      <a href="#" class="social-link-btn">
-        <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
-        <span>Twitter</span>
-      </a>
-      
-      <a href="#" class="social-link-btn">
-        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        <span>Instagram</span>
-      </a>
-    </div>
-  </div>
-</section>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <button class="faq-question">
+            <h4>How quickly will you respond to my inquiry?</h4>
+            <div class="faq-icon">
+              <svg viewBox="0 0 24 24">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              We pride ourselves on rapid response times. During business hours, you can expect a response within 2-4
+              hours. For after-hours inquiries, we'll reach out first thing the next business day. Urgent matters? Call
+              us directly at (404) 905-5636.
+            </div>
+          </div>
+        </div>
 
-<!-- =================== FOOTER =================== -->
-<footer>
-  <div class="footer-container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="nav-logo" style="margin-bottom: 0.5rem;">
-          <span class="nav-logo-text"><img src="./remote-logo-.png" width="150" alt="Run It Remote"></span>
+        <div class="faq-item">
+          <button class="faq-question">
+            <h4>What information should I have ready before contacting you?</h4>
+            <div class="faq-icon">
+              <svg viewBox="0 0 24 24">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              To help us serve you better, have the following ready: your business type/industry, current lead
+              generation methods, target audience, monthly lead volume goals, and any specific challenges you're facing.
+              This helps us provide tailored solutions right from the start.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <h4>Do you offer free consultations?</h4>
+            <div class="faq-icon">
+              <svg viewBox="0 0 24 24">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Absolutely! We offer a free 30-minute strategy consultation to understand your needs, discuss potential
+              solutions, and answer any questions. There's no obligation — it's simply our way of getting to know your
+              business and showing how we can help.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <h4>What's the best way to reach you for urgent matters?</h4>
+            <div class="faq-icon">
+              <svg viewBox="0 0 24 24">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              For urgent matters, please call us directly at (404) 905-5636. Our phone lines are staffed Monday through
+              Friday from 8am to 8pm EST, with emergency support available on weekends. For existing clients, you also
+              have access to your dedicated account manager's direct line.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <h4>Can I schedule a specific time for a call?</h4>
+            <div class="faq-icon">
+              <svg viewBox="0 0 24 24">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Yes! When you fill out our contact form, simply mention your preferred time and timezone in the message
+              field. Alternatively, after your initial inquiry, we'll send you a link to our calendar where you can book
+              a time slot that works best for your schedule.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== SOCIAL CTA =================== -->
+  <section id="social-cta">
+    <div class="social-cta-container">
+      <h2 class="social-cta-title">Connect With Us On <span class="highlight">Social Media.</span></h2>
+      <p class="social-cta-desc">Follow us for industry insights, tips, and updates on how we're helping businesses
+        grow.</p>
+
+      <div class="social-links">
+        <a href="https://www.facebook.com/p/RunitRemote-61567232642402/?wtsid=rdr_0cjcDUkiJTzVIOqsp#" class="social-link-btn">
+          <svg viewBox="0 0 24 24">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+          </svg>
+          <span>Facebook</span>
         </a>
-        <p>Cold calling specialists delivering qualified leads across Real Estate, Home Services, and Solar.</p>
-        <div class="footer-social">
-          <a href="#" class="footer-social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-          <a href="#" class="footer-social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-        </div>
-      </div>
 
-      <div>
-        <h4 class="footer-title">Company</h4>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="industry.html">Industries</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-title">Services</h4>
-        <ul class="footer-links">
-          <li><a href="industry.html#industries-served">All Services</a></li>
-          <li><a href="services.html">Our Process</a></li>
-          <li><a href="index.html#why-us">Why Choose Us</a></li>
-          <li><a href="about.html#team">Meet the Team</a></li>
-        </ul>
-      </div>
+        <a href="#" class="social-link-btn">
+          <svg viewBox="0 0 24 24">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+            <rect x="2" y="9" width="4" height="12" />
+            <circle cx="4" cy="4" r="2" />
+          </svg>
+          <span>LinkedIn</span>
+        </a>
 
-      <div>
-        <h4 class="footer-title">Contact</h4>
-        <div class="footer-contact-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.79 19.79 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+        <a href="#" class="social-link-btn">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
           </svg>
-          <a href="tel:4049055636">+1 (404) 905-5636</a>
+          <span>Twitter</span>
+        </a>
+
+        <a href="#" class="social-link-btn">
+          <svg viewBox="0 0 24 24">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+          </svg>
+          <span>Instagram</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== FOOTER =================== -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="margin-bottom: 0.5rem;">
+            <span class="nav-logo-text"><img src="./remote-logo-.png" width="150" alt="Run It Remote"></span>
+          </a>
+          <p>Cold calling specialists delivering qualified leads across Real Estate, Home Services, and Solar.</p>
+          <div class="footer-social">
+            <a href="#" class="footer-social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg></a>
+            <a href="#" class="footer-social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg></a>
+          </div>
         </div>
-        <div class="footer-contact-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="2" y="4" width="20" height="16" rx="2"/>
-            <polyline points="22,7 12,13 2,7"/>
-          </svg>
-          <a href="mailto:support@runitremote.com">support@runitremote.com</a>
+
+        <div>
+          <h4 class="footer-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="industry.html">Industries</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
         </div>
-        <div class="footer-contact-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/>
-            <polyline points="12 6 12 12 16 14"/>
-          </svg>
-          <span>Mon–Fri 8am–8pm EST</span>
+        <div>
+          <h4 class="footer-title">Services</h4>
+          <ul class="footer-links">
+            <li><a href="industry.html#industries-served">All Services</a></li>
+            <li><a href="services.html">Our Process</a></li>
+            <li><a href="index.html#why-us">Why Choose Us</a></li>
+            <li><a href="about.html#team">Meet the Team</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Contact</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.79 19.79 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            <a href="tel:4049055636">+1 (404) 905-5636</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <polyline points="22,7 12,13 2,7" />
+            </svg>
+            <a href="mailto:support@runitremote.com">support@runitremote.com</a>
+          </div>
+          
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 Run It Remote LLC</p>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-services.html">Terms & Conditions</a>
         </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2024 Run It Remote LLC</p>
-      <div class="footer-bottom-links">
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="terms-services.html">Terms & Conditions</a>
+  </footer>
+
+  <!-- Success Modal -->
+  <div id="success-modal">
+    <div class="modal-backdrop" onclick="closeModal()"></div>
+    <div class="modal-content">
+      <div class="modal-icon">
+        <svg viewBox="0 0 24 24">
+          <polyline points="20 6 9 17 4 12" />
+        </svg>
+      </div>
+      <h3 class="modal-title">Message Sent Successfully!</h3>
+      <p class="modal-text">Thank you for reaching out. Our team will review your inquiry and get back to you within 24
+        hours.</p>
+      <div class="modal-buttons">
+        <a href="tel:4049055636" class="btn-primary">Call Us Now</a>
+        <button onclick="closeModal()" class="btn-secondary">Close</button>
       </div>
     </div>
   </div>
-</footer>
 
-<!-- Success Modal -->
-<div id="success-modal">
-  <div class="modal-backdrop" onclick="closeModal()"></div>
-  <div class="modal-content">
-    <div class="modal-icon">
-      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-    </div>
-    <h3 class="modal-title">Message Sent Successfully!</h3>
-    <p class="modal-text">Thank you for reaching out. Our team will review your inquiry and get back to you within 24 hours.</p>
-    <div class="modal-buttons">
-      <a href="tel:4049055636" class="btn-primary">Call Us Now</a>
-      <button onclick="closeModal()" class="btn-secondary">Close</button>
-    </div>
-  </div>
-</div>
-
-<script src="js/contact.js"></script>
+  <script src="js/contact.js"></script>
 
 </body>
+
 </html>

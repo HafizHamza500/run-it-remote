@@ -23,40 +23,15 @@ mobileBtn.addEventListener('click', () => {
   mobileBtn.classList.toggle('active');
   mobileMenu.classList.toggle('open');
   document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-  
-  // Hide Get Started button in navbar when mobile menu is open (on mobile/tablet)
-  if (window.innerWidth <= 1024) {
-    if (mobileMenu.classList.contains('open')) {
-      navCtaBtn.style.display = 'none';
-    } else {
-      navCtaBtn.style.display = 'flex';
-    }
-  }
 });
 
 function closeMobileMenu() {
   mobileBtn.classList.remove('active');
   mobileMenu.classList.remove('open');
   document.body.style.overflow = '';
-  
-  // Show Get Started button in navbar when mobile menu closes (on mobile/tablet)
-  if (window.innerWidth <= 1024 && navCtaBtn) {
-    navCtaBtn.style.display = 'flex';
-  }
 }
 
-// Handle resize to reset button visibility
-window.addEventListener('resize', () => {
-  if (navCtaBtn) {
-    if (window.innerWidth > 1024) {
-      // Desktop - always show
-      navCtaBtn.style.display = 'flex';
-    } else {
-      // Mobile/Tablet - show only if menu is closed
-      navCtaBtn.style.display = mobileMenu.classList.contains('open') ? 'none' : 'flex';
-    }
-  }
-});
+
 
 // Three.js
 function initThreeJS() {
@@ -374,13 +349,13 @@ gsap.fromTo('.testimonial-card',
 }
 
 // =================== FORM & MODAL ===================
-const form = document.getElementById('cta-form');
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  document.getElementById('modal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  form.reset();
-});
+// const form = document.getElementById('cta-form');
+// form.addEventListener('submit', (e) => {
+//   e.preventDefault();
+//   document.getElementById('modal').classList.add('open');
+//   document.body.style.overflow = 'hidden';
+//   form.reset();
+// });
 
 function closeModal() {
   document.getElementById('modal').classList.remove('open');

@@ -102,13 +102,13 @@ nav.scrolled {
 }
 
 .dropdown-panel.industries-panel {
-  left: 80%;
+  left: 96%;
   grid-template-columns: repeat(2, minmax(0, 1fr));
      grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .dropdown-panel.services-panel {
-  left: -60%;
+  left: -40%;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 /* Only enable hover dropdown on desktop (laptop/desktop) */
@@ -374,7 +374,7 @@ nav.scrolled {
 .overview-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
 .overview-header p { font-size: 1rem; color: var(--gray); margin-top: 1rem; }
 
-.overview-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 1.25rem; }
+.overview-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
 .ov-card {
   background: var(--black); border: 1px solid rgba(255,255,255,0.05);
   border-radius: 16px; padding: 1.5rem; text-align: center;
@@ -513,6 +513,7 @@ footer {
 }
 @media (max-width: 1024px) {
   .nav-links { display: none; }
+  .nav-cta-btn { display: none !important; }
   .mobile-menu-btn { display: flex; }
   nav { padding: 0.5rem 1.25rem; height: 52px; }
   nav.scrolled { height: 48px; }

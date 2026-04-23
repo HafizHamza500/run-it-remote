@@ -165,13 +165,13 @@ nav.scrolled {
 }
 
 .dropdown-panel.industries-panel {
-  left: 80%;
+  left: 96%;
   grid-template-columns: repeat(2, minmax(0, 1fr));
      grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .dropdown-panel.services-panel {
-  left: -60%;
+  left: -40%;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
@@ -2112,6 +2112,7 @@ footer {
 
 @media (max-width: 1024px) {
   .nav-links { display: none; }
+  .nav-cta-btn { display: none !important; }
   .mobile-menu-btn { display: flex; }
   
   nav { padding: 0.5rem 1.25rem; height: 52px; }
