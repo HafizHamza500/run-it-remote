@@ -86,23 +86,22 @@ gsap.fromTo('.ov-card', { opacity: 0, y: 40 }, {
   scrollTrigger: { trigger: '.overview-grid', start: 'top 80%' }
 });
 
-// Service sections
-document.querySelectorAll('.service-section').forEach((section, i) => {
-  const imgBox = section.querySelector('.service-img-box');
-  const content = section.querySelector('.service-content');
-  const isReverse = section.querySelector('.service-inner.reverse');
-  gsap.fromTo(imgBox, { opacity: 0, x: isReverse ? 60 : -60 }, {
-    opacity: 1, x: 0, duration: 1,
-    scrollTrigger: { trigger: section, start: 'top 65%' }
-  });
-  gsap.fromTo(content, { opacity: 0, x: isReverse ? -60 : 60 }, {
-    opacity: 1, x: 0, duration: 1, delay: 0.15,
-    scrollTrigger: { trigger: section, start: 'top 65%' }
-  });
-  gsap.fromTo(section.querySelectorAll('.sf-item'), { opacity: 0, x: -20 }, {
-    opacity: 1, x: 0, duration: 0.4, stagger: 0.08, delay: 0.3,
-    scrollTrigger: { trigger: section, start: 'top 65%' }
-  });
+// Service sections - vertical fade-up animation (matching industry page)
+document.querySelectorAll('.service-section').forEach((section, index) => {
+  gsap.fromTo(section.querySelector('.service-inner'),
+    { opacity: 0, y: 60 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 75%',
+        toggleActions: 'play none none none'
+      }
+    }
+  );
 });
 
 // CTA

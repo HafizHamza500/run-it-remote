@@ -676,6 +676,24 @@ nav.scrolled {
   content: "+";
 }
 
+/* .hover-scale {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 194, 212, 0.2);
+} */
+
+.global-stat-value {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover .global-stat-value {
+  transform: scale(1.15);
+}
+
 #about-hero-canvas {
   position: absolute;
   inset: 0;
