@@ -116,24 +116,35 @@ function initAnimations() {
   );
   
   // Counters
-  document.querySelectorAll('.counter').forEach(counter => {
-    const target = parseInt(counter.dataset.target);
-    if (target) {
-      ScrollTrigger.create({
-        trigger: counter,
-        start: 'top 85%',
-        onEnter: () => {
-          gsap.to(counter, {
-            innerHTML: target,
-            duration: 2,
-            snap: { innerHTML: 1 },
-            ease: 'power2.out'
-          });
-        },
-        once: true
-      });
+document.querySelectorAll('.counter').forEach(counter => {
+  const target = parseInt(counter.dataset.target);
+  if (!target) return;
+  counter.innerHTML = "";
+
+  const start = { value: 0 };
+
+  ScrollTrigger.create({
+    trigger: counter,
+    start: 'top 90%',
+    once: true,
+    onEnter: () => {
+      gsap.fromTo(start,
+        { value: 0 },
+        {
+          value: target,
+          duration: 1.8,
+          ease: 'power2.out',
+          onUpdate: () => {
+            counter.innerHTML = Math.floor(start.value);
+          },
+          onComplete: () => {
+            counter.innerHTML = target;
+          }
+        }
+      );
     }
   });
+});
   
   // Chart bars
   const chartBars = [50, 70, 45, 85, 60, 50, 80, 55, 75, 90, 65, 70];
