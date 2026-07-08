@@ -6,11 +6,12 @@ const loadInterval = setInterval(() => {
     progress = 100;
     clearInterval(loadInterval);
     setTimeout(() => {
-      gsap.to('#loader', {
+      const loaderEl = document.getElementById('loader');
+      gsap.to(loaderEl || {}, {
         opacity: 0,
-        duration: 0.5,
+        duration: loaderEl ? 0.5 : 0,
         onComplete: () => {
-          document.getElementById('loader').style.display = 'none';
+          if (loaderEl) loaderEl.style.display = 'none';
           initLenis();
           initAnimations();
           startCallDuration();
@@ -18,8 +19,10 @@ const loadInterval = setInterval(() => {
       });
     }, 300);
   }
-  document.getElementById('loader-bar').style.width = progress + '%';
-  document.getElementById('loader-percent').textContent = Math.round(progress) + '%';
+  const loaderBar = document.getElementById('loader-bar');
+  const loaderPercent = document.getElementById('loader-percent');
+  if (loaderBar) loaderBar.style.width = progress + '%';
+  if (loaderPercent) loaderPercent.textContent = Math.round(progress) + '%';
 }, 80);
 
 // =================== LENIS SMOOTH SCROLL ===================
@@ -356,10 +359,13 @@ function validateSmsConsent() {
 }
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwzz6Qq2nehC_RX_UFB7r6M8msKeSavdJ3G3GtTQ1LntOgGBTL7VuNtFUsz3oVAF346gA/exec";
+
+// Form submission
 contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   
-    let isValid = true;
+  // Validate all required fields
+  let isValid = true;
   const requiredFields = ['name', 'email', 'phone', 'deals', 'assignment', 'coldCallers', 'usedBefore', 'startTime'];
   
   requiredFields.forEach(fieldId => {
@@ -404,9 +410,6 @@ contactForm.addEventListener('submit', async (e) => {
   };
 
   try {
-    // Apps Script web apps don't send back CORS headers, so we use
-    // mode: "no-cors" — the request still reaches the script and gets
-    // processed, we just can't read the response back.
     await fetch(SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
