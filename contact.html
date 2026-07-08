@@ -164,15 +164,15 @@
           <div class="form-row">
 
             <div class="form-group">
-              <label for="email">Full Name<span class="required">*</span></label>
-              <input type="email" id="email" name="email" class="form-input" placeholder="John Doe" required>
-              <div class="form-error" id="email-error">
+              <label for="name">Full Name<span class="required">*</span></label>
+              <input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required>
+              <div class="form-error" id="name-error">
                 <svg viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="10" />
                   <line x1="12" y1="8" x2="12" y2="12" />
                   <line x1="12" y1="16" x2="12.01" y2="16" />
                 </svg>
-                <span>Valid email is required</span>
+                <span>Full name is required</span>
               </div>
             </div>
 
@@ -211,75 +211,80 @@
 
           <div class="form-row">
             <div class="form-group">
-              <label for="email">How many deals are you closing</label>
-              <input type="email" id="email" name="email" class="form-input"
+              <label for="deals">How many deals are you closing</label>
+              <input type="text" id="deals" name="deals" class="form-input"
                 placeholder="How many deals are you closing" required>
-              <div class="form-error" id="email-error">
+              <div class="form-error" id="deals-error">
                 <svg viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="10" />
                   <line x1="12" y1="8" x2="12" y2="12" />
                   <line x1="12" y1="16" x2="12.01" y2="16" />
                 </svg>
+                <span>This field is required</span>
               </div>
             </div>
             <div class="form-group">
-              <label for="email">What is your average assignment</label>
-              <input type="email" id="email" name="email" class="form-input"
+              <label for="assignment">What is your average assignment</label>
+              <input type="text" id="assignment" name="assignment" class="form-input"
                 placeholder="What is your average assignment" required>
-              <div class="form-error" id="email-error">
+              <div class="form-error" id="assignment-error">
                 <svg viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="10" />
                   <line x1="12" y1="8" x2="12" y2="12" />
                   <line x1="12" y1="16" x2="12.01" y2="16" />
                 </svg>
+                <span>This field is required</span>
               </div>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label for="email">How many cold callers do you want to add to your team?</label>
-              <input type="email" id="email" name="email" class="form-input"
+              <label for="coldCallers">How many cold callers do you want to add to your team?</label>
+              <input type="text" id="coldCallers" name="coldCallers" class="form-input"
                 placeholder="How many cold callers are you looking to add to your team?" required>
-              <div class="form-error" id="email-error">
+              <div class="form-error" id="coldCallers-error">
                 <svg viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="10" />
                   <line x1="12" y1="8" x2="12" y2="12" />
                   <line x1="12" y1="16" x2="12.01" y2="16" />
                 </svg>
+                <span>This field is required</span>
               </div>
             </div>
             <div class="form-group">
-              <label for="email">Have you ever used cold callers before?</label>
-              <input type="email" id="email" name="email" class="form-input"
+              <label for="usedBefore">Have you ever used cold callers before?</label>
+              <input type="text" id="usedBefore" name="usedBefore" class="form-input"
                 placeholder="Have you ever used cold callers before?" required>
-              <div class="form-error" id="email-error">
+              <div class="form-error" id="usedBefore-error">
                 <svg viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="10" />
                   <line x1="12" y1="8" x2="12" y2="12" />
                   <line x1="12" y1="16" x2="12.01" y2="16" />
                 </svg>
+                <span>This field is required</span>
               </div>
             </div>
           </div>
           <div class="form-row">
 
             <div class="form-group">
-              <label for="email">How soon are you looking to start?</label>
-              <input type="email" id="email" name="email" class="form-input"
+              <label for="startTime">How soon are you looking to start?</label>
+              <input type="text" id="startTime" name="startTime" class="form-input"
                 placeholder="How soon are you looking to start?" required>
-              <div class="form-error" id="email-error">
+              <div class="form-error" id="startTime-error">
                 <svg viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="10" />
                   <line x1="12" y1="8" x2="12" y2="12" />
                   <line x1="12" y1="16" x2="12.01" y2="16" />
                 </svg>
+                <span>This field is required</span>
               </div>
             </div>
             <div class="form-group">
-              <label for="email">Any additional info you think I should know?</label>
-              <input type="email" id="email" name="email" class="form-input"
-                placeholder="Any additional info you think I should know?" required>
-              <div class="form-error" id="email-error">
+              <label for="additionalInfo">Any additional info you think I should know?</label>
+              <input type="text" id="additionalInfo" name="additionalInfo" class="form-input"
+                placeholder="Any additional info you think I should know?">
+              <div class="form-error" id="additionalInfo-error">
                 <svg viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="10" />
                   <line x1="12" y1="8" x2="12" y2="12" />
@@ -290,15 +295,13 @@
           </div>
           
           <div style="position: relative; top: 10px;" >
-            <input style="font-size: 12px;" type="checkbox" id="email" name="email" class=""
-            placeholder="Any additional info you think I should know?" required>
-            <label for="email"> Consent to Receive SMS Notifications, Alerts from Run It Remote, LLC. Message frequency varies. Message & data rates may apply. Text HELP to (404) 905-5636 for assistance. You can reply STOP to unsubscribe at any time.</label>
+            <input style="font-size: 12px;" type="checkbox" id="smsConsent" name="smsConsent" required>
+            <label for="smsConsent"> Consent to Receive SMS Notifications, Alerts from Run It Remote, LLC. Message frequency varies. Message & data rates may apply. Text HELP to (404) 905-5636 for assistance. You can reply STOP to unsubscribe at any time.</label>
             
           </div>
           <div style="position: relative; top: 22px;">
-            <input type="checkbox" id="email" name="email" class=""
-            placeholder="Any additional info you think I should know?" required>
-            <label for="email">By checking this box I agree to receive occasional marketing messages from Run It Remote, LLC.</label>
+            <input type="checkbox" id="marketingConsent" name="marketingConsent">
+            <label for="marketingConsent">By checking this box I agree to receive occasional marketing messages from Run It Remote, LLC.</label>
             
           </div>
 

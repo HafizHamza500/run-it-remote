@@ -214,26 +214,6 @@ function initHeroThreeJS() {
 const contactForm = document.getElementById('contact-form');
 const submitBtn = document.getElementById('submit-btn');
 
-// Character counter for message
-const messageInput = document.getElementById('message');
-const charCounter = document.getElementById('char-counter');
-
-if (messageInput && charCounter) {
-  messageInput.addEventListener('input', () => {
-    const length = messageInput.value.length;
-    const max = 500;
-    charCounter.textContent = `${length} / ${max}`;
-    
-    charCounter.classList.remove('warning', 'danger');
-    if (length > 400) {
-      charCounter.classList.add('warning');
-    }
-    if (length > 480) {
-      charCounter.classList.add('danger');
-    }
-  });
-}
-
 // Phone number formatting
 const phoneInput = document.getElementById('phone');
 if (phoneInput) {
@@ -271,7 +251,7 @@ function showError(fieldId, message) {
     input.classList.remove('success');
   }
   if (error) {
-    error.querySelector('span').textContent = message;
+    if (message) error.querySelector('span').textContent = message;
     error.classList.add('show');
   }
 }
@@ -311,27 +291,30 @@ document.querySelectorAll('.form-input').forEach(input => {
   });
 });
 
+// fields that just need "required, not empty" validation
+const REQUIRED_TEXT_FIELDS = {
+  name: 'Full name is required',
+  deals: 'This field is required',
+  assignment: 'This field is required',
+  coldCallers: 'This field is required',
+  usedBefore: 'This field is required',
+  startTime: 'This field is required',
+};
+
 function validateField(input) {
   const id = input.id;
   const value = input.value.trim();
-  
+
+  if (REQUIRED_TEXT_FIELDS[id]) {
+    if (!value) {
+      showError(id, REQUIRED_TEXT_FIELDS[id]);
+      return false;
+    }
+    clearError(id);
+    return true;
+  }
+
   switch(id) {
-    case 'firstName':
-      if (!value) {
-        showError('firstName', 'First name is required');
-        return false;
-      }
-      clearError('firstName');
-      return true;
-      
-    case 'lastName':
-      if (!value) {
-        showError('lastName', 'Last name is required');
-        return false;
-      }
-      clearError('lastName');
-      return true;
-      
     case 'email':
       if (!value) {
         showError('email', 'Email is required');
@@ -355,42 +338,40 @@ function validateField(input) {
       }
       clearError('phone');
       return true;
-      
-    case 'service':
-      if (!value) {
-        showError('service', 'Please select a service');
-        return false;
-      }
-      clearError('service');
-      return true;
-      
-    case 'industry':
-      if (!value) {
-        showError('industry', 'Please select your industry');
-        return false;
-      }
-      clearError('industry');
-      return true;
-      
+
     default:
       return true;
   }
 }
 
-// Form submission
+function validateSmsConsent() {
+  const consent = document.getElementById('smsConsent');
+  const error = document.getElementById('smsConsent-error');
+  if (consent && !consent.checked) {
+    if (error) error.classList.add('show');
+    return false;
+  }
+  if (error) error.classList.remove('show');
+  return true;
+}
+
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwzz6Qq2nehC_RX_UFB7r6M8msKeSavdJ3G3GtTQ1LntOgGBTL7VuNtFUsz3oVAF346gA/exec";
 contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   
-  // Validate all required fields
-  let isValid = true;
-  const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'service', 'industry'];
+    let isValid = true;
+  const requiredFields = ['name', 'email', 'phone', 'deals', 'assignment', 'coldCallers', 'usedBefore', 'startTime'];
   
   requiredFields.forEach(fieldId => {
     const input = document.getElementById(fieldId);
-    if (!validateField(input)) {
+    if (input && !validateField(input)) {
       isValid = false;
     }
   });
+
+  if (!validateSmsConsent()) {
+    isValid = false;
+  }
   
   if (!isValid) {
     // Scroll to first error
@@ -405,22 +386,48 @@ contactForm.addEventListener('submit', async (e) => {
   // Show loading state
   submitBtn.classList.add('loading');
   submitBtn.disabled = true;
-  
-  // Simulate API call
-  await new Promise(resolve => setTimeout(resolve, 2000));
-  
-  // Reset loading state
-  submitBtn.classList.remove('loading');
-  submitBtn.disabled = false;
-  
-  // Show success modal
-  document.getElementById('success-modal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  
-  // Reset form
-  contactForm.reset();
-  clearAllErrors();
-  if (charCounter) charCounter.textContent = '0 / 500';
+
+  const data = {
+    name: document.getElementById('name').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    company: document.getElementById('company') ? document.getElementById('company').value.trim() : '',
+    deals: document.getElementById('deals').value.trim(),
+    assignment: document.getElementById('assignment').value.trim(),
+    coldCallers: document.getElementById('coldCallers').value.trim(),
+    usedBefore: document.getElementById('usedBefore').value.trim(),
+    startTime: document.getElementById('startTime').value.trim(),
+    additionalInfo: document.getElementById('additionalInfo') ? document.getElementById('additionalInfo').value.trim() : '',
+    smsConsent: document.getElementById('smsConsent') && document.getElementById('smsConsent').checked ? 'Yes' : 'No',
+    marketingConsent: document.getElementById('marketingConsent') && document.getElementById('marketingConsent').checked ? 'Yes' : 'No',
+    timestamp: new Date().toISOString(),
+  };
+
+  try {
+    // Apps Script web apps don't send back CORS headers, so we use
+    // mode: "no-cors" — the request still reaches the script and gets
+    // processed, we just can't read the response back.
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(data),
+    });
+
+    // Show success modal
+    document.getElementById('success-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    // Reset form
+    contactForm.reset();
+    clearAllErrors();
+  } catch (err) {
+    console.error('Form submit failed:', err);
+    alert('Something went wrong. Please try again or call us at (404) 905-5636.');
+  } finally {
+    submitBtn.classList.remove('loading');
+    submitBtn.disabled = false;
+  }
 });
 
 // =================== MODAL ===================
