@@ -586,3 +586,184 @@ footer {
     width: 230px;
   }
 }
+
+
+/* ===== Orbit Hero Wheel (industry-hero-right) ===== */
+
+.orbit-hero-stage {
+  --orbit-accent: #00E5F9;
+  --orbit-center-size: clamp(110px, 16vw, 180px);
+  --orbit-center-font: clamp(0.7rem, 1vw, 1rem);
+  --orbit-line-length: clamp(120px, 15vw, 190px);
+  --orbit-icon-size: clamp(52px, 7vw, 75px);
+  --orbit-icon-font: clamp(1.1rem, 1.8vw, 1.6rem);
+  position: relative;
+width: clamp(420px, 52vw, 660px);   
+  height: clamp(420px, 52vw, 660px); 
+  margin: 0 auto;
+}
+
+.orbit-wheel {
+  position: absolute;
+  inset: 0;
+  animation: orbit-hero-spin 50s linear infinite;
+}
+
+@keyframes orbit-hero-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.orbit-spoke {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+}
+
+.orbit-spoke-line {
+  position: absolute;
+  top: 0;
+  left: -1.5px;
+  width: 3px;
+  height: var(--orbit-line-length);
+  background: linear-gradient(to bottom, var(--orbit-accent), transparent);
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+.orbit-icon-circle {
+  position: absolute;
+  top: var(--orbit-line-length);
+  left: calc(-1 * var(--orbit-icon-size) / 2);
+  width: var(--orbit-icon-size);
+  height: var(--orbit-icon-size);
+  border-radius: 50%;
+  border: 2px solid var(--orbit-accent);
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--orbit-accent);
+  box-shadow: 0 0 20px rgba(0,229,249,0.3);
+  cursor: pointer;
+  /* continuously counter-rotates to cancel BOTH the static spoke angle AND the ongoing wheel spin — icon truly stays fixed/upright at all times */
+  animation: orbit-icon-counter-spin 50s linear infinite;
+  transition: box-shadow 0.35s ease, background 0.35s ease, color 0.35s ease;
+}
+
+@keyframes orbit-icon-counter-spin {
+  from { transform: rotate(calc(-1 * var(--rot))); }
+  to   { transform: rotate(calc(-1 * var(--rot) - 360deg)); }
+}
+
+.orbit-icon-circle svg {
+  width: 46%;
+  height: 46%;
+}
+
+.orbit-icon-circle:hover {
+   box-shadow: 0 0 55px rgba(0,229,249,0.85), 0 0 15px rgba(0,229,249,0.9);
+  background: var(--orbit-accent);
+  color: #0a0a0a;
+}
+
+.orbit-tooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #0a0a0a;
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  border: 1px solid var(--orbit-accent);
+  color: var(--orbit-accent);
+  letter-spacing: 0.03em;
+  z-index: 5;
+}
+
+.orbit-icon-circle:hover .orbit-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.orbit-center-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--orbit-center-size);
+  height: var(--orbit-center-size);
+  border-radius: 50%;
+  background: #0a0a0a;
+  border: 3px solid var(--orbit-accent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 800;
+  color: var(--orbit-accent);
+  box-shadow: 0 0 30px rgba(0,229,249,0.3);
+  z-index: 10;
+  letter-spacing: 0.05em;
+  animation: orbit-hero-glow 3s infinite ease-in-out;
+}
+
+.orbit-center-circle span:first-child {
+  font-size: calc(var(--orbit-center-font) * 1.9);
+  line-height: 1;
+}
+.orbit-center-circle span:last-child {
+  font-size: var(--orbit-center-font);
+  margin-top: 4px;
+  opacity: 0.85;
+}
+
+@keyframes orbit-hero-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0,229,249,0.3); }
+  50%      { box-shadow: 0 0 50px rgba(0,229,249,0.6); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+ .orbit-wheel,
+  .orbit-icon-circle { animation: none; }
+  .orbit-icon-circle { transform: rotate(calc(-1 * var(--rot))); }
+}
+
+/* ============= RESPONSIVE ============= */
+@media (max-width: 1024px) {
+  .orbit-hero-stage {
+    width: clamp(280px, 60vw, 380px);
+    height: clamp(280px, 60vw, 380px);
+    margin-top: 2.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .orbit-hero-stage {
+    --orbit-center-size: 78px;
+    --orbit-center-font: 0.55rem;
+    --orbit-line-length: 80px;
+    --orbit-icon-size: 40px;
+    width: 260px;
+    height: 260px;
+    transform: scale(0.95);
+  }
+  .orbit-tooltip { font-size: 0.62rem; padding: 5px 10px; }
+}
+
+@media (max-width: 400px) {
+  .orbit-hero-stage {
+    --orbit-line-length: 68px;
+    --orbit-icon-size: 36px;
+    width: 220px;
+    height: 220px;
+  }
+}
