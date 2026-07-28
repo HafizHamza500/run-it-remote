@@ -1,0 +1,2180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Estate Virtual Assistants — RUN IT REMOTE</title>
+  <meta name="description" content="Hire a dedicated Real Estate Virtual Assistant from Run It Remote. Lead generation, cold calling, transaction coordination and more.">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-runitremote.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #0A0A0A;
+      --bg-alt: #121212;
+      --card: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --orange: #00A3B3;
+      --orange-light:rgb(0, 229, 249);
+      --cyan: #00e5f9;
+      --text: #f5f5f7;
+      --text-dim: #9a9aa8;
+      --text-dimmer: #6d6d7d;
+      --gray: #888888;
+      --black: #0A0A0A;
+      --black-light: #111111;
+      --white: #ffffff;
+      --gray: #8a8a8a;
+      --gray-light: #b8b8b8;
+      --cyan: #00c2d4;
+    }
+    ::selection {
+  background: var(--cyan);
+  color: var(--black);
+}
+
+::-moz-selection {
+  background: var(--cyan);
+  color: var(--black);
+}
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: auto; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 3px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--orange-light);
+      margin-bottom: 1rem;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 28px;
+      height: 2px;
+      background: var(--orange);
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+    }
+
+    .highlight {
+      background: linear-gradient(90deg, var(--orange) 0%, var(--orange-light) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(90deg, var(--orange) 0%, var(--orange-light) 100%);
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      border: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 6px 20px rgba(0, 194, 212, 0.2);
+    }
+
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0, 194, 212, 0.5); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      transition: border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .btn-secondary:hover { border-color: var(--cyan); background: rgba(0, 229, 249, 0.05); }
+
+    /* ============= NAVBAR (same as contact page) ============= */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 4%;
+      background: rgba(7, 7, 13, 0.75);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .nav-logo-text img { width: 180px; }
+
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links > li > a { font-size: 15px; font-weight: 500; color: var(--text); transition: color 0.2s; position: relative; }
+    .nav-links > li > a:hover { color: var(--cyan); }
+
+    .dropdown { 
+      position: relative; 
+    }
+    .dropdown::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      right: 0;
+      height: 14px;
+      z-index: 999;
+      pointer-events: auto;
+    }
+
+    .dropdown-toggle { 
+      display: flex; 
+      align-items: center; 
+      gap: 4px; 
+    }
+
+    .dropdown-arrow { 
+      font-size: 10px; 
+    }
+
+    .dropdown-panel {
+      position: absolute;
+      top: calc(100% + 0px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      width: min(550px, calc(100vw - 3rem));
+      padding: 1.25rem;
+      background: rgba(10, 10, 10, 0.98);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.25);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+      z-index: 1000;
+      display: grid;
+      gap: 0.75rem;
+      align-items: start;
+    }
+
+    .dropdown:hover .dropdown-panel {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+      pointer-events: auto;  
+    }
+
+    .dropdown-panel.industries-panel {
+      left: 96%;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .dropdown-panel.services-panel {
+      left: -40%;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dropdown-column {
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .dropdown-column a {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      font-weight: 700;
+      white-space: nowrap;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .dropdown-column a:hover { 
+      color: var(--cyan); 
+    }
+
+    .nav-cta-btn { padding: 10px 22px !important; }
+
+    .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; }
+    .mobile-menu-btn span { width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
+
+    .mobile-menu {
+      position: fixed; top: 0; right: -100%;
+      width: 78%; max-width: 320px; height: 100vh;
+      background: var(--bg-alt);
+      z-index: 1100;
+      display: flex; flex-direction: column;
+      padding: 6rem 2rem 2rem;
+      gap: 1.5rem;
+      transition: right 0.4s ease;
+      border-left: 1px solid var(--card-border);
+    }
+    .mobile-menu.active { right: 0; }
+    .mobile-menu a { font-size: 17px; font-weight: 500; }
+
+    /* ============= HERO ============= */
+    #re-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 140px 4% 80px;
+      overflow: hidden;
+    }
+
+    .re-hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,0.015) , transparent 45%),
+        radial-gradient(circle at rgba(0, 194, 212, 0.08) 0%, transparent 60%);
+      z-index: 0;
+    }
+
+    .re-hero-grid {
+      position: absolute; inset: 0;
+      background-size: 48px 48px;
+      z-index: 0;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    }
+
+    .re-hero-content {
+      position: relative; z-index: 1;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .re-hero-title { font-size: clamp(34px, 5vw, 56px); font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; letter-spacing: -1px; }
+    .re-hero-desc { font-size: 17px; color: var(--text-dim); max-width: 520px; margin-bottom: 2rem; }
+    .re-hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .re-hero-visual {
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .re-hero-visual img {
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      transform: scale(1.2);
+      transform-origin: center;
+        box-shadow: 0 0 30px rgba(0, 194, 212, 0.45),
+              0 0 130px rgba(0, 194, 212, 0.2),
+              inset 0 0 30px rgba(0, 194, 212, 0.1);
+      border-radius:24px;
+    }
+
+  /* Generate Leads */
+#generate-leads {
+  padding: 100px 4%;
+  background: var(--bg-alt);
+}
+.gl-container {
+  max-width: 1250px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+  align-items: flex-start;
+}
+.gl-image {
+  position: relative;
+  aspect-ratio: 3/3;
+  margin-top: 3.5rem;
+}
+
+.gl-image img {
+  position: relative;
+  z-index: 2;
+  animation: gl-float 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 22px rgba(0, 194, 212, 0.35))
+          drop-shadow(0 0 55px rgba(0, 194, 212, 0.15));
+  will-change: transform;
+  object-fit:contain;
+}
+
+.gl-image::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 2%;
+  width: 46%;
+  height: 14px;
+  background: var(--cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 20px 4px var(--cyan),
+              0 0 45px 10px rgba(0, 194, 212, 0.5);
+  z-index: 1;
+  transform: translateX(-50%);
+  animation: gl-plate 4s ease-in-out infinite;
+}
+
+.gl-image::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 2%;
+  width: 60%;
+  height: 30px;
+  background: radial-gradient(ellipse at center, rgba(0,194,212,0.45) 0%, rgba(0,194,212,0) 75%);
+  filter: blur(6px);
+  z-index: 0;
+  transform: translateX(-50%);
+  animation: gl-plate 4s ease-in-out infinite;
+}
+
+@keyframes gl-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-18px); }
+}
+
+@keyframes gl-plate {
+  0%, 100% { transform: translateX(-50%) scaleX(1);    opacity: 1;   }
+  50%      { transform: translateX(-50%) scaleX(0.7);  opacity: 0.55; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gl-image img,
+  .gl-image::before,
+  .gl-image::after { animation: none; }
+}
+
+.gl-image img { width: 100%; height: 100%; object-fit: cover; }
+
+.gl-text {
+  padding-left: 2rem;
+}
+.gl-text .section-title { margin: 0.5rem 0 0.75rem; }
+
+.gl-subtitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+/* ===== Steps with arrows ===== */
+.gl-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.gl-step {
+  display: grid;
+  grid-template-columns: 200px auto 1fr;
+  align-items: center;
+  gap: 0.6rem;
+}
+.gl-step-left {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  text-align: left;
+}
+.gl-step-right {
+  font-size: 14px;
+  color: var(--text-dim);
+  text-align: left;
+  margin-left:10px;
+}
+.gl-step-arrow {
+  position: relative;
+  width: 60px;
+  height: 2px;
+  background: var(--cyan);
+  flex-shrink: 0;
+}
+.gl-step-arrow::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid var(--cyan);
+  border-right: 2px solid var(--cyan);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* ============= RESPONSIVE ============= */
+@media (max-width: 1200px) {
+  .gl-step {
+    grid-template-columns: 160px auto 1fr;
+  }
+}
+
+@media (max-width: 992px) {
+  .gl-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .gl-image {
+    margin-top: 0;
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .gl-text {
+    padding-left: 0;
+  }
+  .gl-steps {
+    width: 100%;
+  }
+  .gl-step {
+    grid-template-columns: 1fr;
+    text-align: left;
+    gap: 0.3rem;
+  }
+  .gl-step-left,
+  .gl-step-right {
+    text-align: left;
+  }
+  .gl-step-arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  #generate-leads { padding: 70px 5%; }
+  .gl-subtitle { font-size: 14px; margin-bottom: 1.5rem; }
+}
+
+    /* ============= WHAT VA CAN DO ============= */
+    #va-tasks { padding: 100px 4%; background: var(--bg); }
+    .vt-header { text-align: center; max-width: 700px; margin: 0 auto 3.5rem; }
+    .vt-header .section-label { justify-content: center; }
+    .vt-grid {
+      max-width: 1300px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+    .vt-card {
+      background: var(--card); border: 1px solid var(--card-border); border-radius: 16px;
+      padding: 2rem; transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .vt-card:hover { transform: translateY(-6px); border-color: var(--orange); }
+    .vt-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: linear-gradient(135deg, rgba(0, 194, 212, 0.15), rgba(0, 194, 212, 0.05));
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .vt-icon svg { width: 24px; height: 24px; stroke: var(--orange-light); fill: none; stroke-width: 1.8; }
+    .vt-card h4 { font-size: 18px; margin-bottom: 0.6rem; }
+    .vt-card p { font-size: 14px; color: var(--text-dim); margin-bottom: 1.25rem; }
+    .vt-link { font-size: 13px; font-weight: 600; color: var(--cyan); display: inline-flex; align-items: center; gap: 6px; }
+    .vt-cta-wrap { text-align: center; margin-top: 3rem; }
+
+
+    /* ============= RESULTS STATS ============= */
+    #results-stats { padding: 100px 4%; text-align: center; }
+    #results-stats .section-label { justify-content: center; }
+    .stats-big { font-size: clamp(48px, 8vw, 84px); font-weight: 900; color: var(--orange-light); margin: 1rem 0 0.25rem; }
+    .stats-big-label { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dimmer); margin-bottom: 3rem; }
+    .stats-row { display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; }
+    .stat-block .stat-num { font-size: 40px; font-weight: 800; color: var(--cyan); }
+    .stat-block .stat-lbl { font-size: 13px; color: var(--text-dim); margin-top: 0.4rem; }
+
+
+    /* ============= FAQ ============= */
+    #re-faq { padding: 100px 4%; background:var(--bg); }
+    .faq-header { text-align: center; max-width: 700px; margin: 0 auto 3rem; }
+    .faq-header .section-label { justify-content: center; }
+    .faq-grid { max-width: 900px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--card-border); }
+    .faq-question {
+      width: 100%; background: none; border: none; text-align: left;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.5rem 0; color: var(--text);
+    }
+    .faq-question h4 { font-size: 16px; font-weight: 600; }
+    .faq-icon svg { width: 20px; height: 20px; stroke: var(--orange-light); fill: none; stroke-width: 2; transition: transform 0.3s ease; }
+    .faq-item.active .faq-icon svg { transform: rotate(180deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-answer-content { padding: 0 0 1.5rem; color: var(--text-dim); font-size: 14px; max-width: 750px; }
+    .faq-item.active .faq-answer { max-height: 300px; }
+
+    /* ============= FOOTER (same as contact page) ============= */
+    footer { background: #0A0A0A; border-top: 1px solid var(--card-border); padding: 70px 4% 30px; }
+    .footer-container { max-width: 1300px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem; }
+    .footer-brand p { color: var(--text-dim); font-size: 14px; margin: 1rem 0 1.25rem; max-width: 320px; }
+    .footer-social { display: flex; gap: 0.75rem; }
+    .footer-social-link {
+      width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--card-border);
+      display: flex; align-items: center; justify-content: center; color: var(--text-dim);
+      transition: all 0.2s ease;
+    }
+    .footer-social-link:hover { color: var(--orange-light); border-color: var(--orange-light); }
+    .footer-title { font-size: 15px; font-weight: 700; margin-bottom: 1.2rem; }
+    .footer-links li { margin-bottom: 0.8rem; }
+    .footer-links a { font-size: 14px; color: var(--text-dim); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--cyan); }
+    .footer-contact-item { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; font-size: 14px; color: var(--text-dim); }
+    .footer-contact-item svg { width: 16px; height: 16px; stroke: var(--orange-light); fill: none; stroke-width: 2; }
+    .footer-bottom {
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+      padding-top: 1.75rem; border-top: 1px solid var(--card-border);
+      font-size: 13px; color: var(--text-dimmer);
+    }
+    .footer-bottom-links { display: flex; gap: 1.5rem; }
+    .footer-bottom-links a:hover { color: var(--cyan); }
+
+    /* ============= SCROLL REVEAL ============= */
+    .reveal { opacity: 0; transform: translateY(40px); }
+
+    /* ============= RESPONSIVE ============= */
+    @media (max-width: 992px) {
+      .re-hero-content { grid-template-columns: 1fr; }
+      .re-hero-visual { order: -1; }
+      .gl-container { grid-template-columns: 1fr; gap: 2.5rem; }
+      .gl-image { order: -1; }
+      .cr-grid { grid-template-columns: 1fr; }
+      .vt-grid, .vs-grid, .pr-grid, .res-grid { grid-template-columns: repeat(2, 1fr); }
+      .sec-container { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta-btn { display: none; }
+      .mobile-menu-btn { display: flex; }
+      .re-hero-title { font-size: 32px; }
+      .vt-grid, .vs-grid, .pr-grid, .res-grid { grid-template-columns: 1fr; }
+      .stats-row { gap: 2rem; }
+      .cta-banner-inner { flex-direction: column; text-align: center; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      #re-hero { padding-top: 120px; }
+    }
+
+    @media (max-width: 480px) {
+      .re-hero-badge { left: 8px; bottom: -14px; padding: 10px 14px; }
+      .orbit-icon { width: 40px; height: 40px; }
+      .orbit-icon svg { width: 16px; height: 16px; }
+    }
+    @media (max-width: 768px) {
+  .re-hero-visual img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    transform: scale(1);
+    transform-origin: center;
+  }
+}
+
+/* ============= LEAD FORM SECTION ============= */
+  #lead-form {
+    padding: 100px 4%;
+    background: var(--black-light);
+    position: relative;
+    overflow: hidden;
+  }
+  #lead-form::before {
+    content: '';
+    position: absolute;
+    right: -10%;
+    bottom: -20%;
+    width: 60%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(0,194,212,0.15), transparent 65%);
+    pointer-events: none;
+  }
+
+  .lf-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .lf-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--card);
+    border: 1px solid var(--orange-light);
+    border-radius: 30px;
+    padding: 10px 22px 10px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 2rem;
+    transition: background 0.25s ease;
+  }
+  .lf-badge:hover { background: rgba(0,229,249,0.08); }
+  .lf-badge-icon {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--orange), var(--orange-light));
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lf-badge-icon svg { width: 16px; height: 16px; }
+
+  .lf-title {
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 1.5rem;
+  }
+
+  .lf-desc {
+    color: var(--text-dim);
+    font-size: 17px;
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+  }
+
+  .lf-contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .lf-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+  }
+
+  .lf-contact-icon {
+    width: 40px; height: 40px; min-width: 40px; border-radius: 50%;
+    background: var(--card);
+    border: 1px solid var(--orange-light);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lf-contact-icon svg { stroke: var(--orange-light); width: 18px; height: 18px; }
+
+  /* ---- FORM CARD ---- */
+  .lf-right {
+    background: linear-gradient(160deg, rgba(0,163,179,0.12), rgba(10,10,10,0.4));
+    border: 1px solid var(--card-border);
+    border-radius: 28px;
+    padding: 2.5rem;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+
+  }
+
+  .lf-form { display: flex; flex-direction: column; gap: 1rem; }
+
+  .lf-field { position: relative; width: 100%; }
+
+  .lf-field input,
+  .lf-field select {
+    width: 100%;
+    padding: 16px 20px;
+    background: rgba(0, 163, 179, 0.1);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.25s ease, background 0.25s ease;
+    appearance: none;
+  }
+
+  .lf-field select { cursor: pointer; }
+  .lf-field select option { background: #0A0A0A; color: var(--text); }
+  .lf-field select:invalid { color: var(--text-dim); }
+
+  .lf-field input::placeholder { color: var(--text-dim); }
+
+  .lf-field input:focus,
+  .lf-field select:focus {
+    border-color: var(--orange-light);
+    background: rgba(0, 229, 249, 0.06);
+  }
+
+  .lf-field.lf-invalid input,
+  .lf-field.lf-invalid select {
+    border-color: #ff5c5c;
+  }
+
+  .lf-error {
+    display: block;
+    color: #ff8080;
+    font-size: 12px;
+    margin: 4px 4px 0;
+    min-height: 14px;
+  }
+
+  .lf-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(90deg, var(--orange) 0%, var(--orange-light) 100%);
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 16px 28px;
+    border-radius: 14px;
+    border: none;
+    margin-top: 0.5rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.2s ease;
+    box-shadow: 0 10px 28px rgba(0, 194, 212, 0.25);
+  }
+  .lf-submit:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(0, 194, 212, 0.5); }
+  .lf-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+  .lf-submit-icon {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lf-submit-icon svg { width: 14px; height: 14px; stroke: #fff; }
+
+  /* ---- SUCCESS MODAL ---- */
+  .lf-modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(6px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+    padding: 1.5rem;
+  }
+  .lf-modal-overlay.active { display: flex; }
+
+  .lf-modal {
+    background: var(--bg-alt);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: 2.5rem;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    animation: lf-pop 0.35s ease;
+  }
+  @keyframes lf-pop {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .lf-modal-icon {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--orange), var(--orange-light));
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.25rem;
+  }
+  .lf-modal-icon svg { width: 30px; height: 30px; }
+
+  .lf-modal h3 { font-size: 22px; font-weight: 800; margin-bottom: 0.6rem; }
+  .lf-modal p { color: var(--text-dim); font-size: 14px; margin-bottom: 1.5rem; }
+  .lf-modal .btn-primary { width: 100%; justify-content: center; }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 992px) {
+    .lf-container { grid-template-columns: 1fr; }
+    .lf-right { order: -1; }
+  }
+  @media (max-width: 480px) {
+    .lf-right { padding: 1.75rem; border-radius: 20px; }
+    .lf-contact-row { gap: 1rem; }
+  }
+@media (max-width: 480px) {
+  .lf-right { order: 1; }
+}
+  .lf-form-heading {
+  display: block;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+ 
+  /* =================== OVERVIEW STRIP =================== */
+  #services-overview {
+    background: var(--black);
+    padding: clamp(60px,10vw,100px) clamp(1rem,5vw,5rem);
+    position: relative; overflow: hidden;
+  }
+  .overview-glow {
+    position: absolute; width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(0,194,212,0.06) 0%, transparent 60%);
+    top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none;
+  }
+  .overview-inner { max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; }
+  .overview-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
+  .overview-header p { font-size: 0.90rem; color: var(--gray); margin-top: 1rem; }
+
+  .overview-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+  .ov-card {
+    background: var(--black); border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 16px; padding: 1.5rem; text-align: center;
+    position: relative; overflow: hidden; cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1); text-decoration: none; display: block;
+  }
+  .ov-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #00C2D4, #00A3B3);
+    transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
+  }
+  .ov-card:hover::before { transform: scaleX(1); }
+  .ov-card:hover { transform: translateY(-8px); border-color: rgba(0,194,212,0.3); box-shadow: 0 20px 50px rgba(0,194,212,0.1); }
+
+  .ov-icon {
+    width: 52px; height: 52px; margin: 0 auto 1rem;
+    background: linear-gradient(135deg, rgba(0,194,212,0.15), rgba(0,194,212,0.05));
+    border: 1px solid rgba(0,194,212,0.2); border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.4s;
+  }
+  .ov-card:hover .ov-icon { background: linear-gradient(135deg, #00C2D4, #00A3B3); }
+  .ov-card:hover .ov-icon svg { stroke: var(--black); }
+  .ov-icon svg { width: 24px; height: 24px; stroke: var(--cyan); stroke-width: 1.5; fill: none; transition: stroke 0.4s; }
+  .ov-card h4 { font-size: 0.85rem; font-weight: 800; margin-bottom: 0.4rem; color: var(--white); }
+  .ov-card p { font-size: 0.75rem; color: var(--gray); line-height: 1.5; }
+  @media (max-width: 992px) {
+  .overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .overview-header {
+    max-width: 600px;
+    margin: 0 auto 3rem;
+  }
+
+  .overview-header p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile: 1 column */
+@media (max-width: 600px) {
+  #services-overview {
+    padding: clamp(40px, 8vw, 60px) 1rem;
+  }
+
+  .overview-grid {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .overview-header {
+    max-width: 100%;
+    margin: 0 auto 2.5rem;
+  }
+
+  .overview-header .section-title {
+    font-size: 1.4rem;
+  }
+
+  .overview-header p {
+    font-size: 0.88rem;
+    padding: 0 0.5rem;
+  }
+
+  .ov-card {
+    padding: 1.25rem 1rem;
+    border-radius: 14px;
+  }
+
+  .ov-card h4 {
+    font-size: 0.9rem;
+  }
+
+  .ov-card p {
+    font-size: 0.8rem;
+  }
+
+  .ov-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .ov-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* Extra small mobile */
+@media (max-width: 380px) {
+  .overview-header .section-title {
+    font-size: 1.2rem;
+  }
+
+  .overview-header p {
+    font-size: 0.8rem;
+  }
+
+  .ov-card {
+    padding: 1rem 0.8rem;
+  }
+
+  .ov-card h4 {
+    font-size: 0.8rem;
+  }
+
+  .ov-card p {
+    font-size: 0.72rem;
+  }
+
+  .ov-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .ov-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.overview-btn-wrap {
+  text-align: center;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.btn-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 2.2rem;
+  background: linear-gradient(135deg, var(--cyan), #00A3B3);
+  color: var(--black);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 20px rgba(0, 194, 212, 0.3);
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+}
+
+.btn-explore svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-explore:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 35px rgba(0, 194, 212, 0.45);
+  background: linear-gradient(135deg, #00D4E6, #00A3B3);
+}
+
+.btn-explore:hover svg {
+  transform: translateX(5px);
+}
+
+.btn-explore:active {
+  transform: scale(0.97);
+}
+
+/* ===== RESPONSIVE BUTTON ===== */
+@media (max-width: 600px) {
+  .overview-btn-wrap {
+    margin-top: 2rem;
+  }
+
+  .btn-explore {
+    padding: 0.7rem 1.8rem;
+    font-size: 0.82rem;
+    gap: 0.5rem;
+  }
+
+  .btn-explore svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  .btn-explore {
+    padding: 0.6rem 1.4rem;
+    font-size: 0.75rem;
+  }
+
+  .btn-explore svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1050;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.mobile-overlay.active {
+  display: block;
+  opacity: 1;
+}
+.mobile-menu {
+  z-index: 1100;
+}
+
+/* Whats Included */
+#whats-included {
+  padding: 100px 4% 140px;   /* extra bottom padding so labels don't clip */
+  background: var(--black-light);
+  text-align: center;
+  overflow: hidden;
+}
+.wi-header { max-width: 700px; margin: 0 auto 5rem; }
+.wi-header .section-label { justify-content: center; }
+.wi-header .section-title { margin-top: 0.5rem; }
+
+/* ===== Orbit container ===== */
+.orbit-container {
+  --orbit-size: min(680px, 92vw);
+  --node-size: 92px;
+  --radius: calc(var(--orbit-size) / 2);
+  position: relative;
+  width: var(--orbit-size);
+  height: var(--orbit-size);
+  margin: 0 auto;
+  overflow: visible;
+  position:relative;
+  top:30px;
+}
+
+.orbit-ring {
+  position: absolute;
+  inset: 0;
+  border: 2px dashed rgba(0, 194, 212, 0.3);
+  border-radius: 50%;
+}
+
+/* ===== Center circle ===== */
+.orbit-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44%; height: 44%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #112a2c, #050c0d);
+  border: 1px solid rgba(0, 194, 212, 0.3);
+  box-shadow: 0 0 60px rgba(0, 194, 212, 0.45),
+              0 0 130px rgba(0, 194, 212, 0.2),
+              inset 0 0 30px rgba(0, 194, 212, 0.1);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  z-index: 3;
+}
+.orbit-center-icon { width: 20%; margin-bottom: 0.75rem; }
+.orbit-center-icon svg {
+  width: 100%; height: auto;
+  stroke: var(--cyan); fill: none; stroke-width: 1.6;
+  filter: drop-shadow(0 0 10px rgba(0,194,212,0.7));
+}
+.orbit-center-title { color: #fff; font-weight: 700; font-size: 20px; letter-spacing: 0.2px; }
+.orbit-center-sub { color: var(--text-dim); font-size: 13px; margin-top: 4px; }
+
+/* ===== Rotating layer ===== */
+.orbit-rotator {
+  position: absolute;
+  inset: 0;
+  animation: orbit-spin 30s linear infinite;
+}
+@keyframes orbit-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.orbit-node {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: var(--node-size); height: var(--node-size);
+  margin: calc(var(--node-size) / -2) 0 0 calc(var(--node-size) / -2);
+  transform: rotate(var(--angle)) translate(var(--radius)) rotate(calc(-1 * var(--angle)));
+}
+
+.orbit-node-inner {
+  position: relative;
+  width: var(--node-size); height: var(--node-size);
+  animation: orbit-spin-reverse 30s linear infinite;
+}
+@keyframes orbit-spin-reverse {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+.orbit-icon {
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #112a2c, #050c0d);
+  border: 1px solid rgba(0, 194, 212, 0.35);
+  box-shadow: 0 0 26px rgba(0, 194, 212, 0.55),
+              0 0 55px rgba(0, 194, 212, 0.25);
+  display: flex; align-items: center; justify-content: center;
+}
+.orbit-icon svg {
+  width: 44%; height: auto;
+  stroke: var(--cyan); fill: none; stroke-width: 1.7;
+}
+
+/* label is now absolutely positioned BELOW the icon, doesn't affect rotation pivot at all */
+.orbit-label {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 190px;
+  font-size: 13.5px;
+  color: var(--text-dim);
+  line-height: 1.55;
+  letter-spacing: 0.15px;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-rotator, .orbit-node-inner { animation: none; }
+}
+
+/* ============= RESPONSIVE ============= */
+@media (max-width: 768px) {
+  .orbit-container {
+    --orbit-size: min(520px, 94vw);
+    --node-size: 74px;
+  }
+}
+
+@media (max-width: 640px) {
+  .orbit-container {
+    width: 100%;
+    height: auto;
+  }
+  .orbit-ring { display: none; }
+  .orbit-center {
+    position: static;
+    transform: none;
+    width: 150px; height: 150px;
+    margin: 0 auto 2.2rem;
+  }
+  .orbit-rotator {
+    position: static;
+    animation: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+  .orbit-node {
+    position: static;
+    width: 100%; height: auto;
+    margin: 0;
+    transform: none;
+  }
+  .orbit-node-inner {
+    position: relative;
+    animation: none;
+    width: 100%; height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+    background: var(--card, #0e1e1f);
+    border: 1px solid rgba(0,194,212,0.15);
+    border-radius: 14px;
+    padding: 0.9rem 1.1rem;
+  }
+  .orbit-icon { width: 56px; height: 56px; flex-shrink: 0; }
+  .orbit-label {
+    position: static;
+    transform: none;
+    width: auto;
+    text-align: left;
+    font-size: 13.5px;
+  }
+}
+
+/* ============= MOBILE DROPDOWN STYLES ============= */
+@media (max-width: 768px) {
+  
+  /* Hide desktop nav */
+  .nav-links, .nav-cta-btn { display: none; }
+  .mobile-menu-btn { display: flex; }
+  
+  /* Mobile Dropdown */
+  .mobile-dropdown {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .mobile-dropdown-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    width: 100%;
+    background: none;
+    border: none;
+    font-family: inherit;
+  }
+  
+  .mobile-dropdown-btn .arrow {
+    transition: transform 0.3s ease;
+    font-size: 14px;
+    color: var(--text-dim);
+  }
+  
+  .mobile-dropdown-btn.active .arrow {
+    transform: rotate(180deg);
+  }
+  
+  .mobile-dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    padding-left: 16px;
+  }
+  
+  .mobile-dropdown-content.active {
+    max-height: 600px;
+    padding: 8px 0 16px 16px;
+  }
+  
+  .mobile-dropdown-content a {
+    display: block;
+    padding: 10px 12px;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--text-dim);
+    border-left: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+  
+  .mobile-dropdown-content a:hover {
+    color: var(--cyan);
+    border-left-color: var(--cyan);
+    background: rgba(0, 194, 212, 0.05);
+  }
+  
+  /* Mobile menu link style */
+  .mobile-menu a:not(.btn-primary) {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 17px;
+    font-weight: 500;
+  }
+  
+  .mobile-menu a:not(.btn-primary):last-of-type {
+    border-bottom: none;
+  }
+}
+
+/* Navbar Fix */
+#navbar {
+  box-shadow: none !important;
+  background: rgba(10, 10, 10, 0.92) !important;
+}
+
+.nav-links > li > a {
+  text-shadow: none !important;
+}
+
+/* Hero Fix */
+#re-hero {
+  min-height: 90vh !important;
+  padding: 120px 8% 50px !important;
+}
+
+@media (max-width: 768px) {
+  #re-hero {
+    padding: 100px 4% 30px !important;
+  }
+}
+
+
+
+
+  </style>
+</head>
+
+<body>
+
+
+ <div class="mobile-overlay" id="mobile-overlay"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="../about.html" onclick="closeMobileMenu()">About</a>
+     <!-- Industries -->
+  <div class="mobile-dropdown">
+    <button class="mobile-dropdown-btn" onclick="toggleMobileDrop(this)">
+      Industries <span class="arrow">▾</span>
+    </button>
+<div class="mobile-dropdown-content">
+  <a href="../industries/real-estate.html" onclick="closeMobileMenu()">Real Estate</a>
+  <a href="../industries/home-services.html" onclick="closeMobileMenu()">Home Services</a>
+  <a href="../industries/construction.html" onclick="closeMobileMenu()">Construction</a>
+  <a href="../industries/insurance.html" onclick="closeMobileMenu()">Insurance</a>
+  <a href="../industries/solar-energy.html" onclick="closeMobileMenu()">Solar Energy</a>
+  <a href="../industries/finance.html" onclick="closeMobileMenu()">Financing</a>
+  <a href="../industries/mortgage.html" onclick="closeMobileMenu()">Mortgage</a>
+  <a href="../industries/internet-telecom.html" onclick="closeMobileMenu()">Internet &amp; Telecom</a>
+  <a href="../industries/saas.html" onclick="closeMobileMenu()">SAAS</a>
+</div>
+  </div>
+  
+  <!-- Services -->
+  <div class="mobile-dropdown">
+    <button class="mobile-dropdown-btn" onclick="toggleMobileDrop(this)">
+      Services <span class="arrow">▾</span>
+    </button>
+<div class="mobile-dropdown-content">
+  <a href="./lead-generation.html" onclick="closeMobileMenu()">Lead Generation</a>
+  <a href="./customer-support.html" onclick="closeMobileMenu()">Customer Support</a>
+  <a href="./appointment-setup.html" onclick="closeMobileMenu()">Appointment Setup</a>
+  <a href="./quality-validation.html" onclick="closeMobileMenu()">Quality Validation</a>
+  <a href="./ai-automation.html" onclick="closeMobileMenu()">AI Automation</a>
+  <a href="./data-intelligence.html" onclick="closeMobileMenu()">Data Intelligence</a>
+</div>
+  </div>
+  
+    <a href="../contact.html" onclick="closeMobileMenu()">Contact Us</a>
+    
+  </div>
+    <a href="tel:4049055636" class="btn-primary" onclick="closeMobileMenu()" style="margin-top: 1rem; font-size: 15px; border-radius: 24px;">404.905.5636</a>
+  </div>
+
+
+  <!-- Navbar -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-text">
+        <img src="https://ericcline.runitremote.com/remote-logo-.png" width="230" alt="Run It Remote">
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li class="dropdown">
+        <a href="../industry.html" class="dropdown-toggle">Industries <span class="dropdown-arrow">▾</span></a>
+        <div class="dropdown-panel industries-panel">
+          <div class="dropdown-column">
+            <a href="../industries/real-estate.html">Real Estate</a>
+            <a href="../industries/home-services.html">Home Services</a>
+            <a href="../industries/construction.html">Construction</a>
+          </div>
+          <div class="dropdown-column">
+            <a href="../industries/insurance.html">Insurance</a>
+            <a href="../industries/solar-energy.html">Solar Energy</a>
+            <a href="../industries/finance.html">Financing</a>
+          </div>
+          <div class="dropdown-column">
+            <a href="../industries/mortgage.html">Mortgage</a>
+            <a href="../industries/internet-telecom.html">Internet & Telecom</a>
+            <a href="../industries/saas.html">SAAS</a>
+          </div>
+        </div>
+      </li>
+      <li class="dropdown">
+        <a href="../services.html" class="dropdown-toggle">Services <span class="dropdown-arrow">▾</span></a>
+        <div class="dropdown-panel services-panel">
+          <div class="dropdown-column">
+            <a href="./lead-generation.html">Lead Generation</a>
+            <a href="./customer-support.html">Customer Support</a>
+            <a href="./appointment-setup.html">Appointment Setup</a>
+          </div>
+          <div class="dropdown-column">
+            <a href="./quality-validation.html">Quality Validation</a>
+            <a href="./ai-automation.html">AI Automation</a>
+            <a href="./data-intelligence.html">Data Intelligence</a>
+          </div>
+        </div>
+      </li>
+      <li><a href="../contact.html">Contact Us</a></li>
+    </ul>
+    <a href="tel:+14049055636" class="btn-primary nav-cta-btn myBtn" style="font-size: 15px; border-radius: 24px;">404.905.5636</a>
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- =================== HERO =================== -->
+  <section id="re-hero">
+    <div class="re-hero-bg"></div>
+    <div class="re-hero-grid"></div>
+    <div class="re-hero-content">
+      <div class="re-hero-text reveal">
+        <div class="section-label">SERVICES</div>
+        <h1 class="re-hero-title">Your Business, <br><span class="highlight">Running on Autopilot</span></h1>
+        <p class="re-hero-desc">We design and deploy AI-powered workflows that handle repetitive tasks, nurture leads, and surface insights — freeing your team to focus on high-value work.</p>
+        <div class="re-hero-actions">
+          <a href="../contact.html" class="btn-primary">Book a Strategy Call</a>
+          <a href="#va-tasks" class="btn-secondary">See What They Can Do</a>
+        </div>
+      </div>
+      <div class="re-hero-visual reveal">
+        <div>
+          <img src="../assets/hero-page-ai.png" alt="Ai Automation">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== GENERATE LEADS =================== -->
+<section id="generate-leads">
+  <div class="gl-container">
+    <div class="gl-image reveal">
+      <img src="../assets/ai-automation.png" alt="Generate more leads with a Real Estate VA">
+    </div>
+    <div class="gl-text reveal">
+      <div class="section-label">THE ROADBLOCKS</div>
+      <h2 class="section-title">Is Manual Work Slowing <span class="highlight">Down Your Team?</span></h2>
+      <p class="gl-subtitle">Not every business bottleneck is a people problem — sometimes it's a process problem, and it usually shows up in one of these ways</p>
+
+      <div class="gl-steps">
+        <div class="gl-step">
+          <span class="gl-step-left">Repetitive Tasks Eat the Day</span>
+          <span class="gl-step-arrow"></span>
+          <span class="gl-step-right">Your team spends hours on work that doesn't need a shuman doing it</span>
+        </div>
+        <div class="gl-step">
+          <span class="gl-step-left">Leads Go Cold Waiting</span>
+          <span class="gl-step-arrow"></span>
+          <span class="gl-step-right">Without automated follow-up, prospects lose interest before sanyone reaches out</span>
+        </div>
+        <div class="gl-step">
+          <span class="gl-step-left">Insights Stay Buried</span>
+          <span class="gl-step-arrow"></span>
+          <span class="gl-step-right">Data sits unused because no one has time to dig through it</span>
+        </div>
+        <div class="gl-step">
+          <span class="gl-step-left">Workflows Break Down</span>
+          <span class="gl-step-arrow"></span>
+          <span class="gl-step-right">Manual handoffs between tools and teams create delays and dropped tasks</span>
+        </div>
+        <div class="gl-step">
+          <span class="gl-step-left">Growth Gets Capped</span>
+          <span class="gl-step-arrow"></span>
+          <span class="gl-step-right">Scaling manually means hiring more people just to keep up</span>
+        </div>
+        <!-- <div class="gl-step">
+          <span class="gl-step-left">Interest and intent confirmed</span>
+          <span class="gl-step-arrow"></span>
+          <span class="gl-step-right">if a lead doesn't qualify, we replace it at no extra cost</span>
+        </div> -->
+      </div>
+
+      <a href="../contact.html" class="btn-primary" style="margin-top: 1.5rem;">Book a Strategy Call</a>
+    </div>
+  </div>
+</section>
+
+  <!-- =================== WHAT VA CAN DO =================== -->
+  <section id="va-tasks">
+    <div class="vt-header reveal">
+      <div class="section-label">WHAT WE DELIVER</div>
+      <h2 class="section-title">Smart Systems That Work So  <span class="highlight"> You Don't Have To </span></h2>
+    </div>
+    <div class="vt-grid">
+      <div class="vt-card reveal">
+        <div class="vt-icon"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-4"/><path d="M9 3v4h6V3"/></svg></div>
+        <h4>AI-Powered Workflows</h4>
+        <p>Automated processes that handle repetitive tasks from start to finish</p>
+        <a href="#" class="vt-link">View details →</a>
+      </div>
+      <div class="vt-card reveal">
+        <div class="vt-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <h4>Lead Nurturing Automation</h4>
+        <p>Prospects followed up consistently, without manual effort.</p>
+        <a href="#" class="vt-link">View details →</a>
+      </div>
+      <div class="vt-card reveal">
+        <div class="vt-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <h4>Insight Surfacing</h4>
+        <p>Automated systems that surface the data your team actually needs</p>
+        <a href="#" class="vt-link">View details →</a>
+      </div>
+      <div class="vt-card reveal">
+        <div class="vt-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h4>Task Automation</h4>
+        <p>Freeing your team from repetitive work to focus on high-value tasks</p>
+        <a href="#" class="vt-link">View details →</a>
+      </div>
+      <div class="vt-card reveal">
+        <div class="vt-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></div>
+        <h4>Workflow Integration</h4>
+        <p>Automation that fits into your existing tools and processes</p>
+        <a href="#" class="vt-link">View details →</a>
+      </div>
+      <div class="vt-card reveal">
+        <div class="vt-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></div>
+        <h4>Scalable Automation</h4>
+        <p>Systems that grow with your business, without growing your headcount</p>
+        <a href="#" class="vt-link">View details →</a>
+      </div>
+    </div>
+        <div class="overview-btn-wrap">
+      <a href="../contact.html" class="btn-explore">
+        Get Start Today
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- BTN GET START TODAY -->
+
+<!-- =================== WHAT'S INCLUDED (ORBIT) =================== -->
+<section id="whats-included">
+  <div class="wi-header reveal">
+    <div class="section-label">WHAT'S INCLUDED</div>
+    <h2 class="section-title">Everything Needed to <span class="highlight">Automate The Businees Work</span></h2>
+  </div>
+
+  <div class="orbit-container reveal">
+    <div class="orbit-ring"></div>
+
+    <div class="orbit-center">
+      <div class="orbit-center-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-4z"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
+      <div class="orbit-center-title">Full Pipeline</div>
+      <div class="orbit-center-sub">Solution</div>
+    </div>
+
+    <div class="orbit-rotator">
+      <div class="orbit-node" style="--angle:-90deg">
+        <div class="orbit-node-inner">
+          <div class="orbit-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h2l3 3V7L6 10H4a1 1 0 0 0-1 1z"/><path d="M13 8a4 4 0 0 1 0 8"/><path d="M16 5a8 8 0 0 1 0 14"/></svg>
+          </div>
+          <div class="orbit-label"> Custom AI-powered workflows</div>
+        </div>
+      </div>
+
+      <div class="orbit-node" style="--angle:-18deg">
+        <div class="orbit-node-inner">
+          <div class="orbit-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-4z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <div class="orbit-label">Automated lead nurturing sequences</div>
+        </div>
+      </div>
+
+      <div class="orbit-node" style="--angle:54deg">
+        <div class="orbit-node-inner">
+          <div class="orbit-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4v5h5"/><path d="M20 20v-5h-5"/><path d="M4.5 15a8 8 0 0 0 14.5 3.5"/><path d="M19.5 9A8 8 0 0 0 5 5.5"/></svg>
+          </div>
+          <div class="orbit-label">Repetitive task automation</div>
+        </div>
+      </div>
+
+      <div class="orbit-node" style="--angle:126deg">
+        <div class="orbit-node-inner">
+          <div class="orbit-icon">
+            <svg viewBox="0 0 24 24"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 3h6v3H9z"/><path d="M9 11h6M9 15h6"/></svg>
+          </div>
+          <div class="orbit-label">Integration with your existing tools</div>
+        </div>
+      </div>
+
+      <div class="orbit-node" style="--angle:198deg">
+        <div class="orbit-node-inner">
+          <div class="orbit-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+          </div>
+          <div class="orbit-label">Ongoing workflow optimization</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== OVERVIEW QUICK NAV =================== -->
+<section id="services-overview">
+  <div class="overview-glow"></div>
+  <div class="overview-inner">
+    <div class="overview-header">
+      <div class="section-label" style="justify-content:center">INDUSTRIES WE SUPPORT</div>
+      <h2 class="section-title">Where AI Automation Makes the <span class="highlight">Biggest Impact</span></h2>
+      <p>AI Automation isn't one-size-fits-all — here's how it works across the industries we serve</p>
+    </div>
+    <div class="overview-grid">
+      <a href="#lead-generation" class="ov-card">
+        <div class="ov-icon"><svg viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h4>Real Estate</h4>
+        <p> Automate follow-ups with buyers and sellers</p>
+      </a>
+      <a href="#customer-support" class="ov-card">
+        <div class="ov-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 1-5.4 5.4l-6 6a2 2 0 0 0 2.8 2.8l6-6a4 4 0 0 1 5.4-5.4l-2.8 2.8-2-2z"/></svg></div>
+        <h4>Home Services</h4>
+        <p>Automate scheduling and reminders for jobs</p>
+      </a>
+      <a href="#appointment-setup" class="ov-card">
+        <div class="ov-icon"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 20V9l7-5 7 5v11"/><path d="M9 20v-6h6v6"/><path d="M2 9h20"/></svg></div>
+        <h4>Construction</h4>
+        <p>Automate bid follow-ups and inquiry tracking</p>
+      </a>
+      <a href="#quality-validation" class="ov-card">
+        <div class="ov-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h4>Insurance</h4>
+        <p>Automate policyholder renewal reminders</p>
+      </a>
+      <a href="#data-intelligence" class="ov-card">
+        <div class="ov-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.2" y1="4.2" x2="5.6" y2="5.6"/><line x1="18.4" y1="18.4" x2="19.8" y2="19.8"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.2" y1="19.8" x2="5.6" y2="18.4"/><line x1="18.4" y1="5.6" x2="19.8" y2="4.2"/></svg></div>
+        <h4>Solar Energy</h4>
+        <p>Automate consultation reminders and nurture flows</p>
+      </a>
+      <a href="#ai-automation" class="ov-card">
+        <div class="ov-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5.5c0-1.9-2.2-3.5-5-3.5s-5 1.6-5 3.5S9.2 9 12 9s5 1.6 5 3.5-2.2 3.5-5 3.5-5-1.6-5-3.5"/></svg></div>
+        <h4>Financing</h4>
+        <p>Automate loan follow-up sequences</p>
+      </a>
+         <a href="#data-intelligence" class="ov-card">
+        <div class="ov-icon"><svg viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><circle cx="12" cy="15" r="2.5"/><line x1="12" y1="17.5" x2="12" y2="20"/></svg></div>
+        <h4>Mortgage</h4>
+        <p>Automate borrower nurture until they're ready</p>
+      </a>
+      <a href="#ai-automation" class="ov-card">
+        <div class="ov-icon"><svg viewBox="0 0 24 24"><path d="M5 12.5a11 11 0 0 1 14 0"/><path d="M8.5 16a6 6 0 0 1 7 0"/><line x1="12" y1="19.5" x2="12.01" y2="19.5"/><path d="M1.5 9a15.5 15.5 0 0 1 21 0"/></svg></div>
+        <h4>Internet & Telecom</h4>
+        <p> Automate subscriber retention outreach</p>
+      </a>
+         <a href="#data-intelligence" class="ov-card">
+        <div class="ov-icon"><svg viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
+        <h4>Saas</h4>
+        <p>Automate trial user nurture and onboardings</p>
+      </a>
+    </div>
+
+     <div class="overview-btn-wrap">
+      <a href="../industry.html" class="btn-explore">
+        Explore All Industries
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+  <!-- =================== LEAD FORM SECTION =================== -->
+  <section id="lead-form">
+    <div class="lf-container">
+      <!-- LEFT SIDE -->
+      <div class="lf-left reveal">
+        <a href="#lead-form" class="lf-badge">
+          <span class="lf-badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+          </span>
+          Start Scaling
+        </a>
+        <h2 class="lf-title">Ready to Put Your <span class="highlight">Business on </span>Autopilot? </h2>
+        <p class="lf-desc">Team up with Run It Remote and let AI handle the repetitive work — so your team can focus on what actually grows the business.</p>
+
+        <div class="lf-contact-row">
+          <div class="lf-contact-item">
+            <span class="lf-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <span><a href="tel:4049055636"> +1 (404) 905-5636</a></span>
+          </div>
+          <div class="lf-contact-item">
+            <span class="lf-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <span>Mon-Fri 8am-8pm EST</span>
+          </div>
+        </div>
+        <div class="lf-contact-item">
+          <span class="lf-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,7 12,13 2,7"/></svg></span>
+          <span><a href="mailto:support@runitremote.com">support@runitremote.com</a></span>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE (FORM) -->
+      <div class="lf-right reveal">
+        <h3 class="lf-form-heading">Get Your <span class="highlight">Free  Startegy Call</span></h3>
+        <form id="leadForm" class="lf-form" novalidate>
+          <div class="lf-field">
+            <input type="text" id="lf-name" name="name" placeholder="Name" autocomplete="off">
+            <span class="lf-error" id="err-name"></span>
+          </div>
+          <div class="lf-field">
+            <input type="tel" id="lf-phone" name="phone" placeholder="Phone"  maxlength="12" autocomplete="off">
+            <span class="lf-error" id="err-phone"></span>
+          </div>
+          <div class="lf-field">
+            <input type="email" id="lf-email" name="email" placeholder="Email" autocomplete="off">
+            <span class="lf-error" id="err-email"></span>
+          </div>
+          <div class="lf-field">
+            <input type="text" id="lf-company" name="company" placeholder="Company name" autocomplete="off">
+            <span class="lf-error" id="err-company"></span>
+          </div>
+          <div class="lf-field">
+            <select id="lf-callers" name="callers">
+              <option value="" disabled selected>How many cold callers are you looking to add to...</option>
+              <option value="1">1 Cold Caller</option>
+              <option value="2-3">2-3 Cold Callers</option>
+              <option value="4-5">4-5 Cold Callers</option>
+              <option value="6+">6+ Cold Callers</option>
+            </select>
+            <span class="lf-error" id="err-callers"></span>
+          </div>
+          <div class="lf-field">
+            <select id="lf-timeline" name="timeline">
+              <option value="" disabled selected>How soon are you looking to start? (Optional)</option>
+              <option value="Immediately">Immediately</option>
+              <option value="1-2 weeks">1-2 Weeks</option>
+              <option value="1 month">Within a Month</option>
+              <option value="Just exploring">Just Exploring</option>
+            </select>
+          </div>
+
+          <button type="submit" class="lf-submit" id="lf-submit-btn">
+            <span class="lf-submit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>
+            <span id="lf-submit-text">Submit</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+<!-- SUCCESS MODAL -->
+  <div class="lf-modal-overlay" id="lf-modal-overlay">
+    <div class="lf-modal">
+      <div class="lf-modal-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3>Thank You!</h3>
+      <p>Your request has been submitted successfully. Our team will contact you shortly.</p>
+      <button class="btn-primary" id="lf-modal-close">Close</button>
+    </div>
+  </div>
+
+  <!-- =================== FAQ =================== -->
+  <section id="re-faq">
+    <div class="faq-header reveal">
+      <div class="section-label">Common Questions</div>
+      <h2 class="section-title">Frequently Asked <span class="highlight">Questions.</span></h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <button class="faq-question"><h4>What does the Lead Generation service include?</h4>
+          <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-content">It's designed to attract, engage, and convert high-quality leads into real customers through targeted strategies, smart outreach, and prospect nurturing.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question"><h4>What results does the Lead Generation service typically produce?</h4>
+          <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-content">On average, 2.4K+ leads per month with a 24% conversion rate.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question"><h4>What does the Appointment Setup service cover?</h4>
+          <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-content">The team handles outreach through confirmed booking — pre-qualifying prospects, handling objections, and landing meetings directly on the client's calendar.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question"><h4>What results does Appointment Setup typically produce?</h4>
+          <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-content">On average, 2.1K+ leads per month with a 22% conversion rate, and industry-wide a 94% show rate for booked appointments</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question"><h4>What does the Customer Support service include?</h4>
+          <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-content">Support across voice, chat, and email — inbound calls, ticket handling, and client relations, with a focus on first-contact resolution.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question"><h4>What kind of volume does the Customer Support team handle?</h4>
+          <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-content">On average, 1.5K+ tickets per month with a 98% conversion/resolution rate.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question"><h4>What is included in Quality Validation?</h4>
+          <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-content">Every lead, call, and interaction goes through a multi-tier process that verifies intent, confirms accuracy, and scores each touchpoint before it reaches the client.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question"><h4>What results does Quality Validation typically produce?</h4>
+          <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-content">On average, 1.8K+ leads per month processed with 100% accuracy.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question"><h4>What does the Data Intelligence service do?</h4>
+          <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-content">It cleans, enriches, verifies, and structures contact lists/business data so outreach reaches accurate decision-makers, turning data into insights for smarter growth.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question"><h4>What results does Data Intelligence typically produce?</h4>
+          <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-content">On average, 1.0K+ leads per month with a 32% conversion rate.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question"><h4>What does the AI Automation service include?</h4>
+          <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-content">AI-powered workflows that handle repetitive tasks, nurture leads, and surface insights, including process automation and smart workflow integration.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question"><h4>What results does AI Automation typically produce?</h4>
+          <div class="faq-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-content">On average, 3.1K+ leads per month with a 45% efficiency gain.</div></div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- =================== FOOTER (same as contact page) =================== -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo" style="margin-bottom: 0.5rem;">
+            <span class="nav-logo-text"><img src="https://ericcline.runitremote.com/remote-logo-.png" width="230" alt="Run It Remote"></span>
+          </a>
+          <p>We power your business growth through strategic, results-driven cold calling. At Run It Remote, we turn conversations into opportunities that drive real sales impact.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/p/RunitRemote-61567232642402/?wtsid=rdr_0cjcDUkiJTzVIOqsp#" target="_blank" class="footer-social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://www.youtube.com/@RunIt.Remote" target="_blank" class="footer-social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../industry.html">Industries</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Services</h4>
+          <ul class="footer-links">
+            <li><a href="../services.html#services-overview">All Services</a></li>
+            <li><a href="../index.html#process">Our Process</a></li>
+            <li><a href="../index.html#why-us">Why Choose Us</a></li>
+            <li><a href="../about.html#our-story">Our Journey</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Contact</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.79 19.79 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:4049055636">+1 (404) 905-5636</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,7 12,13 2,7"/></svg>
+            <a href="mailto:support@runitremote.com">support@runitremote.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Run It Remote LLC</p>
+        <div class="footer-bottom-links">
+          <a href="../privacy-policy.html">Privacy Policy</a>
+          <a href="../terms-services.html">Terms & Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ============= Mobile menu =============
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileOverlay = document.getElementById('mobile-overlay');
+
+function openMobileMenu() {
+  mobileMenu.classList.add('active');
+  mobileOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobileMenu() {
+  mobileMenu.classList.remove('active');
+  mobileOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+mobileMenuBtn.addEventListener('click', function(e) {
+  e.stopPropagation();
+  if (mobileMenu.classList.contains('active')) {
+    closeMobileMenu();
+  } else {
+    openMobileMenu();
+  }
+});
+
+// Overlay click se close
+mobileOverlay.addEventListener('click', closeMobileMenu);
+
+// Mobile menu ke andar click se close nahi hona chahiye
+mobileMenu.addEventListener('click', function(e) {
+  e.stopPropagation();
+});
+
+// Mobile menu ke links par click se close
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+  link.addEventListener('click', closeMobileMenu);
+});
+
+// ============= Mobile Dropdown Toggle =============
+function toggleMobileDrop(element) {
+  // Toggle arrow
+  element.classList.toggle('active');
+  
+  // Get content panel
+  const content = element.nextElementSibling;
+  content.classList.toggle('active');
+  
+  // Close other open dropdowns
+  const allBtns = document.querySelectorAll('.mobile-dropdown-btn');
+  allBtns.forEach(btn => {
+    if (btn !== element && btn.classList.contains('active')) {
+      btn.classList.remove('active');
+      const otherContent = btn.nextElementSibling;
+      if (otherContent) {
+        otherContent.classList.remove('active');
+      }
+    }
+  });
+}
+
+// ============= Close mobile menu on outside click =============
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.getElementById('mobile-menu-btn');
+  
+  if (menu && menu.classList.contains('active')) {
+    if (!menu.contains(e.target) && !btn.contains(e.target)) {
+      closeMobileMenu();
+    }
+  }
+});
+
+
+    // ============= Lenis smooth scroll =============
+    const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+
+    gsap.registerPlugin(ScrollTrigger);
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+
+    // ============= Scroll reveal animations =============
+    document.querySelectorAll('.reveal').forEach((el) => {
+      gsap.to(el, {
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+    });
+
+    ScrollTrigger.create({
+      start: 'top -80',
+      onUpdate: (self) => {
+        document.getElementById('navbar').style.boxShadow = self.progress > 0
+          ? '0 10px 30px rgba(0,0,0,0.35)' : 'none';
+      }
+    });
+
+    // ============= FAQ accordion =============
+    document.querySelectorAll('.faq-question').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const wasActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach((i) => i.classList.remove('active'));
+        if (!wasActive) item.classList.add('active');
+      });
+    });
+    const track = document.querySelector(".trusted-track");
+    if (track) {
+        track.innerHTML += track.innerHTML;
+    }
+
+    (function () {
+    const form = document.getElementById('leadForm');
+    const submitBtn = document.getElementById('lf-submit-btn');
+    const submitText = document.getElementById('lf-submit-text');
+    const modalOverlay = document.getElementById('lf-modal-overlay');
+    const modalClose = document.getElementById('lf-modal-close');
+
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzXcpyVH-vnIJadoKKFThgxlw8ayeM7ah1-aADYllextpkQg4E_wjr_ScDS2Yx7SN0Xkw/exec";
+
+    function setError(fieldId, errorId, message) {
+      const field = document.getElementById(fieldId);
+      const errorEl = document.getElementById(errorId);
+      field.closest('.lf-field').classList.add('lf-invalid');
+      errorEl.textContent = message;
+    }
+
+    function clearError(fieldId, errorId) {
+      const field = document.getElementById(fieldId);
+      const errorEl = document.getElementById(errorId);
+      field.closest('.lf-field').classList.remove('lf-invalid');
+      errorEl.textContent = '';
+    }
+
+    function validateForm() {
+      let isValid = true;
+
+      const name = document.getElementById('lf-name').value.trim();
+      const phone = document.getElementById('lf-phone').value.trim();
+      const email = document.getElementById('lf-email').value.trim();
+      const company = document.getElementById('lf-company').value.trim();
+      const callers = document.getElementById('lf-callers').value;
+
+      if (name.length < 2) {
+        setError('lf-name', 'err-name', 'Please enter your full name');
+        isValid = false;
+      } else { clearError('lf-name', 'err-name'); }
+
+      const phoneRegex = /^[0-9+\-\s()]{7,20}$/;
+      if (!phoneRegex.test(phone)) {
+        setError('lf-phone', 'err-phone', 'Please enter a valid phone number');
+        isValid = false;
+      } else { clearError('lf-phone', 'err-phone'); }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        setError('lf-email', 'err-email', 'Please enter a valid email address');
+        isValid = false;
+      } else { clearError('lf-email', 'err-email'); }
+
+      if (company.length < 2) {
+        setError('lf-company', 'err-company', 'Please enter your company name');
+        isValid = false;
+      } else { clearError('lf-company', 'err-company'); }
+
+      if (!callers) {
+        setError('lf-callers', 'err-callers', 'Please select an option');
+        isValid = false;
+      } else { clearError('lf-callers', 'err-callers'); }
+
+      return isValid;
+    }
+
+    ['lf-name', 'lf-phone', 'lf-email', 'lf-company', 'lf-callers'].forEach((id) => {
+      const el = document.getElementById(id);
+      el.addEventListener('input', () => el.closest('.lf-field').classList.remove('lf-invalid'));
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!validateForm()) return;
+
+      const data = {
+        name: document.getElementById('lf-name').value.trim(),
+        phone: document.getElementById('lf-phone').value.trim(),
+        email: document.getElementById('lf-email').value.trim(),
+        company: document.getElementById('lf-company').value.trim(),
+        callers: document.getElementById('lf-callers').value,
+        timeline: document.getElementById('lf-timeline').value || 'Not specified',
+        date: new Date().toLocaleString()
+      };
+
+      submitBtn.disabled = true;
+      submitText.textContent = 'Submitting...';
+
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(() => {
+        form.reset();
+        modalOverlay.classList.add('active');
+      })
+      .catch(() => {
+        form.reset();
+        modalOverlay.classList.add('active');
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitText.textContent = 'Submit';
+      });
+    });
+
+    modalClose.addEventListener('click', () => modalOverlay.classList.remove('active'));
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) modalOverlay.classList.remove('active');
+    });
+  })();
+  </script>
+
+</body>
+</html>
