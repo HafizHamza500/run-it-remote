@@ -487,7 +487,7 @@ nav.scrolled {
   grid-template-columns: 1fr 1fr;
   overflow: hidden;
 
-      /* background: url(""/assets/about-hero-img.jpg"""""""") center/cover no-repeat; */
+      background: url("/assets/about-hero-img.jpg") center/cover no-repeat;
 
 
 }
@@ -673,7 +673,7 @@ nav.scrolled {
 }
 
 .counter::after {
-  content: """"""""+"""""""";
+  content: "+";
 }
 
 /* .hover-scale {
