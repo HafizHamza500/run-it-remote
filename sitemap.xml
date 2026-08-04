@@ -6,121 +6,121 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ericline.runitremote.com/about.html</loc>
+    <loc>https://ericline.runitremote.com/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ericline.runitremote.com/industry.html</loc>
+    <loc>https://ericline.runitremote.com/industry</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ericline.runitremote.com/services.html</loc>
+    <loc>https://ericline.runitremote.com/services</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ericline.runitremote.com/contact.html</loc>
+    <loc>https://ericline.runitremote.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ericline.runitremote.com/privacy-policy.html</loc>
+    <loc>https://ericline.runitremote.com/privacy-policy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://ericline.runitremote.com/terms-services.html</loc>
+    <loc>https://ericline.runitremote.com/terms-services</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
     <url>
-    <loc>https://ericline.runitremote.com/industries/construction.html</loc>
+    <loc>https://ericline.runitremote.com/industries/construction</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ericline.runitremote.com/industries/finance.html</loc>
+    <loc>https://ericline.runitremote.com/industries/finance</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ericline.runitremote.com/industries/home-services.html</loc>
+    <loc>https://ericline.runitremote.com/industries/home-services</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ericline.runitremote.com/industries/insurance.html</loc>
+    <loc>https://ericline.runitremote.com/industries/insurance</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ericline.runitremote.com/industries/internet-telecom.html</loc>
+    <loc>https://ericline.runitremote.com/industries/internet-telecom</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ericline.runitremote.com/industries/mortgage.html</loc>
+    <loc>https://ericline.runitremote.com/industries/mortgage</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ericline.runitremote.com/industries/real-estate.html</loc>
+    <loc>https://ericline.runitremote.com/industries/real-estate</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ericline.runitremote.com/industries/saas.html</loc>
+    <loc>https://ericline.runitremote.com/industries/saas</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ericline.runitremote.com/industries/solar-energy.html</loc>
+    <loc>https://ericline.runitremote.com/industries/solar-energy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ericline.runitremote.com/services/ai-automation.html</loc>
+    <loc>https://ericline.runitremote.com/services/ai-automation</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ericline.runitremote.com/services/appointment-setup.html</loc>
+    <loc>https://ericline.runitremote.com/services/appointment-setup</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ericline.runitremote.com/services/customer-support.html</loc>
+    <loc>https://ericline.runitremote.com/services/customer-support</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ericline.runitremote.com/services/data-intelligence.html</loc>
+    <loc>https://ericline.runitremote.com/services/data-intelligence</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ericline.runitremote.com/services/lead-generation.html</loc>
+    <loc>https://ericline.runitremote.com/services/lead-generation</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ericline.runitremote.com/services/quality-validation.html</loc>
+    <loc>https://ericline.runitremote.com/services/quality-validation</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
