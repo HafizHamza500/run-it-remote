@@ -119,7 +119,7 @@ function initAnimations() {
 document.querySelectorAll('.counter').forEach(counter => {
   const target = parseInt(counter.dataset.target);
   if (!target) return;
-  counter.innerHTML = "";
+  counter.innerHTML = ";
 
   const start = { value: 0 };
 
