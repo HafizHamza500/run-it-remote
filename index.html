@@ -178,8 +178,11 @@
         <li><a href="contact">Contact Us</a></li>
       </ul>
     </div>
-    <a href="tel:+14049055636" class="btn-primary nav-cta-btn"
-      style="font-size: 15px; border-radius: 24px; ">404.905.5636</a>
+    <div class="nav-cta">
+    <a href="tel:+14049055636" class="btn-primary nav-cta-btn myBtn" style="font-size: 15px; border-radius: 24px;">404.905.5636</a>
+    <a href="#" class=" nav-cta-btn myBtn" style="font-size: 15px; border-radius: 24px;">GET STARTED</a>
+  </div>
+      
 
     <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
       <span></span>
@@ -387,18 +390,9 @@
         </div>
       </div>
 
-      <div class="video-box" id="videoBox">
-        <div class="video-thumb" id="videoThumb">
-          <div class="video-thumb-inner">
-            <div class="video-label">Run It Remote</div>
-            <div class="video-status">See How It Works</div>
-          </div>
-          <div class="play-btn">▶</div>
-        </div>
-
-        <!-- YouTube iframe (hidden initially) -->
-        <iframe id="youtubeVideo" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      </div>
+    <div class="video-box" id="videoBox">
+  <iframe id="youtubeVideo" src="https://www.youtube.com/embed/5-pNv-g0wyo?si=ruBVCpzb_lPrxk0B" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
     </div>
   </section>
 
@@ -1008,7 +1002,7 @@
     </div>
   </section>
 
-  <!-- Testimonials -->
+    <!-- Testimonials -->
   <section id="testimonials" class="section-pad">
     <div class="testimonials-header">
       <div class="section-label" style="justify-content: center;">Success Stories</div>
@@ -1068,7 +1062,96 @@
       </div>
     </div>
   </section>
+    <!-- =================== LEAD FORM SECTION =================== -->
+  <section id="lead-form">
+    <div class="lf-container">
+      <!-- LEFT SIDE -->
+      <div class="lf-left reveal">
+        <a href="#lead-form" class="lf-badge">
+          <span class="lf-badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+          </span>
+          Start Scaling
+        </a>
+        <h2 class="lf-title">Ready to Fill <span class="highlight">Your Calendar?</span></h2>
+        <p class="lf-desc">Partner with Run It Remote and give your business the outbound engine it needs to book more meetings and close, not chase</p>
 
+        <div class="lf-contact-row">
+          <div class="lf-contact-item">
+            <span class="lf-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <span><a href="tel:4049055636"> +1 (404) 905-5636</a></span>
+          </div>
+          <div class="lf-contact-item">
+            <span class="lf-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <span>Mon-Fri 8am-8pm EST</span>
+          </div>
+        </div>
+        <div class="lf-contact-item">
+          <span class="lf-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,7 12,13 2,7"/></svg></span>
+          <span><a href="mailto:support@runitremote.com">support@runitremote.com</a></span>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE (FORM) -->
+      <div class="lf-right reveal">
+        <h3 class="lf-form-heading">Get Your <span class="highlight">Free  Strategy Call</span></h3>
+        <form id="leadForm" class="lf-form" novalidate>
+          <div class="lf-field">
+            <input type="text" id="lf-name" name="name" placeholder="Name" autocomplete="off">
+            <span class="lf-error" id="err-name"></span>
+          </div>
+          <div class="lf-field">
+            <input type="tel" id="lf-phone" name="phone" placeholder="Phone"  maxlength="12" autocomplete="off">
+            <span class="lf-error" id="err-phone"></span>
+          </div>
+          <div class="lf-field">
+            <input type="email" id="lf-email" name="email" placeholder="Email" autocomplete="off">
+            <span class="lf-error" id="err-email"></span>
+          </div>
+          <div class="lf-field">
+            <input type="text" id="lf-company" name="company" placeholder="Company name" autocomplete="off">
+            <span class="lf-error" id="err-company"></span>
+          </div>
+          <div class="lf-field">
+            <select id="lf-callers" name="callers">
+              <option value="" disabled selected>How many cold callers are you looking to add to...</option>
+              <option value="1">1 Cold Caller</option>
+              <option value="2-3">2-3 Cold Callers</option>
+              <option value="4-5">4-5 Cold Callers</option>
+              <option value="6+">6+ Cold Callers</option>
+            </select>
+            <span class="lf-error" id="err-callers"></span>
+          </div>
+          <div class="lf-field">
+            <select id="lf-timeline" name="timeline">
+              <option value="" disabled selected>How soon are you looking to start? (Optional)</option>
+              <option value="Immediately">Immediately</option>
+              <option value="1-2 weeks">1-2 Weeks</option>
+              <option value="1 month">Within a Month</option>
+              <option value="Just exploring">Just Exploring</option>
+            </select>
+          </div>
+
+          <button type="submit" class="lf-submit" id="lf-submit-btn">
+            <span class="lf-submit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>
+            <span id="lf-submit-text">Submit</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+<!-- SUCCESS MODAL -->
+  <div class="lf-modal-overlay" id="lf-modal-overlay">
+    <div class="lf-modal">
+      <div class="lf-modal-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3>Thank You!</h3>
+      <p>Your request has been submitted successfully. Our team will contact you shortly.</p>
+      <button class="btn-primary" id="lf-modal-close">Close</button>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer>
@@ -1156,6 +1239,7 @@
   </div>
 
   <script src="js/home.js"></script>
+  <script src="js/popform.js" defer></script>
 
 </body>
 
